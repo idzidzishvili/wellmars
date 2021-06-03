@@ -370,21 +370,23 @@ JS INDEX
 		removalDelay: 300,
 		mainClass: 'mfp-fade',
 		zoom: {
-		enabled: true, 
-		duration: 300,
-		easing: 'ease-in-out', 
-	},
-	gallery: {
-		enabled: true, 
-		preload: [0,2], 
-		navigateByImgClick: true,
-		arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', 
-		tPrev: 'Previous (Left arrow key)', 
-		tNext: 'Next (Right arrow key)', 
-		tCounter: '<span class="mfp-counter">%curr% of %total%</span>' 
-	}
-});
+			enabled: true, 
+			duration: 300,
+			easing: 'ease-in-out', 
+		},
+		gallery: {
+			enabled: true, 
+			preload: [0,2], 
+			navigateByImgClick: true,
+			arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', 
+			tPrev: 'Previous (Left arrow key)', 
+			tNext: 'Next (Right arrow key)', 
+			tCounter: '<span class="mfp-counter">%curr% of %total%</span>' 
+		}
+	});
 
+	
+	
 
 }(jQuery));
 

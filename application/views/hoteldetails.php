@@ -8,7 +8,7 @@
 			<div class="col-lg-8">
 					<div class="tour-details-left">
 						<div class="tour-details-head">
-							<h3><?php echo $hotel->{'type_'.$lang}; ?> </h3>
+							<h3><?php echo $hotel->{'type_'.$this->lang->lang()}; ?> </h3>
 							<div class="tour-rating">
 									<ul>
 										<li><i class="fa fa-star"></i></li>
@@ -28,7 +28,7 @@
 							<?php endforeach; ?>
 						</div>
 						<p>
-							<?php echo $hotel->{'hotel_'.$lang}; ?>
+							<?php echo $hotel->{'hotel_'.$this->lang->lang()}; ?>
 						</p>
 						<ul class="tour-offer clearfix">
 							<li><span>Destination </span>Canada</li>
@@ -190,66 +190,77 @@
 					</div>
 			</div>
 			<div class="col-lg-4">
-					<div class="sidebar-widget">
-						<div class="single-sidebar">
-							<div class="quick-contact">
-									<h3>Book This Tour</h3>
-									<form>
-										<div class="book-tour-field">
-											<input type="text" placeholder="Your Name">
-										</div>
-										<div class="book-tour-field">
-											<input type="email" placeholder="Email Address">
-										</div>
-										<div class="book-tour-field">
-											<input type="tel" placeholder="Phone Number">
-										</div>
-										<div class="book-tour-field">
-											<input id="reservation_date" name="reservation_date" placeholder="Departure Date" data-select="datepicker" type="text">
-										</div>
-										<div class="book-tour-field clearfix">
-											<select class="wide">
-													<option selected disabled>Number Of Person</option>
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4+</option>
-											</select>
-										</div>
-										<div class="book-tour-field">
-											<button type="submit">Book Now</button>
-										</div>
-									</form>
-							</div>
-						</div>
-						<div class="single-sidebar">
-							<h3>More Information</h3>
-							<ul class="more-info">
-									<li>
-										<span><i class="fa fa-phone"></i> Phone Number:</span>
-										1-567-124-44227
-									</li>
-									<li>
-										<span><i class="fa fa-clock-o"></i> Office Time:</span>
-										9am - 5pm
-									</li>
-									<li>
-										<span><i class="fa fa-map-marker"></i> Office Location:</span>
-										5520 Quebec Place
-									</li>
-							</ul>
-						</div>
-						<div class="single-sidebar">
-							<img src="<?= base_url(); ?>assets/img/destination.jpg" alt="destination" />
+				<div class="sidebar-widget">
+					<div class="single-sidebar">
+						<div class="quick-contact">
+							<h3>Book This Tour</h3>
+							<?php echo form_open(site_url('home/hotel/'.$hotel->id));?>
+								<div class="book-tour-field">
+									<input type="text" placeholder="Your Name">
+								</div>
+								<div class="book-tour-field">
+									<input type="email" placeholder="Email Address">
+								</div>
+								<div class="book-tour-field">
+									<input type="tel" placeholder="Phone Number">
+								</div>
+								<div class="book-tour-field">
+									<input id="hotelorder_date" name="hotelorder_date" placeholder="Order Date" type="text">
+								</div>
+								<div class="book-tour-field clearfix">
+									<select name="room_number" class="wide">
+										<option selected disabled>ოთახის ნომერი</option>
+										<?php foreach ($rooms as $room):?>
+											<option value="<?php echo $room->id;?>">
+												ოთახი N <?php echo $room->id;?>
+											</option>
+										<?php endforeach;?>
+									</select>
+								</div>
+								<div class="book-tour-field clearfix">
+									<select class="wide">
+											<option selected disabled>Number Of Person</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+									</select>
+								</div>
+								<div class="book-tour-field">
+									<button type="submit">Book Now</button>
+								</div>
+							<?php echo form_close();?>
 						</div>
 					</div>
+					<div class="single-sidebar">
+						<h3>More Information</h3>
+						<ul class="more-info">
+								<li>
+									<span><i class="fa fa-phone"></i> Phone Number:</span>
+									1-567-124-44227
+								</li>
+								<li>
+									<span><i class="fa fa-clock-o"></i> Office Time:</span>
+									9am - 5pm
+								</li>
+								<li>
+									<span><i class="fa fa-map-marker"></i> Office Location:</span>
+									5520 Quebec Place
+								</li>
+						</ul>
+					</div>
+					<div class="single-sidebar">
+						<img src="<?= base_url(); ?>assets/img/destination.jpg" alt="destination" />
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 <!-- Tour Details Area End -->
 <script>
-//document.getElementsByClassName('.venobox').venobox(); 
+$('#hotelorder_date').daterangepicker();
 </script>
 
 <?php $this->load->view('templates/footer'); ?>

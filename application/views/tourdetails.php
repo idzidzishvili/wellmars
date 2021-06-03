@@ -1,6 +1,3 @@
-<?php $this->load->view('templates/header'); ?>
-
-
 <!-- Tour Details Area Start -->
 <section class="peulis-tour-details-area section_70">
 	<div class="container">
@@ -8,7 +5,7 @@
 			<div class="col-lg-8">
 					<div class="tour-details-left">
 						<div class="tour-details-head">
-							<h3><?php echo $tourdetails->tourname_ge; ?> <span> <span class="tour_price">$<?php echo $tourdetails->price; ?></span> / per person </span></h3>
+							<h3><?php echo $tourdetails->{'tourname_'.$this->lang->lang()}; ?> <span> <span class="tour_price">$<?php echo $tourdetails->price; ?></span> / per person </span></h3>
 							<div class="tour-rating">
 									<ul>
 										<li><i class="fa fa-star"></i></li>
@@ -28,7 +25,7 @@
 							<?php endforeach; ?>
 						</div>
 						<p>
-							<?php echo $tourdetails->description_ge; ?>
+							<?php echo $tourdetails->{'description_'.$this->lang->lang()}; ?>
 						</p>
 						<ul class="tour-offer clearfix">
 							<li><span>Destination </span>Canada</li>
@@ -251,5 +248,3 @@
 <script>
 //document.getElementsByClassName('.venobox').venobox(); 
 </script>
-
-<?php $this->load->view('templates/footer'); ?>

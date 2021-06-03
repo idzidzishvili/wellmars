@@ -10,15 +10,15 @@ class auth extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->helper("security");
 		$this->load->model('user');
-		if (get_cookie('lang') && (get_cookie('lang') == "georgian" || get_cookie('lang') == "russian" || get_cookie('lang') == "swedish")) {
-			$this->session->set_userdata('lang', get_cookie('lang'));
-			$this->lang->load("home", $this->session->userdata('lang'));
-		} else if ($this->session->userdata('lang')) {
-			$this->lang->load("home", $this->session->userdata('lang'));
-		} else {
-			$this->session->set_userdata('lang', 'georgian');
-			$this->lang->load("home", 'georgian');
-		}
+		// if (get_cookie('lang') && (get_cookie('lang') == "georgian" || get_cookie('lang') == "russian" || get_cookie('lang') == "swedish")) {
+		// 	$this->session->set_userdata('lang', get_cookie('lang'));
+		// 	$this->lang->load("home", $this->session->userdata('lang'));
+		// } else if ($this->session->userdata('lang')) {
+		// 	$this->lang->load("home", $this->session->userdata('lang'));
+		// } else {
+		// 	$this->session->set_userdata('lang', 'georgian');
+		// 	$this->lang->load("home", 'georgian');
+		// }
 	}
 
 	public function login()
@@ -39,7 +39,7 @@ class auth extends CI_Controller
 						'logged_in' => TRUE
 					);
 					$this->session->set_userdata($sessiondata);
-					if ($userdata->role == 1) return redirect('sadmin/users');
+					if ($userdata->role == 1) return redirect('admin/users');
 					else if ($userdata->role == 2) return redirect('admin/users');
 					else return redirect('profile');
 				} else {

@@ -1,51 +1,44 @@
-<?php $this->load->view('templates/header'); ?>
+<?php $data['activeitem'] = 99; ?>
+<?php $this->load->view('admin/adminheader', $data); ?>
 
-<div class="container">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<h1 class="h2">ქვეტურის რედაქტირება - <?php echo $tour->tourname_ge; ?></h1>
+	</div>
 
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
 
+				<a href="<?php echo $_SERVER['PHP_SELF'] . '?week=' . ($week - 1) . '&year=' . $year; ?>">Prev Week</a> | 
+				<a href="<?php echo $_SERVER['PHP_SELF'] . '?week=' . ($week + 1) . '&year=' . $year; ?>">Next Week</a>
+				<br><br>
 
-	<div class="row">
-		<div class="col-lg-3 left-navigation">
-			<ul>
-				<li>
-					<a href="#">
-						<i class="fa fa-hourglass-start" aria-hidden="true"></i>
-						მდგომარეობა
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-clock-o" aria-hidden="true"></i>
-						ნამუშევარი საათები
-					</a>
-				</li>
-				<li>
-					<a href="#" class="active">
-						<i class="fa fa-wrench" aria-hidden="true"></i>
-						ხელსაწყოები
-					</a>
-				</li>
-			</ul>
-		</div>
-
-		<div class="col-lg-9">
-			<div class="container fluid">
-
-				<div class="row">
-					<div class="col-lg-12 page-header">
-						<h3>პროფილი</h3>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-12 page-content">
-						page-content
-					</div>
-				</div>
+				<table class="table table-bordered hoteldetails">
+					<thead>
+						<tr>
+							<th scope="col" style="text-align:left">Rooms</th>
+							<?php foreach ($rooms['date'] as $date): ?>
+								<th scope="col"><?php echo $date . '<br>' . date('l', strtotime($date));?></th>
+							<?php endforeach;?>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($rooms['weekdays'] as $ind=>$wd): ?>
+							<tr>
+								<th scope="row" style="text-align:left">Room <?php echo $ind+1;?></th>
+								<?php foreach ($wd as $w): ?>
+									<td scope="col"> <?php echo $w;?></td>
+								<?php endforeach;?>
+							</tr>					
+						<?php endforeach;?>
+					</tbody>
+				</table>
 
 			</div>
 		</div>
 	</div>
-
-</div>
+</main>
+<input type="text" class="form-control hotelorder">
+<br><br><br><br><br>
 <?php $this->load->view('templates/footer'); ?>

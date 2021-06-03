@@ -1,29 +1,27 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
-	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-	<meta name="generator" content="Jekyll v4.0.1">
-	<title>Super Admin</title>
-
+	<meta name="author" content="M. Marsagishvili">
+	<title>Wellmars Admin</title>
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css">
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/dashboard.css" type="text/css" />
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/summernote-bs4.min.css" type="text/css" />
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/firago.css" type="text/css" />
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/dashboard.css" type="text/css" />
 	<script src="<?= base_url(); ?>assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="<?= base_url(); ?>assets/js/popper.min.js" type="text/javascript"></script>
 	<script src="<?= base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="<?= base_url(); ?>assets/js/summernote-bs4.min.js" type="text/javascript"></script>
-
+	
 </head>
 
 <body>
 	<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Super Admin</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Wellmars Admin</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -58,12 +56,6 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link <?php echo $activeitem == 3 ? 'active' : ''; ?>" href="<?php echo base_url('admin/addsubtour'); ?>">
-								<i class="la la-calendar"></i>
-								ქვეტურის დამატება
-							</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link <?php echo ($activeitem == 5) ? 'active' : ''; ?>" href="<?php echo base_url('admin/hotels'); ?>">
 								<i class="la la-user"></i>
 								სასტუმროები
@@ -75,7 +67,24 @@
 								სასტუმროს დამატება
 							</a>
 						</li>
-						
+						<li class="nav-item">
+							<a class="nav-link <?php echo $activeitem == 9 ? 'active' : ''; ?>" href="<?php echo base_url('admin/roomtypes'); ?>">
+								<i class="la la-user-plus"></i>
+								სასტუმროს ტიპები
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link <?php echo $activeitem == 7 ? 'active' : ''; ?>" href="<?php echo base_url('admin/hotelreservations'); ?>">
+								<i class="la la-user-plus"></i>
+								სასტუმროს ჯავშნები
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link <?php echo $activeitem == 8 ? 'active' : ''; ?>" href="<?php echo base_url('admin/contact'); ?>">
+								<i class="la la-user-plus"></i>
+								კონტაქტი
+							</a>
+						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo base_url('auth/logout'); ?>">
 								<i class="la la-share-square"></i>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7deb1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 08, 2021 at 05:57 PM
--- Server version: 8.0.23-0ubuntu0.20.10.1
--- PHP Version: 7.4.9
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 31, 2021 at 12:44 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,15 +25,44 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contacts`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` varchar(30) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `map_url` text DEFAULT NULL,
+  `facebook` varchar(200) DEFAULT NULL,
+  `twitter` varchar(200) DEFAULT NULL,
+  `instagram` varchar(200) DEFAULT NULL,
+  `pinterest` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `phone`, `email`, `address`, `map_url`, `facebook`, `twitter`, `instagram`, `pinterest`) VALUES
+(1, '577-56-45-55', 'info@wellmars.com', 'აწერწერწერ', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4149.632270481582!2d44.64528210436785!3d42.65641511993848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ska!2s!4v1622363024817!5m2!1ska!2s', 'https://www.facebook.com/wellmars', 'https://www.twitter.com/wellmars', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hotelimages`
 --
 
-CREATE TABLE `hotelimages` (
-  `id` int NOT NULL,
-  `hotelid` int NOT NULL,
+DROP TABLE IF EXISTS `hotelimages`;
+CREATE TABLE IF NOT EXISTS `hotelimages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotelid` int(11) NOT NULL,
   `filename` varchar(200) NOT NULL,
-  `ismain` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ismain` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hotelimages`
@@ -54,9 +83,85 @@ INSERT INTO `hotelimages` (`id`, `hotelid`, `filename`, `ismain`) VALUES
 (13, 9, 'e6c0e3ec71e79524003.jpg', 0),
 (14, 9, 'e6c0e3ec71e79524004.jpg', 0),
 (16, 10, '306b5285707191d0001.jpg', 1),
-(17, 10, '306b5285707191d0002.jpg', 1),
+(17, 10, '306b5285707191d0002.jpg', 0),
 (18, 10, '306b5285707191d0003.jpg', 0),
-(19, 10, '306b5285707191d0004.jpg', 0);
+(19, 10, '306b5285707191d0004.jpg', 0),
+(21, 11, '6b1a0389160ad03a001.jpg', 1),
+(22, 11, '6b1a0389160ad03a002.jpg', 0),
+(23, 11, '6b1a0389160ad03a003.jpg', 0),
+(24, 11, '6b1a0389160ad03a004.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hotelorders`
+--
+
+DROP TABLE IF EXISTS `hotelorders`;
+CREATE TABLE IF NOT EXISTS `hotelorders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `room_1` int(11) NOT NULL DEFAULT 0,
+  `room_2` int(11) NOT NULL DEFAULT 0,
+  `room_3` int(11) NOT NULL DEFAULT 0,
+  `room_4` int(11) NOT NULL DEFAULT 0,
+  `room_5` int(11) NOT NULL DEFAULT 0,
+  `room_6` int(11) NOT NULL DEFAULT 0,
+  `room_7` int(11) NOT NULL DEFAULT 0,
+  `room_8` int(11) NOT NULL DEFAULT 0,
+  `room_9` int(11) NOT NULL DEFAULT 0,
+  `room_10` int(11) NOT NULL DEFAULT 0,
+  `room_11` int(11) NOT NULL DEFAULT 0,
+  `room_12` int(11) NOT NULL DEFAULT 0,
+  `room_13` int(11) NOT NULL DEFAULT 0,
+  `room_14` int(11) NOT NULL DEFAULT 0,
+  `room_15` int(11) NOT NULL DEFAULT 0,
+  `room_16` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hotelorders`
+--
+
+INSERT INTO `hotelorders` (`id`, `date`, `room_1`, `room_2`, `room_3`, `room_4`, `room_5`, `room_6`, `room_7`, `room_8`, `room_9`, `room_10`, `room_11`, `room_12`, `room_13`, `room_14`, `room_15`, `room_16`) VALUES
+(1, '2021-05-07', 1, 2, 3, 54, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, '2021-05-08', 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, '2021-05-09', 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, '2021-05-10', 0, 10, 0, 9, 9, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, '2021-05-11', 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, '2021-05-12', 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, '2021-05-13', 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 0, 0, 0),
+(8, '2021-05-14', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, '2021-05-15', 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 19, 0, 0, 0, 0),
+(10, '2021-05-16', 0, 21, 22, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(11, '2021-05-17', 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(12, '2021-05-18', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(13, '2021-05-19', 0, 30, 0, 0, 25, 0, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(14, '2021-05-20', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(15, '2021-05-21', 0, 29, 0, 0, 26, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(16, '2021-05-22', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(17, '2021-05-23', 0, 28, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(18, '2021-05-24', 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(19, '2021-05-25', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(20, '2021-05-26', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(21, '2021-05-27', 0, 36, 0, 35, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(22, '2021-05-28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(23, '2021-05-29', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(24, '2021-05-30', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(25, '2021-05-31', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(26, '2021-06-01', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(27, '2021-06-02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(28, '2021-06-03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(29, '2021-06-04', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(30, '2021-06-05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(31, '2021-06-06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(32, '2021-06-07', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(33, '2021-06-08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(34, '2021-06-09', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(35, '2021-06-10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(36, '2021-05-06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(37, '2021-05-05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -64,23 +169,26 @@ INSERT INTO `hotelimages` (`id`, `hotelid`, `filename`, `ismain`) VALUES
 -- Table structure for table `hotels`
 --
 
-CREATE TABLE `hotels` (
-  `id` int NOT NULL,
+DROP TABLE IF EXISTS `hotels`;
+CREATE TABLE IF NOT EXISTS `hotels` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type_ge` varchar(250) DEFAULT NULL,
   `type_en` varchar(250) DEFAULT NULL,
   `type_ru` varchar(250) DEFAULT NULL,
-  `hotel_ge` text,
-  `hotel_en` text,
-  `hotel_ru` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `hotel_ge` text DEFAULT NULL,
+  `hotel_en` text DEFAULT NULL,
+  `hotel_ru` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hotels`
 --
 
 INSERT INTO `hotels` (`id`, `type_ge`, `type_en`, `type_ru`, `hotel_ge`, `hotel_en`, `hotel_ru`) VALUES
-(9, 'ლუქსი ნომრები', 'Luxury rooms', 'Номера люкс', '<p>სასტუმრო არის დაწესებულება, რომელიც უზრუნველყოფს მოკლევადიან გადასახადს. სასტუმროს ოთახში განთავსებული საშუალებები შეიძლება შეიცავდეს მცირე ოთახის ზომიერი ლეიბებიდან დაწყებული დიდი ლუქებით უფრო დიდი, უმაღლესი ხარისხის საწოლებით, კომოდით, მაცივრით და სამზარეულოს სხვა საშუალებებით, რბილი სკამებით, ტელევიზორის ბრტყელი ეკრანით და სველი წერტილები. მცირე, დაბალ ფასიან სასტუმროებში შესაძლებელია შემოგთავაზოთ მხოლოდ ყველაზე ძირითადი მომსახურებები და მომსახურებები. უფრო დიდ, უფრო მაღალ ფასებში განთავსებულ სასტუმროებში შესაძლებელია დამატებითი სტუმრების მოწყობა, როგორიცაა საცურაო აუზი, ბიზნეს ცენტრი (კომპიუტერებით, პრინტერებით და სხვა საოფისე ტექნიკით), ბავშვების მოვლა, საკონფერენციო და ღონისძიებების საშუალებები, ჩოგბურთის ან კალათბურთის კორტები, გიმნაზია, რესტორნები, დღის სპა, და სოციალური ფუნქციის სერვისები. სასტუმროს ნომრები, როგორც წესი, დანომრილია (ან დასახელებულია ზოგიერთ პატარა სასტუმროსა და საოჯახო სასტუმროში), რათა სტუმრებს საშუალება ჰქონდეთ ამოიცნონ თავიანთი ოთახი.<br></p>', '<p>A hotel is an establishment that provides paid lodging on a short-term basis. Facilities provided inside a hotel room may range from a modest-quality mattress in a small room to large suites with bigger, higher-quality beds, a dresser, a refrigerator and other kitchen facilities, upholstered chairs, a flat screen television, and en-suite bathrooms. Small, lower-priced hotels may offer only the most basic guest services and facilities. Larger, higher-priced hotels may provide additional guest facilities such as a swimming pool, business centre (with computers, printers, and other office equipment), childcare, conference and event facilities, tennis or basketball courts, gymnasium, restaurants, day spa, and social function services. Hotel rooms are usually numbered (or named in some smaller hotels and B&Bs) to allow guests to identify their rooms. <br></p>', '<p>Гостиница - это заведение, предоставляющее платное жилье на краткосрочной основе. Удобства, предоставляемые в гостиничном номере, могут варьироваться от матраса скромного качества в маленькой комнате до больших люксов с более крупными высококачественными кроватями, комодом, холодильником и другими кухонными принадлежностями, мягкими стульями, телевизором с плоским экраном и ванной комнатой. ванные комнаты. Небольшие отели с более низкими ценами могут предлагать только самые основные услуги и удобства. Более крупные отели с более высокими ценами могут предоставить дополнительные удобства для гостей, такие как бассейн, бизнес-центр (с компьютерами, принтерами и другим офисным оборудованием), присмотр за детьми, помещения для конференций и мероприятий, теннисные корты или баскетбольные площадки, тренажерный зал, рестораны, дневной спа-салон, и социальные услуги. Гостиничные номера обычно пронумерованы (или названы в некоторых небольших отелях и B & B), чтобы гости могли идентифицировать свою комнату.<br></p>'),
-(10, 'ჩვეულებრივი ნომრები', 'Regular rooms', 'Обычные номера', '<p>ჩვეულებრივ, პრომო ოთახი შედის იაფ ტურებში. ამ ტიპის ოთახი შესაფერისია იმ ტურისტებისთვის, რომლებიც მთელ დროს ატარებენ არა სასტუმროში, არამედ სანაპიროზე, საყიდლებზე ან ექსკურსიებზე. აქ კი შეგიძლიათ ღირსეულად დაზოგოთ ტურის ღირებულება პრომო ოთახში ყოფნისას.</p>', '<p>Usually, the promo room is included in the cheap tours. This type of room is suitable for tourists who spend all their time not in the hotel but on the beach, shopping or excursions. And here you can save the cost of the tour while staying in the promo rooms.</p>', '<p>Обычно в дешевые туры входит промо-номер. Этот тип номера подходит для туристов, которые проводят все время не в отеле, а на пляже, в магазинах или на экскурсиях. А здесь можно сэкономить на стоимости тура, остановившись в промо-руме.<br></p>');
+(9, 'ლუქსი ნომრები', 'Luxury rooms', 'Номера люкс', '<p>სასტუმრო არის დაწესებულება, რომელიც უზრუნველყოფს მოკლევადიან გადასახადს. სასტუმროს ოთახში განთავსებული საშუალებები შეიძლება შეიცავდეს მცირე ოთახის ზომიერი ლეიბებიდან დაწყებული დიდი ლუქებით უფრო დიდი, უმაღლესი ხარისხის საწოლებით, კომოდით, მაცივრით და სამზარეულოს სხვა საშუალებებით, რბილი სკამებით, ტელევიზორის ბრტყელი ეკრანით და სველი წერტილები. მცირე, დაბალ ფასიან სასტუმროებში შესაძლებელია შემოგთავაზოთ მხოლოდ ყველაზე ძირითადი მომსახურებები და მომსახურებები. უფრო დიდ, უფრო მაღალ ფასებში განთავსებულ სასტუმროებში შესაძლებელია დამატებითი სტუმრების მოწყობა, როგორიცაა საცურაო აუზი, ბიზნეს ცენტრი (კომპიუტერებით, პრინტერებით და სხვა საოფისე ტექნიკით), ბავშვების მოვლა, საკონფერენციო და ღონისძიებების საშუალებები, ჩოგბურთის ან კალათბურთის კორტები, გიმნაზია, რესტორნები, დღის სპა, და სოციალური ფუნქციის სერვისები. სასტუმროს ნომრები, როგორც წესი, დანომრილია (ან დასახელებულია ზოგიერთ პატარა სასტუმროსა და საოჯახო სასტუმროში), რათა სტუმრებს საშუალება ჰქონდეთ ამოიცნონ თავიანთი ოთახი....<br></p>', '<p>A hotel is an establishment that provides paid lodging on a short-term basis. Facilities provided inside a hotel room may range from a modest-quality mattress in a small room to large suites with bigger, higher-quality beds, a dresser, a refrigerator and other kitchen facilities, upholstered chairs, a flat screen television, and en-suite bathrooms. Small, lower-priced hotels may offer only the most basic guest services and facilities. Larger, higher-priced hotels may provide additional guest facilities such as a swimming pool, business centre (with computers, printers, and other office equipment), childcare, conference and event facilities, tennis or basketball courts, gymnasium, restaurants, day spa, and social function services. Hotel rooms are usually numbered (or named in some smaller hotels and B&Bs) to allow guests to identify their rooms....<br></p>', '<p>Гостиница - это заведение, предоставляющее платное жилье на краткосрочной основе. Удобства, предоставляемые в гостиничном номере, могут варьироваться от матраса скромного качества в маленькой комнате до больших люксов с более крупными высококачественными кроватями, комодом, холодильником и другими кухонными принадлежностями, мягкими стульями, телевизором с плоским экраном и ванной комнатой. ванные комнаты. Небольшие отели с более низкими ценами могут предлагать только самые основные услуги и удобства. Более крупные отели с более высокими ценами могут предоставить дополнительные удобства для гостей, такие как бассейн, бизнес-центр (с компьютерами, принтерами и другим офисным оборудованием), присмотр за детьми, помещения для конференций и мероприятий, теннисные корты или баскетбольные площадки, тренажерный зал, рестораны, дневной спа-салон, и социальные услуги. Гостиничные номера обычно пронумерованы (или названы в некоторых небольших отелях и B & B), чтобы гости могли идентифицировать свою комнату....<br></p>'),
+(10, 'ჩვეულებრივი ნომრები', 'Regular rooms', 'Обычный номери', '<p>ჩვეულებრივ, პრომო ოთახი შედის იაფ ტურებში. ამ ტიპის ოთახი შესაფერისია იმ ტურისტებისთვის, რომლებიც მთელ დროს ატარებენ არა სასტუმროში, არამედ სანაპიროზე, საყიდლებზე ან ექსკურსიებზე. აქ კი შეგიძლიათ ღირსეულად დაზოგოთ ტურის ღირებულება პრომო ოთახში ყოფნისას.</p>', '<p>Usually, the promo room is included in the cheap tours. This type of room is suitable for tourists who spend all their time not in the hotel but on the beach, shopping or excursions. And here you can save the cost of the tour while staying in the promo rooms.</p>', '<p>Обычно в дешевые туры входит промо-номер. Этот тип номера подходит для туристов, которые проводят все время не в отеле, а на пляже, в магазинах или на экскурсиях. А здесь можно сэкономить на стоимости тура, остановившись в промо-руме.<br></p>'),
+(11, 'საოჯახო ნომრები', 'Family rooms', 'Семейные номера', '<p>საოჯახო ოთახი არის არაფორმალური, ყველა დანიშნულების ოთახი სახლში. საოჯახო ოთახი შექმნილია ისე, რომ ოჯახი და სტუმრები იკრიბებიან ჯგუფური დასვენებისთვის, როგორიცაა საუბარი, კითხვა, ტელევიზორის ყურება და სხვა საოჯახო საქმიანობა. [1] [2] ხშირად, საოჯახო ოთახი მდებარეობს სამზარეულოს მეზობლად, ზოგჯერ კი მასში ვიზუალური შესვენების გარეშე მიედინება. [3] საოჯახო ოთახს ხშირად აქვს კარები, რომელიც უკანა ეზოსკენ მიდის და გარე საცხოვრებელი ადგილები, როგორიცაა გემბანი, ბაღი ან ტერასა.</p><p><br></p><p>ტერმინი საოჯახო ოთახი განსაზღვრულია ჯორჯ ნელსონისა და ჰენრი რაიტის 1945 წლის წიგნში „ხვალ სახლი“. სახელწოდებით \"ოთახი უსახელო ოთახი\" ლაპარაკობდა თანამედროვე ცხოვრებაში \"ახალი ყველაზე დიდი ოთახის\" საჭიროებაზე, რომელიც მთელი ოჯახის სოციალურ და რეკრეაციულ საჭიროებებს მოემსახურებოდა, რაც საშუალებას მისცემდა მისაღები ოთახის საქმიანობას.</p><p><br></p><p>ამ \"დიდ ოთახს\" ექნება ავეჯი და მასალები, რომლებიც იყო \"მკაცრი\", მყარი გამოყენებისთვის და მისი გაწმენდა ადვილი უნდა იყოს. იმ დროისთვის არსებული \"რუმპუსის ოთახებისგან\" განსხვავებით, ის ზოგჯერ ემსახურებოდა ოდნავ უფრო ოფიციალურ გართობას, ამიტომ ის უნდა იყოს ლამაზი ოთახი და უნდა ჰქონდეს კარადები, სადაც სათამაშოები, ხელსაწყოები და ა.შ.</p>', '<p xss=removed>A family room is an informal, all-purpose room in a <a href=\"https://en.wikipedia.org/wiki/House\" title=\"House\">house</a>. The family room is designed to be a place where <a href=\"https://en.wikipedia.org/wiki/Family\" title=\"Family\">family</a> and guests gather for group recreation like talking, reading, watching TV, and other family activities.<a href=\"https://en.wikipedia.org/wiki/Family_room#cite_note-1\">[1]</a><a href=\"https://en.wikipedia.org/wiki/Family_room#cite_note-2\">[2]</a><span xss=removed> Often, the family room is located adjacent to the </span><a href=\"https://en.wikipedia.org/wiki/Kitchen\" title=\"Kitchen\">kitchen</a><span xss=removed>, and at times, flows into it with no visual breaks.</span><a href=\"https://en.wikipedia.org/wiki/Family_room#cite_note-3\">[3]</a><span xss=removed> A family room often has doors leading to the back yard and specific outdoor living areas such as a </span><a href=\"https://en.wikipedia.org/wiki/Deck_(building)\" title=\"Deck (building)\">deck</a><span xss=removed>, </span><a href=\"https://en.wikipedia.org/wiki/Garden\" title=\"Garden\">garden</a><span xss=removed>, or </span><a href=\"https://en.wikipedia.org/wiki/Terrace_(gardening)\" class=\"mw-redirect\" title=\"Terrace (gardening)\">terrace</a><span xss=removed>.</span></p><p xss=removed>The term family room is defined in the 1945 book <a href=\"https://en.wikipedia.org/w/index.php?title=Tomorrow\'s_House&action=edit&redlink=1\" class=\"new\" title=\"Tomorrow\'s House (page does not exist)\">Tomorrow\'s House</a> by <a href=\"https://en.wikipedia.org/wiki/George_Nelson_(designer)\" title=\"George Nelson (designer)\">George Nelson</a> and Henry Wright.<span xss=removed> entitled \"The Room Without a Name\" spoke of the need in modern life for a new \"biggest room in the house\" that would serve the social and recreational needs of the entire family, allowing activities that would not be permitted in the living room.</span></p><p xss=removed>This \"big room\" would have furnishings and materials that were \"tough\", for hard use, and it should be easy to clean. In contrast with the existing \"<a href=\"https://en.wikipedia.org/wiki/Rumpus_room\" class=\"mw-redirect\" title=\"Rumpus room\">rumpus rooms</a>\" of the time, it would occasionally serve for slightly more formal entertainment, so it should be a handsome room and should have cupboards where toys, tools, etc. could be kept out of sight.</p>', '<p>Семейная комната - это неформальная универсальная комната в доме. Семейная комната спроектирована как место, где семья и гости собираются для группового отдыха, например, для общения, чтения, просмотра телевизора и других семейных мероприятий. [1] [2] Часто семейная комната находится рядом с кухней и иногда перетекает в нее без видимых перерывов [3]. В семейной комнате часто есть двери, ведущие на задний двор и в определенные жилые зоны на открытом воздухе, такие как терраса, сад или терраса.</p><p><br></p><p>Термин «семейная комната» определен в книге Джорджа Нельсона и Генри Райта 1945 года «Дом будущего». под названием «Комната без имени» говорилось о необходимости современной жизни в новой «самой большой комнате в доме», которая удовлетворяла бы социальные и рекреационные потребности всей семьи, позволяя проводить мероприятия, запрещенные в гостиной.</p><p><br></p><p>Мебель и материалы этой «большой комнаты» должны быть «жесткими» для тяжелых условий эксплуатации, и ее должно быть легко чистить. В отличие от существовавших в то время «шумных комнат», она иногда служила для немного более формальных развлечений, поэтому это должна быть красивая комната и в ней должны быть шкафы, где игрушки, инструменты и т. Д. Можно было бы держать вне поля зрения.</p>');
 
 -- --------------------------------------------------------
 
@@ -88,29 +196,72 @@ INSERT INTO `hotels` (`id`, `type_ge`, `type_en`, `type_ru`, `hotel_ge`, `hotel_
 -- Table structure for table `mainsliders`
 --
 
-CREATE TABLE `mainsliders` (
-  `id` int NOT NULL,
-  `filename` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `mainsliders`;
+CREATE TABLE IF NOT EXISTS `mainsliders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `filename` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mainsliders`
 --
 
 INSERT INTO `mainsliders` (`id`, `filename`) VALUES
-(3, '30238be7e0654eb8001.png'),
-(4, '0fffa532d7ba5eac001.png'),
-(5, '660eb4afacf379ea001.png');
+(20, '4af8434c9f5a2bf1004.png'),
+(21, '6dfe3f5c57a0ecd3001.jpg'),
+(22, '6dfe3f5c57a0ecd3002.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subtours`
+-- Table structure for table `tourimages`
 --
 
-CREATE TABLE `subtours` (
-  `id` int NOT NULL,
-  `tourid` int NOT NULL,
+DROP TABLE IF EXISTS `tourimages`;
+CREATE TABLE IF NOT EXISTS `tourimages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tourid` int(11) NOT NULL,
+  `filename` varchar(250) NOT NULL,
+  `ismain` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=277 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tourimages`
+--
+
+INSERT INTO `tourimages` (`id`, `tourid`, `filename`, `ismain`) VALUES
+(272, 83, 'e63243e31661d9c7001.jpg', 0),
+(276, 77, 'd1b5121d4e64b63a001.jpg', 1),
+(267, 81, 'tourimage081.jpg', 1),
+(268, 82, 'a49607d2e00faff4001.jpg', 0),
+(205, 77, '0bd13c6e0dc0a315001.jpg', 0),
+(200, 77, '328a27ade4300247001.jpg', 0),
+(203, 77, '2466c05a7287c247001.png', 0),
+(273, 83, 'e63243e31661d9c7002.jpg', 0),
+(274, 83, 'e63243e31661d9c7003.jpg', 1),
+(269, 82, 'a49607d2e00faff4002.jpg', 0),
+(270, 82, 'a49607d2e00faff4003.jpg', 0),
+(271, 82, 'a49607d2e00faff4004.jpg', 1),
+(192, 76, 'tourimage076.png', 1),
+(266, 77, '0313cf18a598edb8003.png', 0),
+(263, 77, '5059c285dbf2c249002.jpg', 0),
+(258, 77, 'e0590fed2e4fbc99001.jpg', 0),
+(275, 83, 'e63243e31661d9c7004.jpg', 0),
+(257, 77, 'e8d0dd084ce21257002.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tours`
+--
+
+DROP TABLE IF EXISTS `tours`;
+CREATE TABLE IF NOT EXISTS `tours` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tourid` int(11) DEFAULT NULL,
+  `istour` tinyint(1) NOT NULL DEFAULT 0,
   `tourname_ge` varchar(250) DEFAULT NULL,
   `tourname_en` varchar(250) DEFAULT NULL,
   `tourname_ru` varchar(250) DEFAULT NULL,
@@ -120,230 +271,23 @@ CREATE TABLE `subtours` (
   `destination_ge` varchar(200) DEFAULT NULL,
   `destination_en` varchar(200) DEFAULT NULL,
   `destination_ru` varchar(200) DEFAULT NULL,
-  `description_ge` text,
-  `description_en` text,
-  `description_ru` text,
-  `price` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `subtours`
---
-
-INSERT INTO `subtours` (`id`, `tourid`, `tourname_ge`, `tourname_en`, `tourname_ru`, `duration_ge`, `duration_en`, `duration_ru`, `destination_ge`, `destination_en`, `destination_ru`, `description_ge`, `description_en`, `description_ru`, `price`) VALUES
-(39, 2, 'ველო ტური თბილისის ირგვლივ', 'Bike tour around Tbilisi', 'Велосипедный тур по Тбилиси', '2 Days', '2 Days', 'dasdasdas', 'Around Tbilisi', 'asdasdasd', 'asdasdas', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', '<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. <br></p>', '<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. <br></p>', 50),
-(38, 1, 'ტური სიღნაღში', 'Tour in Signagi', 'Тур в Сигнаги', '5 Days', '2 Days', NULL, 'Tbilisi - Signagi', NULL, NULL, 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.', NULL, NULL, 80),
-(40, 2, 'ველოტური თბილისში', 'Bike tour withinTbilisi', 'Велоспорт в Тбилиси', '2 დღე', '2 Days', '2 Days ru', 'თბილისი', 'Tbilisi', 'Tbilisi ru', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<br></p>', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<br></p>', 40),
-(41, 2, 'ველოტური თბილისი რუსთავი', 'Bike tour Tbilisi Rustavi', 'Велосипедный тур Тбилиси Рустави', '3 Days', '3 Days', '3 dnei', 'Tbilisi - Rustavi', 'Tbilisi - Rustavi', 'Tbilisi - Rustavi', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br></p>', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br></p>', 70),
-(42, 2, 'ველოტური გორში', 'Bike tour to Gori', 'Велотур в Гори', '3 Days', '2 Days', '2 dnei', 'Tbilisi - Gori', 'Tbilisi - Gori', 'Tbilisi - Gori', '<p>The point of using <b>Lorem Ipsum</b> is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use <b><i>Lorem Ipsum as their default model text</i></b>, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, <font color=\"#0000ff\"><b>sometimes by accident</b></font>, sometimes on purpose (injected humour and the like).</p>', '<p>The point of using <span xss=removed>Lorem Ipsum</span> is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use <span xss=removed><i>Lorem Ipsum as their default model text</i></span>, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, <font color=\"#0000ff\"><span xss=removed>sometimes by accident</span></font>, sometimes on purpose (injected humour and the like).<br></p>', '<p>The point of using <span xss=removed>Lorem Ipsum</span> is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use <span xss=removed><i>Lorem Ipsum as their default model text</i></span>, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, <font color=\"#0000ff\"><span xss=removed>sometimes by accident</span></font>, sometimes on purpose (injected humour and the like).<br></p>', 78),
-(43, 4, 'ტური მთაში', 'Tour in the mountains', 'Тур в горы', '5 days', '5 Days', NULL, 'tbilisi-borjomi', NULL, NULL, '<p><strong xss=removed>Lorem Ipsum</strong><span xss=removed> საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</span><br></p>', NULL, NULL, 80),
-(44, 2, 'ველოტური თბილისი რუსთავი', 'Bike tour Tbilisi Rustavi', 'Велосипедный тур Тбилиси Рустави', '3 Days', '2 Days', 'ert erter', 'Tbilisi - Rustavi', 'ert erter', 'ert erter', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '<p>ertertre</p>', '<p>erterte</p>', 70),
-(54, 2, 'Bike tour Tbilisi Rustavi1', 'retert erter ter ter2', 'ert ertertert3', '3 Days4', '3 Days', 'ert erter6', 'Tbilisi - Rustavi7', 'ert erter8', 'ert erter9', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.11', '<p>ertertre12567</p>', '<p>erterte313313</p>', 7010),
-(59, 1, 'asad', 'asdasd', 'asdas', 'asdasd', '2 Days', 'asdasdas', 'asdasdas', 'asdasdas', 'asdas', '<p>dsfs fsd sdfhsdkljfhlksdjhfslkdjfh sdlkj</p>', '<p>kjhsdlkj fhsdlkfj hsdlfkjh sdlkj<b>shd kslajdhaslkdjhaskljdhasl kbkijudhs kljash</b>lkjHSdk alsjh</p>', '<p>df dsf sdf sdf sdfsdf sd</p>', 345345);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tourimages`
---
-
-CREATE TABLE `tourimages` (
-  `id` int NOT NULL,
-  `subtourid` int NOT NULL,
-  `filename` varchar(250) NOT NULL,
-  `ismain` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tourimages`
---
-
-INSERT INTO `tourimages` (`id`, `subtourid`, `filename`, `ismain`) VALUES
-(102, 38, 'a41a796cb17eddd9001.jpg', 0),
-(103, 38, 'a41a796cb17eddd9001.jpg', 1),
-(104, 38, 'a41a796cb17eddd9001.jpg', 0),
-(105, 43, '235b4d104b65448f001.jpg', 0),
-(106, 43, '235b4d104b65448f002.jpg', 0),
-(107, 43, '235b4d104b65448f003.jpg', 1),
-(108, 43, '235b4d104b65448f004.jpg', 0),
-(115, 52, '92979a682d669129002.jpg', 0),
-(119, 53, 'fe23fc6e0ec93442002.jpg', 1),
-(114, 52, '92979a682d669129001.png', 0),
-(118, 53, 'fe23fc6e0ec93442001.png', 0),
-(113, 45, 'c331589fcce6e74c005.jpg', 0),
-(116, 52, '92979a682d669129003.jpg', 1),
-(117, 52, '92979a682d669129004.jpg', 0),
-(120, 53, 'fe23fc6e0ec93442003.jpg', 0),
-(121, 53, 'fe23fc6e0ec93442004.jpg', 0),
-(122, 54, '38674f0aa0f61be3001.jpg', 0),
-(123, 54, '38674f0aa0f61be3002.jpg', 1),
-(124, 57, 'a94bc8a830685ec6001.jpg', 1),
-(125, 58, 'a41a796cb17eddd9001.jpg', 0),
-(126, 54, '06a16bd6fff29441001.jpg', 0),
-(127, 59, 'ba6773169e4a7304001.png', 0),
-(128, 59, 'ba6773169e4a7304002.png', 0),
-(129, 59, 'ba6773169e4a7304003.jpg', 0),
-(134, 54, 'f9e1ebb795f2453c005.jpg', 0),
-(131, 59, 'e9f4b40504b573ee001.jpg', 0),
-(132, 59, 'a0c5f979df265ea9001.jpg', 1),
-(133, 59, '2b8e311eb0ef0203001.png', 0),
-(135, 54, 'f7a95816b2623308001.png', 0),
-(145, 39, 'e2ea03cf76c77eaa001.jpg', 0),
-(137, 40, '0533520f8461d255001.jpg', 1),
-(138, 40, '0533520f8461d255002.jpg', 0),
-(139, 40, '0533520f8461d255003.jpg', 0),
-(140, 40, '0533520f8461d255004.jpg', 0),
-(142, 39, 'c3981e3a868b3ddd001.jpg', 1),
-(146, 39, 'a515679f4333b5c1001.jpg', 0),
-(144, 39, 'c3981e3a868b3ddd003.png', 0),
-(147, 41, '8b5ae7f32c8c8e0d001.jpg', 0),
-(148, 41, '8b5ae7f32c8c8e0d002.jpeg', 0),
-(149, 41, '8b5ae7f32c8c8e0d003.jpg', 1),
-(150, 41, '8b5ae7f32c8c8e0d004.jpg', 0),
-(151, 44, '051ff4c420e0b101001.jpg', 0),
-(152, 44, '051ff4c420e0b101002.jpg', 0),
-(153, 44, '051ff4c420e0b101003.jpg', 1),
-(154, 44, '051ff4c420e0b101004.jpg', 0),
-(155, 42, '85f024ff047ff10b001.jpg', 0),
-(156, 42, '85f024ff047ff10b002.jpeg', 0),
-(157, 42, '85f024ff047ff10b003.jpg', 1),
-(158, 42, '85f024ff047ff10b004.jpg', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tourmainimages`
---
-
-CREATE TABLE `tourmainimages` (
-  `id` int NOT NULL,
-  `tourid` int NOT NULL,
-  `filename` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tourmainimages`
---
-
-INSERT INTO `tourmainimages` (`id`, `tourid`, `filename`) VALUES
-(7, 22, 'tourimage022.jpg'),
-(8, 23, 'tourimage023.jpg'),
-(9, 42, 'tourimage042.jpg'),
-(10, 1, 'tourimage001.jpg'),
-(11, 2, 'tourimage002.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tours`
---
-
-CREATE TABLE `tours` (
-  `id` int NOT NULL,
-  `tourname_ge` varchar(250) NOT NULL,
-  `tourname_en` varchar(200) NOT NULL,
-  `tourname_ru` varchar(200) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description_ge` text DEFAULT NULL,
+  `description_en` text DEFAULT NULL,
+  `description_ru` text DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tours`
 --
 
-INSERT INTO `tours` (`id`, `tourname_ge`, `tourname_en`, `tourname_ru`) VALUES
-(1, 'კულტურული ტურები', 'Cultural Tours', 'Культурные туры'),
-(2, 'ველო ტურები', 'Bike Tours', 'Велосипедные туры');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `hotelimages`
---
-ALTER TABLE `hotelimages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `hotels`
---
-ALTER TABLE `hotels`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mainsliders`
---
-ALTER TABLE `mainsliders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subtours`
---
-ALTER TABLE `subtours`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tourimages`
---
-ALTER TABLE `tourimages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tourmainimages`
---
-ALTER TABLE `tourmainimages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tours`
---
-ALTER TABLE `tours`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `hotelimages`
---
-ALTER TABLE `hotelimages`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `hotels`
---
-ALTER TABLE `hotels`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `mainsliders`
---
-ALTER TABLE `mainsliders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `subtours`
---
-ALTER TABLE `subtours`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
-
---
--- AUTO_INCREMENT for table `tourimages`
---
-ALTER TABLE `tourimages`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
-
---
--- AUTO_INCREMENT for table `tourmainimages`
---
-ALTER TABLE `tourmainimages`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `tours`
---
-ALTER TABLE `tours`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+INSERT INTO `tours` (`id`, `tourid`, `istour`, `tourname_ge`, `tourname_en`, `tourname_ru`, `duration_ge`, `duration_en`, `duration_ru`, `destination_ge`, `destination_en`, `destination_ru`, `description_ge`, `description_en`, `description_ru`, `price`) VALUES
+(83, 81, 1, 'ველო ტური კახეთში', 'Bike tours in Kakheti', 'Велосипедные туры в Кахети', '3 დღე', '3 Days', '3 Dney', 'თბილისი თელავი', 'Tbilisi Telavi', 'Tbilisi Telavi', '<p>ველოსიპედის ტური გთავაზობთ ყველაფრის დაგეგმვას, რაც თქვენთვის დაგეგმილია: სასტუმროები, საიჯარო ველოსიპედები, მარშრუტები, კვება, ბარგის ტრანსფერი, ღირსშესანიშნაობების ტურები და ა.შ. სახელმძღვანელოები აღნიშნავენ ღირსშესანიშნავ ადგილებს, აწყობენ ექსკურსიებსა და საქმიანობებს და არიან ავარიების შემთხვევაში (მექანიკური ან ადამიანური).</p><p><br></p><p>დამხმარე და პერსონალი განსხვავდება ტურისტული და ტურისტული კომპანიების მიხედვით, მაგრამ, როგორც წესი, ერთი მეგზური მიდის ჯგუფთან, ხოლო მეორე სახელმძღვანელო თქვენი ბარგით მართავს საყრდენ ფურგონს. ფურგონის საშუალებით შესაძლებელია მარშრუტის ნაკლებად მიმზიდველი ან უფრო რთული მონაკვეთების გადაკვეთა.</p><p><br></p><p>როგორც წესი, ველოსიპედით ივლით 8 – დან 20 – კაციან ჯგუფში, როგორც წესი, რამდენიმე სხვადასხვა ქვეყნიდან, რაც ქმნის ახალ ნაცნობებსა და საერთაშორისო მეგობრობას. ტუროპერატორების უმეტესობა გთავაზობთ სრულყოფილ ინფორმაციულ პაკეტს, სადაც მოცემულია რჩევები ღირშესანიშნაობების, კულტურული ღირსშესანიშნაობების და სცენური გაჩერების შესახებ (თუმცა ინგლისურ ენაზე მასალების მოცულობა განსხვავებულია ტუროპერატორის მიხედვით)</p>', '<p>This bicycle tour provides the convenience of having everything planned out for you: hotels, rental bikes, routes, meals, luggage transfers, sightseeing tours and so on. The guides point out places of interest, organize excursions and activities and are there in case of breakdowns (mechanical or human).</p><p><br></p><p>Support and personnel vary by tour and tour company, but one guide typically rides with the group, while a second guide drives a support van with your luggage. The van also makes it possible to bridge less attractive or more challenging sections of a route.</p><p><br></p><p>You usually bike in a group of 8 to 20 people, typically from several different countries, which makes for new acquaintances and international friendships. Most tour operators provide you with a comprehensive information package with tips on sights, cultural highlights, and scenic stops (although the extent of materials in English varies by tour operator).</p>', '<p>Этот велосипедный тур обеспечивает удобство, когда все спланировано для вас: отели, прокат велосипедов, маршруты, питание, трансферы багажа, обзорные экскурсии и так далее. Гиды указывают на достопримечательности, организуют экскурсии и мероприятия, а также присутствуют в случае поломки (механической или человеческой).</p><p><br></p><p>Поддержка и персонал различаются в зависимости от тура и туристической компании, но один гид обычно едет с группой, а второй гид ведет фургон поддержки с вашим багажом. Фургон также позволяет преодолевать менее привлекательные или более сложные участки маршрута.</p><p><br></p><p>Обычно вы ездите на велосипеде в группе от 8 до 20 человек, как правило, из нескольких разных стран, что способствует новым знакомствам и международной дружбе. Большинство туроператоров предоставляют вам исчерпывающий пакет информации с советами о достопримечательностях, культурных достопримечательностях и живописных остановках (хотя объем материалов на английском языке зависит от туроператора).</p>', 340),
+(81, NULL, 0, 'ველო ტურები', 'Bike tours', 'Велосипедные туры', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(82, 81, 1, 'ველო ტური რუსთავში', 'Bike tours in Rustavi', 'Велосипедные туры в Рустави', '3 დღე', '3 days', '3 dney', 'თბილისი რუსთავი', 'Tbilisi rusTavi', 'Tbilisi rusTavi', '<p>თუ გსიამოვნებთ ჯგუფთან ერთად მოგზაურობა, ახალი ხალხის გაცნობა და ყოველდღიური სახელმძღვანელო და სტრუქტურირებული გრაფიკი, მაშინ ჯგუფური ველოსიპედით მართვა საუკეთესო არჩევანია თქვენთვის.</p><p><br></p><p>ველო ტურები უზრუნველყოფს თქვენთვის დაგეგმილი ყველაფრის მოხერხებულობას: სასტუმროები, საიჯარო ველოსიპედები, მარშრუტები, კვება, ბარგის ტრანსფერი, ღირსშესანიშნაობების ტურები და ა.შ. სახელმძღვანელოები აღნიშნავენ ღირსშესანიშნავ ადგილებს, აწყობენ ექსკურსიებსა და საქმიანობებს და არიან ავარიების შემთხვევაში (მექანიკური ან ადამიანური).</p><p><br></p><p>დამხმარე და პერსონალი განსხვავდება ტურისტული და ტურისტული კომპანიების მიხედვით, მაგრამ, როგორც წესი, ერთი მეგზური მიდის ჯგუფთან, ხოლო მეორე სახელმძღვანელო თქვენი ბარგით მართავს საყრდენ ფურგონს. ფურგონის საშუალებით შესაძლებელია მარშრუტის ნაკლებად მიმზიდველი ან უფრო რთული მონაკვეთების გადაკვეთა.</p>', '<p>If you enjoy traveling with a group, meeting new people, and having a guide and structured daily schedule, then a guided group bike tour is probably the best fit for you.</p><p><br></p><p>These bicycle tours provide the convenience of having everything planned out for you: hotels, rental bikes, routes, meals, luggage transfers, sightseeing tours and so on. The guides point out places of interest, organize excursions and activities and are there in case of breakdowns (mechanical or human).</p><p><br></p><p>Support and personnel vary by tour and tour company, but one guide typically rides with the group, while a second guide drives a support van with your luggage. The van also makes it possible to bridge less attractive or more challenging sections of a route.</p>', '<p>Если вам нравится путешествовать с группой, знакомиться с новыми людьми, иметь гида и структурированный ежедневный график, то групповой велосипедный тур с гидом, вероятно, вам больше всего подойдет.</p><p><br></p><p>Эти велосипедные туры обеспечивают удобство, когда все спланировано для вас: отели, прокат велосипедов, маршруты, питание, трансферы багажа, обзорные экскурсии и так далее. Гиды указывают на достопримечательности, организуют экскурсии и мероприятия, а также присутствуют в случае поломки (механической или человеческой).</p><p><br></p><p>Поддержка и персонал различаются в зависимости от тура и туристической компании, но один гид обычно едет с группой, а второй гид ведет фургон поддержки с вашим багажом. Фургон также позволяет преодолевать менее привлекательные или более сложные участки маршрута.</p>', 250),
+(76, NULL, 0, 'კულტურული ტურები', 'Cultural tours', 'Культурные туры', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(77, 76, 1, 'კულტურული ტური რუსთავში', 'Cultural tours in Rustavi', 'Культурные туры Rustavi', '3 დღე', '3 days', '3 дня', 'თბილისი - რუსთავი', 'Tbilisi - Rustavi', 'Tbilisi - Rustavi', '<p>რუსთავი — ქალაქი და მუნიციპალიტეტი საქართველოში, ქვემო ქართლის მხარის ადმინისტრაციული ცენტრი. ქალაქი 1948 წლის 19 იანვრიდან. მდებარეობს ქვემო ქართლის ვაკეზე, მდინარე მტკვრის ორივე ნაპირას, ზღვის დონიდან 370 მ სიმაღლეზე. რუსთავი თბილისის აგლომერაციაში მყოფი ქალაქებიდან უდიდესია. თბილისსა და რუსთავს შორის უმოკლესი მანძილია 7,66 კილომეტრი. ქალაქის ტერიტორია 60 კვ. კმ-ს შეადგენს, მოსახლეობა 125 103 ადამიანი. რუსთავი საქართველოს უმთავრესი სამრეწველო ქალაქია თბილისის შემდეგაც.<br></p>', '<p>Rustavi - a city and municipality in Georgia, the administrative center of the Kvemo Kartli region. City since 19 January 1948. Located on the plain of Kvemo Kartli, on both banks of the river Mtkvari, at an altitude of 370 m above sea level. Rustavi is one of the largest cities in Tbilisi. The shortest distance between Tbilisi and Rustavi is 7.66 kilometers. City area 60 sq.m. Km, population 125,103 people. Rustavi is the main industrial city of Georgia after Tbilisi.<br></p>', '<p>Рустави - город и муниципалитет в Грузии, административный центр региона Квемо Картли. Город с 19 января 1948 года. Он расположен на равнине Квемо Картли, на обоих берегах реки Мтквари, на высоте 370 м над уровнем моря. Рустави - один из крупнейших городов Тбилиси. Кратчайшее расстояние между Тбилиси и Рустави составляет 7,66 километра. Площадь города 60 кв.м. Км, население 125 103 чел. Рустави - главный промышленный город Грузии после Тбилиси.<br></p>', 250);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

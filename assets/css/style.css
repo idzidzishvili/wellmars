@@ -75,7 +75,7 @@ body {
 	line-height: 25px;
 	font-style: normal;
 	color: #4d4e50;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'FiraGO', sans-serif;/*'Open Sans', sans-serif;*/
 	font-weight: 400;
 	text-rendering: optimizelegibility;
 	-moz-osx-font-smoothing: grayscale;
@@ -93,7 +93,8 @@ img {
 }
 
 p {
-	margin: 0
+	margin: 0;
+	font-weight: 500;
 }
 
 .no-pad-left {
@@ -221,9 +222,9 @@ li {
     font-size: 16px
 }
 .site-heading h2 {
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	color: #111;
-	font-weight: 500;
+	font-weight: 600;
 	text-transform: capitalize;
 	font-size: 40px;
 	margin-bottom: 15px;
@@ -480,7 +481,7 @@ li {
 }
 
 .breadcrumb-box h2 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'FiraGO', sans-serif;
     white-space: normal;
     font-size: 50px;
     line-height: 50px;
@@ -1423,7 +1424,7 @@ li {
 }
 
 .banner-welcome h4 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'FiraGO', sans-serif;
     white-space: nowrap;
     font-size: 40px;
     line-height: 40px;
@@ -1445,7 +1446,7 @@ li {
 	line-height: 80px;
 	margin-top: 30px;
 	font-weight: 500;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: uppercase;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25)
 }
@@ -1773,7 +1774,7 @@ li {
 .package-desc-title h3 {
 	font-size: 22px;
 	text-transform: uppercase;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	color: #eee;
 	letter-spacing: 0px;
@@ -1820,7 +1821,7 @@ li {
 .package-desc-price p {
 	text-transform: capitalize;
 	color: #fff;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 }
@@ -1909,6 +1910,7 @@ li {
 .popular-tour-image {
 	background: #111 none repeat scroll 0 0;
 	display: block;
+	height: 225px;
 	max-width: 100%;
 	-webkit-perspective: 1200px;
 	perspective: 1200px;
@@ -1994,7 +1996,7 @@ li {
 
 .tour-desc-top h3 {
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	font-size: 22px;
 	text-transform: capitalize;
@@ -2117,7 +2119,7 @@ li {
 	font-size: 16px;
 	position: relative;
 	display: inline-block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 }
 
 .tour-details a {
@@ -2276,7 +2278,7 @@ li {
 
 .awesome-tour-box h2 {
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	font-size: 55px;
 	letter-spacing: 0px;
@@ -2289,7 +2291,7 @@ li {
     margin-top: 20px;
     letter-spacing: 0px;
     line-height: 40px;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'FiraGO', sans-serif;
     font-weight: 500;
 }
 
@@ -2351,7 +2353,7 @@ li {
 	color: #fff;
 	font-size: 20px;
 	text-transform: uppercase;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	letter-spacing: 0px;
 	display: block;
@@ -2427,14 +2429,14 @@ li {
 	color: #666;
 	opacity: 0.1;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	top: 10%;
 	line-height: 60px;
 }
 
 .choose-desc h3 {
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	font-size: 22px;
 	text-transform: capitalize;
@@ -2481,7 +2483,7 @@ li {
 
 .discount_desc h4 {
 	color: #fff;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 900;
 	font-size: 20px;
 	text-transform: uppercase;
@@ -2491,7 +2493,7 @@ li {
 
 .discount_desc p {
 	color: #fff;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 900;
 	font-size: 20px;
 	text-transform: uppercase;
@@ -2500,7 +2502,7 @@ li {
 }
 
 .discount_desc h2 {
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 900;
 	display: block;
 	text-transform: uppercase;
@@ -2583,7 +2585,7 @@ li {
 }
 
 .reviewer h3 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'FiraGO', sans-serif;
     white-space: nowrap;
     font-size: 25px;
     line-height: 28px;
@@ -2647,7 +2649,7 @@ p.date {
 	background: #ff6d34 none repeat scroll 0 0;
 	color: #fff;
 	text-transform: uppercase;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 600;
 	letter-spacing: 0px;
 	border-radius: 25px;
@@ -2661,7 +2663,7 @@ p.date {
 
 .blog-desc h3 {
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	font-size: 26px;
 	text-transform: capitalize;
@@ -2757,7 +2759,7 @@ p.date {
 
 .single-footer h3 {
 	color: #fff;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 	font-size: 18px;
 	font-weight: 600;
@@ -2851,7 +2853,7 @@ p.date {
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	letter-spacing: 0px;
 }
@@ -2874,7 +2876,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize
 }
 
@@ -2903,7 +2905,7 @@ p.date {
 
 .signature-right h3 {
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	font-size: 22px;
 	text-transform: capitalize;
@@ -2965,7 +2967,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 }
 
@@ -3080,7 +3082,7 @@ p.date {
 
 .guide-desc h3 {
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	font-size: 22px;
 	text-transform: capitalize;
@@ -3162,7 +3164,7 @@ p.date {
 
 .gallery-item .content>p {
 	color: #fff;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 800;
 	font-size: 15px;
 	text-transform: uppercase;
@@ -3175,7 +3177,7 @@ p.date {
 
 .gallery-item .content .name {
     color: #fff;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'FiraGO', sans-serif;
     font-weight: 500;
     font-size: 24px;
     text-transform: capitalize;
@@ -3218,7 +3220,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 }
 
@@ -3271,7 +3273,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 }
 
@@ -3344,7 +3346,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 	background: #f7f7f7 none repeat scroll 0 0;
 	text-decoration: none;
@@ -3405,7 +3407,7 @@ p.date {
 	color: #111;
 	padding: 20px 15px;
 	font-size: 24px;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	letter-spacing: 0px;
 	border-bottom: 1px solid #eee;
@@ -3560,7 +3562,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: inline-block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	line-height: 145px
 }
 
@@ -3615,7 +3617,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 }
 
@@ -3811,7 +3813,7 @@ p.date {
 	margin-bottom: 25px;
 	position: relative;
 	display: block;
-	font-family: 'Ubuntu', sans-serif
+	font-family: 'FiraGO', sans-serif
 }
 
 .single-sidebar>h3:before {
@@ -3900,7 +3902,7 @@ p.date {
 	font-size: 22px;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
@@ -4230,7 +4232,7 @@ p.date {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 }
 
@@ -4628,7 +4630,7 @@ ul.tour-offer>li ul>li i.fa-times-circle {
 
 .product-details-text h3 {
 	color: #111;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	font-weight: 500;
 	font-size: 30px;
 	text-transform: capitalize;
@@ -4753,7 +4755,7 @@ ul.tour-offer>li ul>li i.fa-times-circle {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 }
 
@@ -4893,7 +4895,7 @@ ul.tour-offer>li ul>li i.fa-times-circle {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #eee;
@@ -5032,7 +5034,7 @@ input[type="radio"]:checked~label {
 	position: relative;
 	letter-spacing: 0px;
 	display: block;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'FiraGO', sans-serif;
 	text-transform: capitalize;
 }
 
@@ -5176,3 +5178,13 @@ input[type="radio"]:checked~label {
  .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
 	opacity: 0;
  }
+
+/* daterangepicker override */
+ .daterangepicker .calendar-table td.active, .daterangepicker .calendar-table td.active:hover {
+	background-color: #1ec8e7;
+}
+
+.daterangepicker .drp-buttons .btn-primary {
+	background-color: #ff6d34;
+	border-color: #ff6d34;
+}

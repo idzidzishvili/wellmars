@@ -54,3 +54,11 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['^(ge|en|ru)/contact'] = 'home/contact';
+
+// example: '/en/about' -> use controller 'about'
+$route['^ge/(.+)$'] = "$1";
+$route['^en/(.+)$'] = "$1";
+$route['^ru/(.+)$'] = "$1";
+// '/en' and '/ar' -> use default controller
+$route['^(ge|en|ru)$'] = $route['default_controller'];

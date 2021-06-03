@@ -92,7 +92,7 @@
 <script>
    var index = 1;
    $('#hotel_ge, #hotel_en, #hotel_ru').summernote({
-      height: 150,
+      height: 200,
       toolbar: [
          ['style', ['bold', 'italic', 'underline', 'clear']],
          ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -103,7 +103,7 @@
    });
    $('#addimage').on('click', function() {
       index++;
-      $("#imgcontainer").append('<tr><td><input type="radio" name="mainImage" value="' + index + '"></td><td colspan="2"><input type="file" name="tourImages[]"></td></tr>');
+      $("#imgcontainer").append('<tr><td><input type="radio" name="mainImage" value="' + index + '"></td><td colspan="2"><input type="file" name="hotelImages[]"></td></tr>');
    });
 </script>
 <?php $this->load->view('admin/adminfooter'); ?>

@@ -11,8 +11,8 @@
 			<div class="col-sm-12">
             <?php echo form_open(base_url('admin/sliders/'), array("enctype" => "multipart/form-data")); ?>
 
-               <div class="form-group col-lg-12">
-                  <button type="button" class="btn btn-success btn-sm" id="addimage">სურათის დამატება</button>
+               <div class="mb-3">
+                  <button type="button" class="btn btn-success btn-sm" id="addimage"><i class="fa fa-plus-square mr-2"></i>სურათის დამატება</button>
                </div>
 
                <table class="table table-sm">
@@ -37,7 +37,7 @@
                </table>
 
                <div class="mt-2">
-                  <button type="submit" class="btn btn-primary">სლაიდის დამატება</button>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-save mr-2"></i>დამახსოვრება</button>
                </div>
 
             <?php echo form_close(); ?>

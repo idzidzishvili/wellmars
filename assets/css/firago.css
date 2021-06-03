@@ -1,0 +1,45 @@
+@font-face {
+   font-family: 'FiraGO';
+      src: url('../fonts/FiraGO-Light.eot');
+      src: url('../fonts/FiraGO-Light.eot?#iefix') format('embedded-opentype'),
+           url('../fonts/FiraGO-Light.woff') format('woff'),
+           url('../fonts/FiraGO-Light.woff2') format('woff2');
+   font-weight: 400;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'FiraGO';
+      src: url('../fonts/FiraGO-Regular.eot');
+      src: url('../fonts/FiraGO-Regular.eot?#iefix') format('embedded-opentype'),
+           url('../fonts/FiraGO-Regular.woff') format('woff'),
+           url('../fonts/FiraGO-Regular.woff2') format('woff2');
+   font-weight: 500;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'FiraGO';
+      src: url('../fonts/FiraGO-Medium.eot');
+      src: url('../fonts/FiraGO-Medium.eot?#iefix') format('embedded-opentype'),
+           url('../fonts/FiraGO-Medium.woff') format('woff'),
+           url('../fonts/FiraGO-Medium.woff2') format('woff2');
+   font-weight: 600;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'FiraGO';
+      src: url('../fonts/FiraGO-SemiBold.eot');
+      src: url('../fonts/FiraGO-SemiBold.eot?#iefix') format('embedded-opentype'),
+           url('../fonts/FiraGO-SemiBold.woff') format('woff'),
+           url('../fonts/FiraGO-SemiBold.woff2') format('woff2');
+   font-weight: 700;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'FiraGO';
+      src: url('../fonts/FiraGO-Bold.eot');
+      src: url('../fonts/FiraGO-Bold.eot?#iefix') format('embedded-opentype'),
+           url('../fonts/FiraGO-Bold.woff') format('woff'),
+           url('../fonts/FiraGO-Bold.woff2') format('woff2');
+   font-weight: 800;
+   font-style: normal;
+}

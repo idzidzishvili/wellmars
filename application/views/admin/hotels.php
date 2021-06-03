@@ -6,6 +6,9 @@
 		<h2>სასტუმროები</h2>
 		<hr>
 	</div>
+	<div class="mb-3">
+		<a href="<?php echo base_url('admin/addHotel');?>" class="btn btn-success btn-sm" id="addimage"><i class="fa fa-plus-square mr-2"></i>სასტუმროს დამატება</a>
+	</div>
 	<table class="table">
 		<thead>
 			<tr>

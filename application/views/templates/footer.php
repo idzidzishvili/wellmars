@@ -114,7 +114,7 @@
 
 
 <!--Jquery js-->
-<script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
+
 <!-- Popper JS -->
 <script src="<?= base_url(); ?>assets/js/popper.min.js"></script>
 <!--Bootstrap js-->
@@ -134,20 +134,10 @@
 <!-- Way Points JS -->
 <script src="<?= base_url(); ?>assets/js/waypoints-min.js"></script>
 <!--Main js-->
+
 <script src="<?= base_url(); ?>assets/js/main.js"></script>
 
-<script>
-
-
-
-
-
-
-
-
-
-
-</script>
+<script></script>
 </body>
 
 </html>

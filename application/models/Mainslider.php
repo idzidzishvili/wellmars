@@ -23,11 +23,14 @@ class mainslider extends CI_Model
 
    public function deleteSlide($id)
 	{
-		$this->db->where('id', $id)->delete('mainsliders');
+		return $this->db->where('id', $id)->delete('mainsliders');
 	}
 
 
-
+	public function getFilenameById($id)
+	{
+		return $this->db->select('*')->from('mainsliders')->where('id', $id)->get()->row('filename');
+	}
 
 
 
