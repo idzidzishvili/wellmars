@@ -13,7 +13,6 @@
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css">
-		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/flaticon/flaticon.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery.animatedheadline.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/magnific-popup.css">
@@ -27,6 +26,7 @@
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/daterangepicker.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/responsive.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 		<script src="<?= base_url(); ?>assets/js/moment.js"></script>
 		<script src="<?= base_url(); ?>assets/js/daterangepicker.js"></script>
@@ -91,7 +91,7 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="header_inn">
-								<div class="row">
+								<div class="row bg-white">
 									<div class="col-lg-3">
 										<div class="site-logo">
 											<a href="<?php echo site_url('/');?>">

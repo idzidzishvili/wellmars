@@ -68,3 +68,4 @@ $lang['form_validation_greater_than_equal_to']	= '{field} ველი უნდ
 $lang['form_validation_error_message_not_set']	= 'ვერ მოიძებნა {field} ველის შესაბამისი შეცდომა.';
 $lang['form_validation_in_list']		= '{field} ველი უნდა იყოს ერთ-ერთი: {param}.';
 $lang['form_validation_xss_clean']		= '{field} ველი შეიცავს არასწორ სიმბოლოებს.';
+$lang['upload_invalid_filetype'] = "არასწორი ფაილის ტიპი";

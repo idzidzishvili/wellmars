@@ -194,7 +194,7 @@
 					<div class="single-sidebar">
 						<div class="quick-contact">
 							<h3>Book This Tour</h3>
-							<?php echo form_open(site_url('home/hotel/'.$hotel->id));?>
+							<?php echo form_open(site_url('profile/hotel_order_process/'.$hotel->id));?>
 								<div class="book-tour-field">
 									<input type="text" placeholder="Your Name">
 								</div>
@@ -206,16 +206,6 @@
 								</div>
 								<div class="book-tour-field">
 									<input id="hotelorder_date" name="hotelorder_date" placeholder="Order Date" type="text">
-								</div>
-								<div class="book-tour-field clearfix">
-									<select name="room_number" class="wide">
-										<option selected disabled>ოთახის ნომერი</option>
-										<?php foreach ($rooms as $room):?>
-											<option value="<?php echo $room->id;?>">
-												ოთახი N <?php echo $room->id;?>
-											</option>
-										<?php endforeach;?>
-									</select>
 								</div>
 								<div class="book-tour-field clearfix">
 									<select class="wide">

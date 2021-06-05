@@ -8,3 +8,4 @@ $lang['addtour'] = "addtour";
 $lang['tourname'] = "tourname";
 $lang['toolAdded'] = "toolAdded";
 $lang['subTourAdded'] = "subTourAdded";
+$lang['phone'] = "phone";
