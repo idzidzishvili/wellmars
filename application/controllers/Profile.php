@@ -23,56 +23,104 @@ class Profile extends CI_Controller {
 	
 
 	public function index(){
-		$this->data['userdata'] = $this->user->getUserdataById($this->session->userdata('user_id'));
+		$this->data['userData'] = $this->user->getUserdataById($this->session->userdata('user_id'));
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('profile/index', $this->data);
 		$this->load->view('templates/footer');
 	}
-
-
+	
+	
 	public function orders(){
+		$this->load->model('hotelorder');
+		$this->data['userOrders'] = $this->hotelorder->getHotelOrdersById($this->session->userdata('user_id'));
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('profile/orders', $this->data);
 		$this->load->view('templates/footer');
 	}
 
-	public function hotel_order_process(){
-		if (strtoupper($_SERVER['REQUEST_METHOD'])=='POST'){
-			$this->form_validation->set_rules('hotelorder_date', 'Reservation Date', 'required|callback_validate_daterange');				
+	public function hotel_order_process($id=0){
+		if (strtoupper($_SERVER['REQUEST_METHOD'])=='POST' && $id && filter_var($id, FILTER_VALIDATE_INT)){
+			$this->form_validation->set_rules('name', 'Name', 'required|max_length[100]');
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[100]');
+			$this->form_validation->set_rules('phone', 'Phone number', 'required|max_length[100]');
+			$this->form_validation->set_rules('hotelorder_date', 'Reservation Date', 'required|callback_validate_daterange');
+			$this->form_validation->set_rules('numofpersons', 'Number of persons', 'required|integer');
 			///// validate other fields too
 			if ($this->form_validation->run()) {
 				$startFullDate = substr($this->input->post('hotelorder_date'),0,10);
 				$endFullDate = substr($this->input->post('hotelorder_date'),-10);
 				$startDate = DateTime::createFromFormat('m/j/Y', $startFullDate);
 				$endDate = DateTime::createFromFormat('m/j/Y', $endFullDate);
+				$endDate->modify('-1 day'); // Last day of order is not reserved
 				$dateRange = array();
 				while ($startDate <= $endDate) {
 					array_push($dateRange, $startDate->format('Y-m-d'));
 					$startDate->modify('+1 day');
 				}
 				// get rooms by hotel type
-				
-
-				// check for free rooms for selected range in hotelstable
-				$this->load->model('hotelstable');
-				$sum = $this->hotelstable->checkForFreeRoom('room_'.$this->input->post('room_number'), $dateRange);
-				if($sum==0){
-					// insert order details to hotelorders table	
-					$stdt = explode("/", $startFullDate);
-					$endt = explode("/", $endFullDate);
-					$st = $stdt[2].'-'.$stdt[0].'-'.$stdt[1];
-					$en = $endt[2].'-'.$endt[0].'-'.$endt[1];
-					$r = rand (0, 200);
-					$g = rand (0, 200);
-					$b = rand (0, 200);
-					$col = '#'.dechex($r).dechex($g).dechex($b);
-					$this->load->model('hotelorder');
-					$reservationID = $this->hotelorder->addReservation($st, $en, $this->input->post('room_number'), $col);
-					// update rooms in hotelstable
-					$updateHotels = $this->hotelstable->updateHotelsTable($this->input->post('room_number'), $dateRange, $reservationID);
-				}else{
-					echo "room is not free for selected range";exit;
+				$this->load->model('roomtype');
+				$rooms = $this->roomtype->getRoomsByType($id);
+				$reservedRoom = 0;
+				foreach ($rooms as $room){
+					// check for free rooms for selected range in hotelstable
+					$this->load->model('hotelstable');
+					$sum = $this->hotelstable->checkForFreeRoom('room_'.$room->id, $dateRange);
+					if($sum==0){
+						if($this->process_payment()){
+							// insert order details to hotelorders table	
+							$stdt = explode("/", $startFullDate);
+							$endt = explode("/", $endFullDate);
+							$st = $stdt[2].'-'.$stdt[0].'-'.$stdt[1];
+							$en = $endt[2].'-'.$endt[0].'-'.$endt[1];
+							$r = rand (0, 200);
+							$g = rand (0, 200);
+							$b = rand (0, 200);
+							$col = '#'.dechex($r).dechex($g).dechex($b);
+							$col.=str_repeat(rand (3, 10), 7-strlen($col));
+							$this->load->model('hotelorder');
+							// Insert order details to hotelorder table
+							$reservationID = $this->hotelorder->addReservation($this->session->userdata('user_id'), $st, $en, $room->id, $this->input->post('name', true), $this->input->post('email'), $this->input->post('phone', true), $this->input->post('numofpersons', true), $col);
+							// update rooms in hotelstable
+							$updateHotels = $this->hotelstable->updateHotelsTable($room->id, $dateRange, $reservationID);
+							$reservedRoom = $room->id;
+						}
+						break;
+					}
 				}
+				if($reservedRoom){
+					// Room reserved
+					echo "Room was reserved";
+				}else{
+					// Room was not reserved
+					echo "Room was NOT reserved";
+				}
+			}
+		}
+	}
+
+
+	public function review_process($id=0){
+		if (strtoupper($_SERVER['REQUEST_METHOD'])=='POST' && $id && filter_var($id, FILTER_VALIDATE_INT)){
+			$this->form_validation->set_rules('rating', 'Rating', 'required|integer|greater_than_equal_to[1]|less_than_equal_to[5]');
+			$this->form_validation->set_rules('review', 'Review', 'required|xss_clean|max_length[1200]');
+			if($this->form_validation->run()){
+				$this->load->model('hotelreview');
+				if($this->hotelreview->addReview(
+					$id, 
+					$this->session->userdata('user_id'), 
+					$this->input->post('rating'),
+					$this->input->post('review'),
+					date("Y-m-d")
+				)){
+					$this->session->set_flashdata('review_received', "Thank you, your review is received.");
+					redirect('home/hotel/'.$id);
+				}else{
+					$this->session->set_flashdata('review_error', "Error with server, try again");
+					redirect('home/hotel/'.$id);
+				}
+			}else{
+				$this->session->set_flashdata('review_error', validation_errors());
+				redirect('home/hotel/'.$id);
 			}
 		}
 	}
@@ -148,8 +196,10 @@ class Profile extends CI_Controller {
 	}
 
 
-	public function test2($id=0){
-		echo $id;
+	public function test2(){
+		$x=0;
+		if($x)echo "hi";
+		else echo "no";
 	}
 
 
@@ -161,6 +211,10 @@ class Profile extends CI_Controller {
 		if(count($stdt)==3 && count($endt)==3 && checkdate($stdt[0], $stdt[1], $stdt[2]) && checkdate($endt[0], $endt[1], $endt[2])) return true;
 		$this->form_validation->set_message('validate_daterange', lang('invDTRangeFormat'));
 		return false;
+	}
+
+	function process_payment(){
+		return true;
 	}
 	
 	

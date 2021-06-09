@@ -19,40 +19,11 @@
 						<div class="popular-tour-desc">
 							<div class="tour-desc-top">
 								<h3><a href="<?php echo site_url('home/tour/'.$tour->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $tour->tourname_en)));?>"><?php echo $tour->{'tourname_'.$this->lang->lang()}; ?></a></h3>
-								<?php if(isset($tour->{'duration_'.$this->lang->lang()})):?>
-									<div class="tour_duration">
-										<p>
-											<i class="fa fa-hourglass-half"></i>
-											<?php echo $tour->{'duration_'.$this->lang->lang()}; ?>
-										</p>
-									</div>
-								<?php endif;?>
-								<div class="tour-desc-heading">
-									<div class="tour-rating">
-										<ul>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-									<div class="tour_feature">
-										<a href="#"><i class="fa fa-plane"></i></a>
-										<a href="#"><i class="fa fa-building-o"></i></a>
-										<a href="#"><i class="fa fa-cutlery"></i></a>
+								<div class="tour-desc-heading">									
+									<div class="tour-details d-flex flex-row-reverse">
+										<a href="<?php echo site_url('home/tour/'.$tour->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $tour->tourname_en)));?>"> დაწვრილებით </a>
 									</div>
 								</div>
-							</div>
-							<div class="tour-desc-bottom">
-								<div class="tour-details">
-									<a href="<?php echo site_url('home/tour/'.$tour->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $tour->tourname_en)));?>"><i class="fa fa-flag"></i> Book Now</a>
-								</div>
-								<?php if(isset($tour->price)):?>
-									<div class="tour-desc-price">
-										<p><?php echo $tour->price; ?></p>
-									</div>
-								<?php endif;?>
 							</div>
 						</div>
 					</div>

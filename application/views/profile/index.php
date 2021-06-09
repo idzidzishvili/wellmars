@@ -10,9 +10,9 @@
       <div class="row mb-5">
          <div class="col-lg-3 mb-4 profile-sidebar">
             <div class="container">
-               <div class="row bg-white">                  
+               <div class="row bg-white">
                   <div class="img-container col-md-6 col-lg-12">
-                     <img src="<?php echo base_url('/uploads/users/'.(isset($userdata->avatar)?$userdata->avatar:'blankAvatar.jpg'));?>">
+                     <img src="<?php echo base_url('/uploads/users/'.(isset($userData->avatar)?$userData->avatar:'blankAvatar.jpg'));?>">
                   </div>
                   <ul class="col-md-6 col-lg-12 px-lg-0">
                      <li class="active"><?php echo lang('profile');?></li>
@@ -27,12 +27,12 @@
             <div class="form-row">
                <div class="form-group col-md-6">
                <label for="fullname"><?php echo lang('fullName');?></label>
-               <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off" value="<?php echo isset($userdata->fullname)?$userdata->fullname:'';?>">
+               <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off" value="<?php echo isset($userData->fullname)?$userData->fullname:'';?>">
                <small class="text-danger"><?php echo form_error('fullname');?></small>
             </div>
             <div class="form-group col-md-6">
                <label for="phone"><?php echo lang('phone');?></label>
-               <input type="text" class="form-control" id="phone" name="phone" autocomplete="off" value="<?php echo isset($userdata->phone)?$userdata->phone:'';?>">
+               <input type="text" class="form-control" id="phone" name="phone" autocomplete="off" value="<?php echo isset($userData->phone)?$userData->phone:'';?>">
                <small class="text-danger"><?php echo form_error('phone');?></small>
             </div>
          </div>

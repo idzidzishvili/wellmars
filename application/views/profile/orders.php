@@ -3,11 +3,11 @@
       <div class="row">
          <div class="col-md-12">
                <div class="site-heading">
-                  <h2><?php echo lang('profile');?></h2>
+                  <h2><?php echo lang('orders');?></h2>
                </div>
          </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-5 orders-table">
          <div class="col-lg-3 profile-sidebar">
             <div class="container">
                <div class="row bg-white">                  
@@ -23,7 +23,33 @@
             </div>
          </div>
          <div class="col-lg-9 login-box w-100">
-
+            <?php if($userOrders):?>
+               <table class="table table-striped">
+                  <thead>
+                     <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Start date</th>
+                        <th scope="col">End date</th>
+                        <th scope="col">Room number</th>
+                        <th scope="col">Number of persons</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <?php foreach($userOrders as $i=>$userOrder):?>
+                     <tr>
+                        <?php $s = explode("-", $userOrder->startdate); $e = explode("-", $userOrder->enddate); ?>                        
+                        <th scope="row"><?php echo $i+1;?></th>
+                        <td><?php echo $s[2].'.'.$s[1].'.'.$s[0];?></td>
+                        <td><?php echo $e[2].'.'.$e[1].'.'.$e[0];?></td>
+                        <td><?php echo $userOrder->room_id;?></td>
+                        <td><?php echo $userOrder->num_persons;?></td>
+                     </tr>
+                     <?php endforeach;?>
+                  </tbody>
+               </table>
+            <?php else:?>
+               <p>There is no orders for you</p>
+            <?php endif;?>
          </div>
       </div>
    </div>

@@ -21,7 +21,7 @@
    
    
 <!-- Contact Area Start -->
-<section class="peulis-contact-area section_70">
+<section class="peulis-contact-area section_70 bg-white">
    <div class="container">
       <div class="row">
          <div class="col-lg-7">
@@ -72,7 +72,7 @@
                      <i class="fa fa-home"></i>
                   </div>
                   <div class="contact-info-desc">
-                     <span>Phone:</span>
+                     <span><?php echo lang('phone');?>:</span>
                      <ul>
                         <li><?php echo $contacts->phone;?></li>
                      </ul>

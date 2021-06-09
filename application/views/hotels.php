@@ -23,39 +23,18 @@
                               <?php echo $hotel->{'type_'.$this->lang->lang()};?>
                            </a>
                         </h3>
-                        <div class="tour_duration">
-                           <p>
-                              <i class="fa fa-hourglass-half"></i>
-                              <?php /*echo $hotel->duration_ge;*/ ?>
-                           </p>
-                        </div>
+                        
                         <div class="tour-desc-heading">
                            <div class="tour-rating">
-                              <ul>
-                                 <li><i class="fa fa-star"></i></li>
-                                 <li><i class="fa fa-star"></i></li>
-                                 <li><i class="fa fa-star"></i></li>
-                                 <li><i class="fa fa-star"></i></li>
-                                 <li><i class="fa fa-star-o"></i></li>
-                              </ul>
+                              <span class="rating"><?php echo $hotel->averageRate;?></span>
                            </div>
-                           <div class="tour_feature">
-                              <a href="#"><i class="fa fa-plane"></i></a>
-                              <a href="#"><i class="fa fa-building-o"></i></a>
-                              <a href="#"><i class="fa fa-cutlery"></i></a>
+                           <div class="tour-details flex-row-reverse">
+                              <a href="<?php echo site_url('home/hotel/'.$hotel->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $hotel->type_en)));?>" class="btn-block text-center">
+                                 <?php echo lang('details');?>
+                              </a>
                            </div>
                         </div>
-                     </div>
-                     <div class="tour-desc-bottom">
-                        <div class="tour-details">
-                           <a href="<?php echo site_url('home/hotel/'.$hotel->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $hotel->type_en)));?>">
-                              <i class="fa fa-flag"></i> Book Now
-                           </a>
-                        </div>
-                        <div class="tour-desc-price">
-                           <!-- <p><?php echo $subtour->price;?></p> -->
-                        </div>
-                     </div>
+                     </div>                     
                   </div>
                </div>
             </div>
@@ -63,4 +42,20 @@
       </div>
    </div>
 </section>
+<script>
+   $('.rating').each(function(index, el) {
+		var rating = $(el).text();
+		$(el).html(getStars(rating));
+	});
+	function getStars(rating) {
+		rating = Math.round(rating * 2) / 2;
+		let output = [];
+		for (var i = rating; i >= 1; i--)
+			output.push('<i class="fas fa-star" style="font-weight:600;"></i>');
+		if (i == .5) output.push('<i class="fas fa-star-half-alt" style="font-weight:600"></i>');
+		for (let i = (5 - rating); i >= 1; i--)
+			output.push('<i class="far fa-star" style="font-weight:500;"></i>');
+		return output.join('');
+	}
+</script>
 <!-- Popular Tours Area End -->

@@ -86,14 +86,6 @@
 				</div>
 
 				<div class="form-group col-md-3">
-					<label>ფასი</label>
-				</div>
-				<div class="form-group col-md-9">
-					<input type="text" class="form-control form-control-sm" id="subTouPrice" name="subTouPrice" value="<?php echo $tour->price; ?>" autocomplete="off" />
-					<small style="color:red"><?php echo form_error('subTouPrice'); ?></small>
-				</div>
-
-				<div class="form-group col-md-3">
 					<label>აღწერა ქართულად</label>
 				</div>
 				<div class="form-group col-md-9">

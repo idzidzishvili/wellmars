@@ -59,7 +59,30 @@
 										</div>
 										<div class="modal-body">
 											<?php $s = explode("-", $detail->startdate); $e = explode("-", $detail->enddate); ?>
-											შეკვეთის პერიოდი: <?php echo $s[2].'.'.$s[1].'.'.$s[0].' - '.$e[2].'.'.$e[1].'.'.$e[0];?>
+											<table class="table table-striped">
+												<tbody>
+													<tr>
+														<td>შეკვეთის პერიოდი</td>
+														<td><?php echo $s[2].'.'.$s[1].'.'.$s[0].' - '.$e[2].'.'.$e[1].'.'.$e[0];?></td>
+													</tr>
+													<tr>
+														<td>დამკვეთი</td>
+														<td><?php echo $detail->order_name;?></td>
+													</tr>
+													<tr>
+														<td>დამკვეთის Email</td>
+														<td><?php echo $detail->order_email;?></td>
+													</tr>
+													<tr>
+														<td>დამკვეთის ტელეფონი</td>
+														<td><?php echo $detail->order_phone;?></td>
+													</tr>
+													<tr>
+														<td>რაოდენობა</td>
+														<td><?php echo $detail->num_persons;?></td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
 										<div class="modal-footer py-2">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

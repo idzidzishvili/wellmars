@@ -31,3 +31,25 @@ $lang['invUsrPwd'] = 'არასწორი მომხმარებელ
 $lang['invOldPwd'] = 'ძველი პაროლი არასწორია';
 $lang['pwdUpdSucc'] = 'პაროლი განახლდა წარმატებით';
 $lang['invDTRangeFormat'] = 'არასწორი თარიღის ფორმატი';
+$lang['orders'] = 'შეკვეთები';
+
+$lang['loginToReview'] = 'გთხოვთ გაიაროთ <a href="'.site_url('auth/login').'">ავტორიზაცია</a> შეფასების დასატოვებლად';
+
+
+$lang['pagination_first_link'] = "პირველი";
+$lang['pagination_next_link'] = "შემდეგი";
+$lang['pagination_prev_link'] = "წინა";
+$lang['pagination_last_link'] = "ბოლო";
+
+
+$lang['bookThisTour'] = "დაჯავშნე ტური";
+$lang['yourName'] = "თქვენი სახელი";
+$lang['whatsappViberNumber'] = "Whatsapp/Viber ნომერი";
+$lang['orderDate'] = "შეკვეთის თარიღი";
+$lang['numberOfPersons'] = "რაოდენობა";
+$lang['bookNow'] = "დაჯავშნე";
+
+$lang['contactInformation'] = "საკონტაქტო დეტალები";
+$lang['phoneNumber'] = "ტელ. ნომერი";
+$lang['address'] = "მისამართი";
+

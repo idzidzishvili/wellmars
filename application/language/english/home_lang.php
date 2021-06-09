@@ -31,3 +31,12 @@ $lang['invUsrPwd'] = 'Invalid username or password';
 $lang['invOldPwd'] = 'Invalid old password';
 $lang['pwdUpdSucc'] = 'Password updated successfully';
 $lang['invDTRangeFormat'] = 'Invalid date range format';
+$lang['orders'] = 'Orders';
+
+$lang['loginToReview'] = 'Please <a href="'.site_url('auth/login').'">Log in</a> to leave a review';
+
+
+$lang['pagination_first_link'] = "First";
+$lang['pagination_next_link'] = "Next";
+$lang['pagination_prev_link'] = "Previous";
+$lang['pagination_last_link'] = "Last";

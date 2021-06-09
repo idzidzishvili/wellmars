@@ -52,12 +52,12 @@ class tour extends CI_Model
 
 
 	public function addTour($tourid, $tourname_ge, $tourname_en, $tourname_ru, $duration_ge, $duration_en, $duration_ru, $destination_ge, $destination_en, $destination_ru, 
-		$description_ge, $description_en, $description_ru, $price)
+		$description_ge, $description_en, $description_ru)
 	{
 		$tour_id = $tourid>0?$tourid:null;
 		$data = array('tourid' => $tour_id, 'istour' => true, 'tourname_ge' => $tourname_ge, 'tourname_en' => $tourname_en, 'tourname_ru' => $tourname_ru, 'duration_ge' => $duration_ge, 
 		 'duration_en' => $duration_en, 'duration_ru' => $duration_ru, 'destination_ge' => $destination_ge, 'destination_en' => $destination_en, 'destination_ru' => $destination_ru,
-		 'description_ge' => $description_ge, 'description_en' => $description_en, 'description_ru' => $description_ru, 'price' => $price);
+		 'description_ge' => $description_ge, 'description_en' => $description_en, 'description_ru' => $description_ru);
 		if ($this->db->insert('tours', $data))
 			return $this->db->insert_id();
 		return false;
@@ -79,7 +79,7 @@ class tour extends CI_Model
 
 
 	public function editSubTour($id, $tourid, $tourname_ge, $tourname_en, $tourname_ru, $duration_ge, $duration_en, $duration_ru, $destination_ge, $destination_en, $destination_ru, 
-	$description_ge, $description_en, $description_ru, $price)
+	$description_ge, $description_en, $description_ru)
 	{
 		$tour_id = $tourid>0?$tourid:null;
 		return $this->db->update(
@@ -97,8 +97,7 @@ class tour extends CI_Model
 				'destination_ru' => $destination_ru,
 				'description_ge' => $description_ge, 
 				'description_en' => $description_en, 
-				'description_ru' => $description_ru, 
-				'price' => $price
+				'description_ru' => $description_ru
 			), 
 			array('id' => $id));
 	}

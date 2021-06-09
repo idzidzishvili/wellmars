@@ -23,10 +23,10 @@
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/nice-select.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/slicknav.min.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/firago.css">
-		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/daterangepicker.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/responsive.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 		<script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 		<script src="<?= base_url(); ?>assets/js/moment.js"></script>
 		<script src="<?= base_url(); ?>assets/js/daterangepicker.js"></script>
@@ -58,16 +58,16 @@
 								<div class="header-top-social">
 									<ul>
 										<?php if(isset($contacts->facebook) && strlen($contacts->facebook)):?>
-											<li><a href="<?php echo $contacts->facebook;?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="<?php echo $contacts->facebook;?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
 										<?php endif;?>
 										<?php if(isset($contacts->twitter) && strlen($contacts->twitter)):?>
-											<li><a href="<?php echo $contacts->twitter;?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+											<li><a href="<?php echo $contacts->twitter;?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
 										<?php endif;?>
 										<?php if(isset($contacts->pinterest) && strlen($contacts->pinterest)):?>
-											<li><a href="<?php echo $contacts->pinterest;?>" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+											<li><a href="<?php echo $contacts->pinterest;?>" target="_blank"><i class="fab fa-pinterest"></i></a></li>
 										<?php endif;?>
 										<?php if(isset($contacts->instagram) && strlen($contacts->instagram)):?>
-											<li><a href="<?php echo $contacts->instagram;?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
+											<li><a href="<?php echo $contacts->instagram;?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
 										<?php endif;?>
 									</ul>
 								</div>

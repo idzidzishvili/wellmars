@@ -243,11 +243,10 @@ class admin extends CI_Controller
 			$this->form_validation->set_rules('subTourDescr_ge', 'Tour Description Georgian', 'trim|required|xss_clean|max_length[10000]');
 			$this->form_validation->set_rules('subTourDescr_en', 'Tour Description English', 'trim|required|xss_clean|max_length[10000]');
 			$this->form_validation->set_rules('subTourDescr_ru', 'Tour Description Russian', 'trim|required|xss_clean|max_length[10000]');
-			$this->form_validation->set_rules('subTouPrice', 'Tour Price', 'trim|required|integer');
 			if (empty($_FILES['tourImages']['name'])) {$this->form_validation->set_rules('tourImages', 'Image', 'required');}
 			$this->form_validation->set_rules('mainImage', 'Main Image', 'required');
 
-			if ($this->form_validation->run()) {				
+			if ($this->form_validation->run()) {
 				$tourId = $this->tour->addTour(
 					$this->input->post('tourId', true),
 					$this->input->post('subTourName_ge', true),
@@ -261,8 +260,7 @@ class admin extends CI_Controller
 					$this->input->post('subTourDest_ru', true),
 					$this->input->post('subTourDescr_ge', true),
 					$this->input->post('subTourDescr_en', true),
-					$this->input->post('subTourDescr_ru', true),
-					$this->input->post('subTouPrice', true)
+					$this->input->post('subTourDescr_ru', true)
 				);
 				if($tourId){ 
 					$this->session->set_flashdata('addSubTourRes', array('status' => true, 'message' => $this->lang->line('subTourAdded')));
@@ -323,7 +321,9 @@ class admin extends CI_Controller
 					}
 				}
 				return redirect('admin/tours');				 
-			}	
+			}else{
+				$this->load->view('admin/addtour', array('activetab'=>2));
+			}
 		}else{
 			redirect('admin/tours');
 		}		
@@ -347,7 +347,6 @@ class admin extends CI_Controller
 			$this->form_validation->set_rules('subTourDescr_ge', 'Tour Description Georgian', 'trim|required|xss_clean|max_length[10000]');
 			$this->form_validation->set_rules('subTourDescr_en', 'Tour Description English', 'trim|required|xss_clean|max_length[10000]');
 			$this->form_validation->set_rules('subTourDescr_ru', 'Tour Description Russian', 'trim|required|xss_clean|max_length[10000]');
-			$this->form_validation->set_rules('subTouPrice', 'Tour Price', 'trim|required|integer');
 			if (empty($_FILES['tourImages']['name'])) {$this->form_validation->set_rules('tourImages', 'Image', 'required');}
 			$this->form_validation->set_rules('mainImage', 'Main Image', 'required');
 
@@ -367,8 +366,7 @@ class admin extends CI_Controller
 					$this->input->post('subTourDest_ru', true),
 					$this->input->post('subTourDescr_ge', true),
 					$this->input->post('subTourDescr_en', true),
-					$this->input->post('subTourDescr_ru', true),
-					$this->input->post('subTouPrice', true)
+					$this->input->post('subTourDescr_ru', true)
 				);
 				if($subTour){ 
 					$this->session->set_flashdata('addSubTourRes', array('status' => true, 'message' => $this->lang->line('subTourAdded')));
