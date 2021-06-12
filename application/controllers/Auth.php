@@ -11,21 +11,16 @@ class auth extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->helper(['language', 'url', 'security']);
 		$this->lang->load('home');
-		$this->load->model(['user', 'hotel', 'tour', 'contact']);
-		$this->data['hotels'] = $this->hotel->getHotels();
-		$this->data['tours'] = $this->tour->getTours();
-		$this->data['contacts'] = $this->contact->getContacts();
-
-		// $this->data['images'] = $this->image->getImageNames();
-      // $this->data['socials'] = $this->social->getSocials();
-      // $this->data['uploadFolder'] = $this->config->item('uploadFolder');
-      // $this->data['bgPath'] = base_url($this->config->item('bgImagesUploadConfig')['upload_path']);
+		$this->load->model('user');		
 	}
 
 	
 	public function register()
 	{
-		//if ($this->session->userdata('logged_in')) redirect('/profile');
+		if ($this->session->userdata('logged_in')) redirect('/profile');
+		$this->load->model(['contact', 'tour']);
+		$this->data['contacts'] = $this->contact->getContacts();
+		$this->data['tours'] = $this->tour->getTours();
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('register', $this->data);
 		$this->load->view('templates/footer');
@@ -65,18 +60,15 @@ class auth extends CI_Controller
 					$sessiondata = array(
 						'user_id'  		=> $userdata->id,
 						'full_name' 	=> $userdata->fullname,
-						'user_role'		=> $userdata->role,
+						'user_role'		=> $userdata->user_role,
 						'user_email'	=> $userdata->email,
 						'logged_in' 	=> TRUE
 					);	
 					$this->session->set_userdata($sessiondata);
-					if ($this->session->userdata('user_role') == 2) redirect('/profile');
-					if ($this->session->userdata('user_role') == 1) redirect('/admin');
+					if ($this->session->userdata('user_role') == 1) return redirect('/admin');
+					if ($this->session->has_userdata('nextURL')) return redirect($this->session->nextURL);
+					else return redirect('/profile');
 				} else {
-					if(!$userdata->status){
-						$this->session->set_flashdata('loginResult', array('status' => false, 'message' => lang('accInactive')));
-						return redirect('/auth/login');
-					}
 					//invalid username or password
 					$this->session->set_flashdata('loginResult', array('status' => false, 'message' => lang('invUsrPwd')));
 					return redirect('/auth/login');
@@ -88,6 +80,9 @@ class auth extends CI_Controller
 			}
 		}
 		if ($this->session->userdata('logged_in')) redirect('/profile');
+		$this->load->model(['contact', 'tour']);
+		$this->data['contacts'] = $this->contact->getContacts();
+		$this->data['tours'] = $this->tour->getTours();
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('login', $this->data);
 		$this->load->view('templates/footer', $this->data);
@@ -97,7 +92,9 @@ class auth extends CI_Controller
 	public function sendrecovery()
 	{
 		if ($this->session->userdata('logged_in')) redirect('/profile');
+		$this->load->view('templates/header', $this->data);
 		$this->load->view('sendrecovery', $this->data);
+		$this->load->view('templates/footer', $this->data);
 	}
 
 

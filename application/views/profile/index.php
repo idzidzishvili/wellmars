@@ -11,7 +11,7 @@
          <div class="col-lg-3 mb-4 profile-sidebar">
             <div class="container">
                <div class="row bg-white">
-                  <div class="img-container col-md-6 col-lg-12">
+                  <div class="img-container col-md-6 col-lg-12 d-flex justify-content-center">
                      <img src="<?php echo base_url('/uploads/users/'.(isset($userData->avatar)?$userData->avatar:'blankAvatar.jpg'));?>">
                   </div>
                   <ul class="col-md-6 col-lg-12 px-lg-0">
@@ -26,26 +26,26 @@
          <?php echo form_open_multipart(site_url('profile/profile_process'), array('class'=>'mb-4 mt-3'));?>
             <div class="form-row">
                <div class="form-group col-md-6">
-               <label for="fullname"><?php echo lang('fullName');?></label>
-               <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off" value="<?php echo isset($userData->fullname)?$userData->fullname:'';?>">
-               <small class="text-danger"><?php echo form_error('fullname');?></small>
+                  <label for="fullname"><?php echo lang('fullName');?></label>
+                  <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off" value="<?php echo isset($userData->fullname)?$userData->fullname:'';?>">
+                  <small class="text-danger"><?php echo form_error('fullname');?></small>
+               </div>
+               <div class="form-group col-md-6">
+                  <label for="phone"><?php echo lang('phoneNumber');?></label>
+                  <input type="text" class="form-control" id="phone" name="phone" autocomplete="off" value="<?php echo isset($userData->phone)?$userData->phone:'';?>">
+                  <small class="text-danger"><?php echo form_error('phone');?></small>
+               </div>
             </div>
-            <div class="form-group col-md-6">
-               <label for="phone"><?php echo lang('phone');?></label>
-               <input type="text" class="form-control" id="phone" name="phone" autocomplete="off" value="<?php echo isset($userData->phone)?$userData->phone:'';?>">
-               <small class="text-danger"><?php echo form_error('phone');?></small>
+            <div class="form-row">
+               <div class="form-group col-md-12">
+                  <label for="avatar"><?php echo lang('profileImage');?></label>
+                  <input type="file" class="form-control" id="avatar" name="avatar" autocomplete="off">
+                  <small class="text-danger"><?php echo form_error('avatar');?></small>
+               </div>
             </div>
-         </div>
-         <div class="form-row">
-            <div class="form-group col-md-12">
-               <label for="avatar"><?php echo lang('profileImage');?></label>
-               <input type="file" class="form-control" id="avatar" name="avatar" autocomplete="off">
-               <small class="text-danger"><?php echo form_error('avatar');?></small>
+            <div class="form-row">
+               <button type="submit" class="btn btn-primary shadow-none site-button"><i class="fas fa-save mr-2"></i><?php echo lang('save');?></button>
             </div>
-         </div>
-         <div class="form-row">
-            <button type="submit" class="btn btn-primary shadow-none site-button"><i class="fas fa-save mr-2"></i><?php echo lang('save');?></button>
-         </div>
          <?php echo form_close();?>
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 31, 2021 at 12:44 PM
+-- Generation Time: Jun 12, 2021 at 10:26 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -33,7 +33,9 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `phone` varchar(30) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL,
+  `address_ge` varchar(200) DEFAULT NULL,
+  `address_en` varchar(200) NOT NULL,
+  `address_ru` varchar(200) NOT NULL,
   `map_url` text DEFAULT NULL,
   `facebook` varchar(200) DEFAULT NULL,
   `twitter` varchar(200) DEFAULT NULL,
@@ -46,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`id`, `phone`, `email`, `address`, `map_url`, `facebook`, `twitter`, `instagram`, `pinterest`) VALUES
-(1, '577-56-45-55', 'info@wellmars.com', 'აწერწერწერ', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4149.632270481582!2d44.64528210436785!3d42.65641511993848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ska!2s!4v1622363024817!5m2!1ska!2s', 'https://www.facebook.com/wellmars', 'https://www.twitter.com/wellmars', '', '');
+INSERT INTO `contacts` (`id`, `phone`, `email`, `address_ge`, `address_en`, `address_ru`, `map_url`, `facebook`, `twitter`, `instagram`, `pinterest`) VALUES
+(1, '577-56-45-55', 'info@wellmars.com', 'საქართველო, ყაზბეგი', 'Georgia, Kazbegi', 'Грузия, Казбеги', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3011.9179446064927!2d44.6158971607837!3d42.62379986166091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ska!2s!4v1622562369861!5m2!1ska!2s', 'https://www.facebook.com/wellmars', 'https://www.twitter.com/wellmars', 'https://www.instagram.com/wellmars', 'https://www.pinterest.com/wellmars');
 
 -- --------------------------------------------------------
 
@@ -100,68 +102,70 @@ INSERT INTO `hotelimages` (`id`, `hotelid`, `filename`, `ismain`) VALUES
 DROP TABLE IF EXISTS `hotelorders`;
 CREATE TABLE IF NOT EXISTS `hotelorders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
-  `room_1` int(11) NOT NULL DEFAULT 0,
-  `room_2` int(11) NOT NULL DEFAULT 0,
-  `room_3` int(11) NOT NULL DEFAULT 0,
-  `room_4` int(11) NOT NULL DEFAULT 0,
-  `room_5` int(11) NOT NULL DEFAULT 0,
-  `room_6` int(11) NOT NULL DEFAULT 0,
-  `room_7` int(11) NOT NULL DEFAULT 0,
-  `room_8` int(11) NOT NULL DEFAULT 0,
-  `room_9` int(11) NOT NULL DEFAULT 0,
-  `room_10` int(11) NOT NULL DEFAULT 0,
-  `room_11` int(11) NOT NULL DEFAULT 0,
-  `room_12` int(11) NOT NULL DEFAULT 0,
-  `room_13` int(11) NOT NULL DEFAULT 0,
-  `room_14` int(11) NOT NULL DEFAULT 0,
-  `room_15` int(11) NOT NULL DEFAULT 0,
-  `room_16` int(11) NOT NULL DEFAULT 0,
+  `user_id` int(11) NOT NULL,
+  `startdate` date NOT NULL,
+  `enddate` date NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `order_name` varchar(200) NOT NULL,
+  `order_email` varchar(200) NOT NULL,
+  `order_phone` varchar(200) NOT NULL,
+  `num_persons` int(11) NOT NULL,
+  `color` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hotelorders`
 --
 
-INSERT INTO `hotelorders` (`id`, `date`, `room_1`, `room_2`, `room_3`, `room_4`, `room_5`, `room_6`, `room_7`, `room_8`, `room_9`, `room_10`, `room_11`, `room_12`, `room_13`, `room_14`, `room_15`, `room_16`) VALUES
-(1, '2021-05-07', 1, 2, 3, 54, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, '2021-05-08', 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, '2021-05-09', 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, '2021-05-10', 0, 10, 0, 9, 9, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, '2021-05-11', 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, '2021-05-12', 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(7, '2021-05-13', 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 0, 0, 0),
-(8, '2021-05-14', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(9, '2021-05-15', 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 19, 0, 0, 0, 0),
-(10, '2021-05-16', 0, 21, 22, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(11, '2021-05-17', 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(12, '2021-05-18', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(13, '2021-05-19', 0, 30, 0, 0, 25, 0, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(14, '2021-05-20', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(15, '2021-05-21', 0, 29, 0, 0, 26, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(16, '2021-05-22', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(17, '2021-05-23', 0, 28, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(18, '2021-05-24', 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(19, '2021-05-25', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(20, '2021-05-26', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(21, '2021-05-27', 0, 36, 0, 35, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(22, '2021-05-28', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(23, '2021-05-29', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(24, '2021-05-30', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(25, '2021-05-31', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(26, '2021-06-01', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(27, '2021-06-02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(28, '2021-06-03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(29, '2021-06-04', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(30, '2021-06-05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(31, '2021-06-06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(32, '2021-06-07', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(33, '2021-06-08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(34, '2021-06-09', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(35, '2021-06-10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(36, '2021-05-06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(37, '2021-05-05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `hotelorders` (`id`, `user_id`, `startdate`, `enddate`, `room_id`, `order_name`, `order_email`, `order_phone`, `num_persons`, `color`) VALUES
+(2, 1, '2021-05-08', '2021-05-09', 1, '', '', '', 0, '#288064'),
+(3, 1, '2021-05-13', '2021-05-15', 1, '', '', '', 0, '#683398'),
+(4, 2, '2021-05-28', '2021-05-30', 2, '', '', '', 0, '#228f1a'),
+(5, 3, '2021-05-05', '2021-05-08', 3, '', '', '', 0, '#8e6a5c'),
+(6, 4, '2021-05-05', '2021-05-09', 2, '', '', '', 0, '#b9ba74'),
+(7, 1, '2021-05-25', '2021-05-29', 15, '', '', '', 0, '#1089ba'),
+(8, 2, '2021-05-17', '2021-05-29', 14, '', '', '', 0, '#3170ab'),
+(9, 1, '2021-05-17', '2021-05-20', 15, '', '', '', 0, '#67bfa1'),
+(10, 1, '2021-05-20', '2021-05-23', 15, 'ჯემალ ბაღათურია', 'jemala@gmail.com', '(1234)-567-892', 3, '#1f7b00'),
+(11, 4, '2021-05-17', '2021-05-24', 6, 'kikliko', 'kikliko@gmail.com', '8293749328', 2, '#49a272'),
+(12, 1, '2021-05-17', '2021-05-24', 7, 'shaliko', 'shaliko@gmail.com', '4324232', 2, '#749777'),
+(13, 2, '2021-05-18', '2021-05-22', 8, 'bondo', 'bondo@gmail.com', '4324232', 2, '#394b55'),
+(14, 2, '2021-05-10', '2021-05-12', 14, '4534534', 'jondo@gmail.com', '(1234)-567-892', 2, '#4f8bc8');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hotelreviews`
+--
+
+DROP TABLE IF EXISTS `hotelreviews`;
+CREATE TABLE IF NOT EXISTS `hotelreviews` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `review` text NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hotelreviews`
+--
+
+INSERT INTO `hotelreviews` (`id`, `hotel_id`, `user_id`, `rating`, `review`, `date`) VALUES
+(1, 9, 2, 3, 'მომეწონა, კარგი სასტუმროა', '2021-06-07'),
+(2, 9, 3, 5, 'კარგი სასტუმრო იყო, კარგი მომსახურეობით', '2021-05-08'),
+(3, 9, 4, 3, 'არ მომეწონა', '2021-05-06'),
+(4, 9, 2, 5, 'kargi sastumroa', '2021-05-08'),
+(5, 9, 2, 1, 'არ მომეწონა', '2021-05-08'),
+(6, 9, 3, 3, 'მომეწონა სერვისი', '2021-06-18'),
+(7, 9, 4, 2, 'kargi sastumroa, კიდევ ვესტუმრები', '2021-05-20'),
+(8, 9, 5, 4, 'მომეწონა გარემო', '2021-06-07'),
+(9, 9, 6, 5, 'სუფთა ოთახები აქვს', '2021-05-22'),
+(10, 9, 7, 3, 'kargi sastumroa', '2021-06-05'),
+(12, 10, 2, 2, 'ds ghasdljkn ghfldkjfhg lsdkjf sldkjfh slkdjfh-2qoeq pkisoi sdloahfjoisafds', '2021-05-08');
 
 -- --------------------------------------------------------
 
@@ -193,6 +197,100 @@ INSERT INTO `hotels` (`id`, `type_ge`, `type_en`, `type_ru`, `hotel_ge`, `hotel_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hotelstable`
+--
+
+DROP TABLE IF EXISTS `hotelstable`;
+CREATE TABLE IF NOT EXISTS `hotelstable` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `room_1` int(11) NOT NULL DEFAULT 0,
+  `room_2` int(11) NOT NULL DEFAULT 0,
+  `room_3` int(11) NOT NULL DEFAULT 0,
+  `room_4` int(11) NOT NULL DEFAULT 0,
+  `room_5` int(11) NOT NULL DEFAULT 0,
+  `room_6` int(11) NOT NULL DEFAULT 0,
+  `room_7` int(11) NOT NULL DEFAULT 0,
+  `room_8` int(11) NOT NULL DEFAULT 0,
+  `room_9` int(11) NOT NULL DEFAULT 0,
+  `room_10` int(11) NOT NULL DEFAULT 0,
+  `room_11` int(11) NOT NULL DEFAULT 0,
+  `room_12` int(11) NOT NULL DEFAULT 0,
+  `room_13` int(11) NOT NULL DEFAULT 0,
+  `room_14` int(11) NOT NULL DEFAULT 0,
+  `room_15` int(11) NOT NULL DEFAULT 0,
+  `room_16` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hotelstable`
+--
+
+INSERT INTO `hotelstable` (`id`, `date`, `room_1`, `room_2`, `room_3`, `room_4`, `room_5`, `room_6`, `room_7`, `room_8`, `room_9`, `room_10`, `room_11`, `room_12`, `room_13`, `room_14`, `room_15`, `room_16`) VALUES
+(1, '2021-05-07', 0, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, '2021-05-08', 2, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, '2021-05-09', 2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, '2021-05-10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0),
+(5, '2021-05-11', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0),
+(6, '2021-05-12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, '2021-05-13', 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, '2021-05-14', 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, '2021-05-15', 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(10, '2021-05-16', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(11, '2021-05-17', 0, 0, 0, 0, 0, 11, 12, 0, 0, 0, 0, 0, 0, 8, 9, 0),
+(12, '2021-05-18', 0, 0, 0, 0, 0, 11, 12, 13, 0, 0, 0, 0, 0, 8, 9, 0),
+(13, '2021-05-19', 0, 0, 0, 0, 0, 11, 12, 13, 0, 0, 0, 0, 0, 8, 9, 0),
+(14, '2021-05-20', 0, 0, 0, 0, 0, 11, 12, 13, 0, 0, 0, 0, 0, 8, 10, 0),
+(15, '2021-05-21', 0, 0, 0, 0, 0, 11, 12, 13, 0, 0, 0, 0, 0, 8, 10, 0),
+(16, '2021-05-22', 0, 0, 0, 0, 0, 11, 12, 0, 0, 0, 0, 0, 0, 8, 10, 0),
+(17, '2021-05-23', 0, 0, 0, 0, 0, 11, 12, 0, 0, 0, 0, 0, 0, 8, 0, 0),
+(18, '2021-05-24', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0),
+(19, '2021-05-25', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 7, 0),
+(20, '2021-05-26', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 7, 0),
+(21, '2021-05-27', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 7, 0),
+(22, '2021-05-28', 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 7, 0),
+(23, '2021-05-29', 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 7, 0),
+(24, '2021-05-30', 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(25, '2021-05-31', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(26, '2021-06-01', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(27, '2021-06-02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(28, '2021-06-03', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(29, '2021-06-04', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(30, '2021-06-05', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(31, '2021-06-06', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(32, '2021-06-07', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(33, '2021-06-08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(34, '2021-06-09', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(35, '2021-06-10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(36, '2021-05-06', 0, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(37, '2021-05-05', 0, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hoteltexts`
+--
+
+DROP TABLE IF EXISTS `hoteltexts`;
+CREATE TABLE IF NOT EXISTS `hoteltexts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text_ge` varchar(255) NOT NULL,
+  `text_en` varchar(255) NOT NULL,
+  `text_ru` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hoteltexts`
+--
+
+INSERT INTO `hoteltexts` (`id`, `text_ge`, `text_en`, `text_ru`) VALUES
+(1, 'საუკეთესო სასტუმროები მხოლოდ ჩვენთან', 'The best hotels only with us', 'Лучшие отели только у нас');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mainsliders`
 --
 
@@ -201,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `mainsliders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `filename` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mainsliders`
@@ -210,7 +308,68 @@ CREATE TABLE IF NOT EXISTS `mainsliders` (
 INSERT INTO `mainsliders` (`id`, `filename`) VALUES
 (20, '4af8434c9f5a2bf1004.png'),
 (21, '6dfe3f5c57a0ecd3001.jpg'),
-(22, '6dfe3f5c57a0ecd3002.jpg');
+(23, 'b6da03278b7d4e7e001.jpg'),
+(24, 'b6da03278b7d4e7e002.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roomtypes`
+--
+
+DROP TABLE IF EXISTS `roomtypes`;
+CREATE TABLE IF NOT EXISTS `roomtypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hotel_type` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `roomtypes`
+--
+
+INSERT INTO `roomtypes` (`id`, `hotel_type`) VALUES
+(1, 11),
+(2, 11),
+(3, 11),
+(4, 11),
+(5, 11),
+(6, 10),
+(7, 10),
+(8, 10),
+(9, 10),
+(10, 10),
+(11, 10),
+(12, 10),
+(13, 10),
+(14, 9),
+(15, 9),
+(16, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slidertexts`
+--
+
+DROP TABLE IF EXISTS `slidertexts`;
+CREATE TABLE IF NOT EXISTS `slidertexts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(100) NOT NULL,
+  `text_ge` varchar(250) NOT NULL,
+  `text_en` varchar(250) NOT NULL,
+  `text_ru` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `slidertexts`
+--
+
+INSERT INTO `slidertexts` (`id`, `description`, `text_ge`, `text_en`, `text_ru`) VALUES
+(1, 'Header', 'იმოგზაურეთ ჩვენთან ერთად', 'travel with us', 'Путешествуйте с нами'),
+(2, 'Static text', 'ისიამოვნეთ', 'Enjoy', 'Наслаждаться'),
+(3, 'Changeable text', 'თავგადასავლებით, დასვენებით, მთებით', 'Adventure,Holiday,Mountain', 'Adventure,Holiday,Mountain');
 
 -- --------------------------------------------------------
 
@@ -225,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `tourimages` (
   `filename` varchar(250) NOT NULL,
   `ismain` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=277 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=278 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tourimages`
@@ -274,20 +433,70 @@ CREATE TABLE IF NOT EXISTS `tours` (
   `description_ge` text DEFAULT NULL,
   `description_en` text DEFAULT NULL,
   `description_ru` text DEFAULT NULL,
-  `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tours`
 --
 
-INSERT INTO `tours` (`id`, `tourid`, `istour`, `tourname_ge`, `tourname_en`, `tourname_ru`, `duration_ge`, `duration_en`, `duration_ru`, `destination_ge`, `destination_en`, `destination_ru`, `description_ge`, `description_en`, `description_ru`, `price`) VALUES
-(83, 81, 1, 'ველო ტური კახეთში', 'Bike tours in Kakheti', 'Велосипедные туры в Кахети', '3 დღე', '3 Days', '3 Dney', 'თბილისი თელავი', 'Tbilisi Telavi', 'Tbilisi Telavi', '<p>ველოსიპედის ტური გთავაზობთ ყველაფრის დაგეგმვას, რაც თქვენთვის დაგეგმილია: სასტუმროები, საიჯარო ველოსიპედები, მარშრუტები, კვება, ბარგის ტრანსფერი, ღირსშესანიშნაობების ტურები და ა.შ. სახელმძღვანელოები აღნიშნავენ ღირსშესანიშნავ ადგილებს, აწყობენ ექსკურსიებსა და საქმიანობებს და არიან ავარიების შემთხვევაში (მექანიკური ან ადამიანური).</p><p><br></p><p>დამხმარე და პერსონალი განსხვავდება ტურისტული და ტურისტული კომპანიების მიხედვით, მაგრამ, როგორც წესი, ერთი მეგზური მიდის ჯგუფთან, ხოლო მეორე სახელმძღვანელო თქვენი ბარგით მართავს საყრდენ ფურგონს. ფურგონის საშუალებით შესაძლებელია მარშრუტის ნაკლებად მიმზიდველი ან უფრო რთული მონაკვეთების გადაკვეთა.</p><p><br></p><p>როგორც წესი, ველოსიპედით ივლით 8 – დან 20 – კაციან ჯგუფში, როგორც წესი, რამდენიმე სხვადასხვა ქვეყნიდან, რაც ქმნის ახალ ნაცნობებსა და საერთაშორისო მეგობრობას. ტუროპერატორების უმეტესობა გთავაზობთ სრულყოფილ ინფორმაციულ პაკეტს, სადაც მოცემულია რჩევები ღირშესანიშნაობების, კულტურული ღირსშესანიშნაობების და სცენური გაჩერების შესახებ (თუმცა ინგლისურ ენაზე მასალების მოცულობა განსხვავებულია ტუროპერატორის მიხედვით)</p>', '<p>This bicycle tour provides the convenience of having everything planned out for you: hotels, rental bikes, routes, meals, luggage transfers, sightseeing tours and so on. The guides point out places of interest, organize excursions and activities and are there in case of breakdowns (mechanical or human).</p><p><br></p><p>Support and personnel vary by tour and tour company, but one guide typically rides with the group, while a second guide drives a support van with your luggage. The van also makes it possible to bridge less attractive or more challenging sections of a route.</p><p><br></p><p>You usually bike in a group of 8 to 20 people, typically from several different countries, which makes for new acquaintances and international friendships. Most tour operators provide you with a comprehensive information package with tips on sights, cultural highlights, and scenic stops (although the extent of materials in English varies by tour operator).</p>', '<p>Этот велосипедный тур обеспечивает удобство, когда все спланировано для вас: отели, прокат велосипедов, маршруты, питание, трансферы багажа, обзорные экскурсии и так далее. Гиды указывают на достопримечательности, организуют экскурсии и мероприятия, а также присутствуют в случае поломки (механической или человеческой).</p><p><br></p><p>Поддержка и персонал различаются в зависимости от тура и туристической компании, но один гид обычно едет с группой, а второй гид ведет фургон поддержки с вашим багажом. Фургон также позволяет преодолевать менее привлекательные или более сложные участки маршрута.</p><p><br></p><p>Обычно вы ездите на велосипеде в группе от 8 до 20 человек, как правило, из нескольких разных стран, что способствует новым знакомствам и международной дружбе. Большинство туроператоров предоставляют вам исчерпывающий пакет информации с советами о достопримечательностях, культурных достопримечательностях и живописных остановках (хотя объем материалов на английском языке зависит от туроператора).</p>', 340),
-(81, NULL, 0, 'ველო ტურები', 'Bike tours', 'Велосипедные туры', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(82, 81, 1, 'ველო ტური რუსთავში', 'Bike tours in Rustavi', 'Велосипедные туры в Рустави', '3 დღე', '3 days', '3 dney', 'თბილისი რუსთავი', 'Tbilisi rusTavi', 'Tbilisi rusTavi', '<p>თუ გსიამოვნებთ ჯგუფთან ერთად მოგზაურობა, ახალი ხალხის გაცნობა და ყოველდღიური სახელმძღვანელო და სტრუქტურირებული გრაფიკი, მაშინ ჯგუფური ველოსიპედით მართვა საუკეთესო არჩევანია თქვენთვის.</p><p><br></p><p>ველო ტურები უზრუნველყოფს თქვენთვის დაგეგმილი ყველაფრის მოხერხებულობას: სასტუმროები, საიჯარო ველოსიპედები, მარშრუტები, კვება, ბარგის ტრანსფერი, ღირსშესანიშნაობების ტურები და ა.შ. სახელმძღვანელოები აღნიშნავენ ღირსშესანიშნავ ადგილებს, აწყობენ ექსკურსიებსა და საქმიანობებს და არიან ავარიების შემთხვევაში (მექანიკური ან ადამიანური).</p><p><br></p><p>დამხმარე და პერსონალი განსხვავდება ტურისტული და ტურისტული კომპანიების მიხედვით, მაგრამ, როგორც წესი, ერთი მეგზური მიდის ჯგუფთან, ხოლო მეორე სახელმძღვანელო თქვენი ბარგით მართავს საყრდენ ფურგონს. ფურგონის საშუალებით შესაძლებელია მარშრუტის ნაკლებად მიმზიდველი ან უფრო რთული მონაკვეთების გადაკვეთა.</p>', '<p>If you enjoy traveling with a group, meeting new people, and having a guide and structured daily schedule, then a guided group bike tour is probably the best fit for you.</p><p><br></p><p>These bicycle tours provide the convenience of having everything planned out for you: hotels, rental bikes, routes, meals, luggage transfers, sightseeing tours and so on. The guides point out places of interest, organize excursions and activities and are there in case of breakdowns (mechanical or human).</p><p><br></p><p>Support and personnel vary by tour and tour company, but one guide typically rides with the group, while a second guide drives a support van with your luggage. The van also makes it possible to bridge less attractive or more challenging sections of a route.</p>', '<p>Если вам нравится путешествовать с группой, знакомиться с новыми людьми, иметь гида и структурированный ежедневный график, то групповой велосипедный тур с гидом, вероятно, вам больше всего подойдет.</p><p><br></p><p>Эти велосипедные туры обеспечивают удобство, когда все спланировано для вас: отели, прокат велосипедов, маршруты, питание, трансферы багажа, обзорные экскурсии и так далее. Гиды указывают на достопримечательности, организуют экскурсии и мероприятия, а также присутствуют в случае поломки (механической или человеческой).</p><p><br></p><p>Поддержка и персонал различаются в зависимости от тура и туристической компании, но один гид обычно едет с группой, а второй гид ведет фургон поддержки с вашим багажом. Фургон также позволяет преодолевать менее привлекательные или более сложные участки маршрута.</p>', 250),
-(76, NULL, 0, 'კულტურული ტურები', 'Cultural tours', 'Культурные туры', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(77, 76, 1, 'კულტურული ტური რუსთავში', 'Cultural tours in Rustavi', 'Культурные туры Rustavi', '3 დღე', '3 days', '3 дня', 'თბილისი - რუსთავი', 'Tbilisi - Rustavi', 'Tbilisi - Rustavi', '<p>რუსთავი — ქალაქი და მუნიციპალიტეტი საქართველოში, ქვემო ქართლის მხარის ადმინისტრაციული ცენტრი. ქალაქი 1948 წლის 19 იანვრიდან. მდებარეობს ქვემო ქართლის ვაკეზე, მდინარე მტკვრის ორივე ნაპირას, ზღვის დონიდან 370 მ სიმაღლეზე. რუსთავი თბილისის აგლომერაციაში მყოფი ქალაქებიდან უდიდესია. თბილისსა და რუსთავს შორის უმოკლესი მანძილია 7,66 კილომეტრი. ქალაქის ტერიტორია 60 კვ. კმ-ს შეადგენს, მოსახლეობა 125 103 ადამიანი. რუსთავი საქართველოს უმთავრესი სამრეწველო ქალაქია თბილისის შემდეგაც.<br></p>', '<p>Rustavi - a city and municipality in Georgia, the administrative center of the Kvemo Kartli region. City since 19 January 1948. Located on the plain of Kvemo Kartli, on both banks of the river Mtkvari, at an altitude of 370 m above sea level. Rustavi is one of the largest cities in Tbilisi. The shortest distance between Tbilisi and Rustavi is 7.66 kilometers. City area 60 sq.m. Km, population 125,103 people. Rustavi is the main industrial city of Georgia after Tbilisi.<br></p>', '<p>Рустави - город и муниципалитет в Грузии, административный центр региона Квемо Картли. Город с 19 января 1948 года. Он расположен на равнине Квемо Картли, на обоих берегах реки Мтквари, на высоте 370 м над уровнем моря. Рустави - один из крупнейших городов Тбилиси. Кратчайшее расстояние между Тбилиси и Рустави составляет 7,66 километра. Площадь города 60 кв.м. Км, население 125 103 чел. Рустави - главный промышленный город Грузии после Тбилиси.<br></p>', 250);
+INSERT INTO `tours` (`id`, `tourid`, `istour`, `tourname_ge`, `tourname_en`, `tourname_ru`, `duration_ge`, `duration_en`, `duration_ru`, `destination_ge`, `destination_en`, `destination_ru`, `description_ge`, `description_en`, `description_ru`) VALUES
+(83, 81, 1, 'ველო ტური კახეთში', 'Bike tours in Kakheti', 'Велосипедные туры в Кахети', '3 დღე', '3 Days', '3 Dney', 'თბილისი თელავი', 'Tbilisi Telavi', 'Tbilisi Telavi', '<p>ველოსიპედის ტური გთავაზობთ ყველაფრის დაგეგმვას, რაც თქვენთვის დაგეგმილია: სასტუმროები, საიჯარო ველოსიპედები, მარშრუტები, კვება, ბარგის ტრანსფერი, ღირსშესანიშნაობების ტურები და ა.შ. სახელმძღვანელოები აღნიშნავენ ღირსშესანიშნავ ადგილებს, აწყობენ ექსკურსიებსა და საქმიანობებს და არიან ავარიების შემთხვევაში (მექანიკური ან ადამიანური).</p><p><br></p><p>დამხმარე და პერსონალი განსხვავდება ტურისტული და ტურისტული კომპანიების მიხედვით, მაგრამ, როგორც წესი, ერთი მეგზური მიდის ჯგუფთან, ხოლო მეორე სახელმძღვანელო თქვენი ბარგით მართავს საყრდენ ფურგონს. ფურგონის საშუალებით შესაძლებელია მარშრუტის ნაკლებად მიმზიდველი ან უფრო რთული მონაკვეთების გადაკვეთა.</p><p><br></p><p>როგორც წესი, ველოსიპედით ივლით 8 – დან 20 – კაციან ჯგუფში, როგორც წესი, რამდენიმე სხვადასხვა ქვეყნიდან, რაც ქმნის ახალ ნაცნობებსა და საერთაშორისო მეგობრობას. ტუროპერატორების უმეტესობა გთავაზობთ სრულყოფილ ინფორმაციულ პაკეტს, სადაც მოცემულია რჩევები ღირშესანიშნაობების, კულტურული ღირსშესანიშნაობების და სცენური გაჩერების შესახებ (თუმცა ინგლისურ ენაზე მასალების მოცულობა განსხვავებულია ტუროპერატორის მიხედვით)</p>', '<p>This bicycle tour provides the convenience of having everything planned out for you: hotels, rental bikes, routes, meals, luggage transfers, sightseeing tours and so on. The guides point out places of interest, organize excursions and activities and are there in case of breakdowns (mechanical or human).</p><p><br></p><p>Support and personnel vary by tour and tour company, but one guide typically rides with the group, while a second guide drives a support van with your luggage. The van also makes it possible to bridge less attractive or more challenging sections of a route.</p><p><br></p><p>You usually bike in a group of 8 to 20 people, typically from several different countries, which makes for new acquaintances and international friendships. Most tour operators provide you with a comprehensive information package with tips on sights, cultural highlights, and scenic stops (although the extent of materials in English varies by tour operator).</p>', '<p>Этот велосипедный тур обеспечивает удобство, когда все спланировано для вас: отели, прокат велосипедов, маршруты, питание, трансферы багажа, обзорные экскурсии и так далее. Гиды указывают на достопримечательности, организуют экскурсии и мероприятия, а также присутствуют в случае поломки (механической или человеческой).</p><p><br></p><p>Поддержка и персонал различаются в зависимости от тура и туристической компании, но один гид обычно едет с группой, а второй гид ведет фургон поддержки с вашим багажом. Фургон также позволяет преодолевать менее привлекательные или более сложные участки маршрута.</p><p><br></p><p>Обычно вы ездите на велосипеде в группе от 8 до 20 человек, как правило, из нескольких разных стран, что способствует новым знакомствам и международной дружбе. Большинство туроператоров предоставляют вам исчерпывающий пакет информации с советами о достопримечательностях, культурных достопримечательностях и живописных остановках (хотя объем материалов на английском языке зависит от туроператора).</p>'),
+(81, NULL, 0, 'ველო ტურები', 'Bike tours', 'Велосипедные туры', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(82, 81, 1, 'ველო ტური რუსთავში', 'Bike tours in Rustavi', 'Велосипедные туры в Рустави', '3 დღე', '3 days', '3 dney', 'თბილისი რუსთავი', 'Tbilisi rusTavi', 'Tbilisi rusTavi', '<p>თუ გსიამოვნებთ ჯგუფთან ერთად მოგზაურობა, ახალი ხალხის გაცნობა და ყოველდღიური სახელმძღვანელო და სტრუქტურირებული გრაფიკი, მაშინ ჯგუფური ველოსიპედით მართვა საუკეთესო არჩევანია თქვენთვის.</p><p><br></p><p>ველო ტურები უზრუნველყოფს თქვენთვის დაგეგმილი ყველაფრის მოხერხებულობას: სასტუმროები, საიჯარო ველოსიპედები, მარშრუტები, კვება, ბარგის ტრანსფერი, ღირსშესანიშნაობების ტურები და ა.შ. სახელმძღვანელოები აღნიშნავენ ღირსშესანიშნავ ადგილებს, აწყობენ ექსკურსიებსა და საქმიანობებს და არიან ავარიების შემთხვევაში (მექანიკური ან ადამიანური).</p><p><br></p><p>დამხმარე და პერსონალი განსხვავდება ტურისტული და ტურისტული კომპანიების მიხედვით, მაგრამ, როგორც წესი, ერთი მეგზური მიდის ჯგუფთან, ხოლო მეორე სახელმძღვანელო თქვენი ბარგით მართავს საყრდენ ფურგონს. ფურგონის საშუალებით შესაძლებელია მარშრუტის ნაკლებად მიმზიდველი ან უფრო რთული მონაკვეთების გადაკვეთა.</p>', '<p>If you enjoy traveling with a group, meeting new people, and having a guide and structured daily schedule, then a guided group bike tour is probably the best fit for you.</p><p><br></p><p>These bicycle tours provide the convenience of having everything planned out for you: hotels, rental bikes, routes, meals, luggage transfers, sightseeing tours and so on. The guides point out places of interest, organize excursions and activities and are there in case of breakdowns (mechanical or human).</p><p><br></p><p>Support and personnel vary by tour and tour company, but one guide typically rides with the group, while a second guide drives a support van with your luggage. The van also makes it possible to bridge less attractive or more challenging sections of a route.</p>', '<p>Если вам нравится путешествовать с группой, знакомиться с новыми людьми, иметь гида и структурированный ежедневный график, то групповой велосипедный тур с гидом, вероятно, вам больше всего подойдет.</p><p><br></p><p>Эти велосипедные туры обеспечивают удобство, когда все спланировано для вас: отели, прокат велосипедов, маршруты, питание, трансферы багажа, обзорные экскурсии и так далее. Гиды указывают на достопримечательности, организуют экскурсии и мероприятия, а также присутствуют в случае поломки (механической или человеческой).</p><p><br></p><p>Поддержка и персонал различаются в зависимости от тура и туристической компании, но один гид обычно едет с группой, а второй гид ведет фургон поддержки с вашим багажом. Фургон также позволяет преодолевать менее привлекательные или более сложные участки маршрута.</p>'),
+(76, NULL, 0, 'კულტურული ტურები', 'Cultural tours', 'Культурные туры', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(77, 76, 1, 'კულტურული ტური რუსთავში', 'Cultural tours in Rustavi', 'Культурные туры Rustavi', '3 დღე', '3 days', '3 дня', 'თბილისი - რუსთავი', 'Tbilisi - Rustavi', 'Tbilisi - Rustavi', '<p>რუსთავი — ქალაქი და მუნიციპალიტეტი საქართველოში, ქვემო ქართლის მხარის ადმინისტრაციული ცენტრი. ქალაქი 1948 წლის 19 იანვრიდან. მდებარეობს ქვემო ქართლის ვაკეზე, მდინარე მტკვრის ორივე ნაპირას, ზღვის დონიდან 370 მ სიმაღლეზე. რუსთავი თბილისის აგლომერაციაში მყოფი ქალაქებიდან უდიდესია. თბილისსა და რუსთავს შორის უმოკლესი მანძილია 7,66 კილომეტრი. ქალაქის ტერიტორია 60 კვ. კმ-ს შეადგენს, მოსახლეობა 125 103 ადამიანი. რუსთავი საქართველოს უმთავრესი სამრეწველო ქალაქია თბილისის შემდეგაც.<br></p>', '<p>Rustavi - a city and municipality in Georgia, the administrative center of the Kvemo Kartli region. City since 19 January 1948. Located on the plain of Kvemo Kartli, on both banks of the river Mtkvari, at an altitude of 370 m above sea level. Rustavi is one of the largest cities in Tbilisi. The shortest distance between Tbilisi and Rustavi is 7.66 kilometers. City area 60 sq.m. Km, population 125,103 people. Rustavi is the main industrial city of Georgia after Tbilisi.<br></p>', '<p>Рустави - город и муниципалитет в Грузии, административный центр региона Квемо Картли. Город с 19 января 1948 года. Он расположен на равнине Квемо Картли, на обоих берегах реки Мтквари, на высоте 370 м над уровнем моря. Рустави - один из крупнейших городов Тбилиси. Кратчайшее расстояние между Тбилиси и Рустави составляет 7,66 километра. Площадь города 60 кв.м. Км, население 125 103 чел. Рустави - главный промышленный город Грузии после Тбилиси.<br></p>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tourtexts`
+--
+
+DROP TABLE IF EXISTS `tourtexts`;
+CREATE TABLE IF NOT EXISTS `tourtexts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text_ge` varchar(255) NOT NULL,
+  `text_en` varchar(255) NOT NULL,
+  `text_ru` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tourtexts`
+--
+
+INSERT INTO `tourtexts` (`id`, `text_ge`, `text_en`, `text_ru`) VALUES
+(1, 'საუკეთესო ტურები მხოლოდ ჩვენთან', 'The best tours only with us', 'Лучшие туры только у нас');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(250) DEFAULT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `user_role` int(11) NOT NULL DEFAULT 2,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `phone` varchar(200) DEFAULT NULL,
+  `recoverystring` varchar(200) DEFAULT NULL,
+  `avatar` varchar(200) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `user_role`, `status`, `phone`, `recoverystring`, `avatar`, `created_at`) VALUES
+(1, NULL, 'admin@wellmars.com', '$2y$10$c8n0Nq.zVoJ8b2/7Ss4che0S2EtaHsGr4z7QXB9YUIkerafuFewJO', 1, 1, NULL, NULL, NULL, '2021-06-03 05:39:45'),
+(2, NULL, 'user01@gmail.com', '$2y$10$ZVUqAurcgSROqodZ5jYgVeway75FGsp54AiwxfI1F/X0nJaNU77nC', 2, 1, '598-23-23-25', 'n6TBFKcbfIWsaMF8HsL5BJQVHqM9VtKbXhUcb7Bn38F9o9Q7Ig6kzRIMJfYAJESwqUF5TQre2wUzfngWR8oVenxHRnYQu1ywHJ6p61KCqGOdmIwYHWmM3EVui2UwxlEq', 'avatar2.jpg', '2021-06-05 07:31:56');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,15 +3,9 @@
           defined('BASEPATH') OR exit('No direct script access allowed');
           $lang = array();
 
-$lang['db_error_heading'] = "db_error_heading";
+$lang['email_exit_status'] = "email_exit_status";
+$lang['email_no_socket'] = "email_no_socket";
+$lang['email_send_failure_sendmail'] = "email_send_failure_sendmail";
+$lang['accInactive'] = "accInactive";
 $lang['phone'] = "phone";
-$lang['details'] = "details";
-$lang['contactInformation'] = "contactInformation";
-$lang['phoneNumber'] = "phoneNumber";
-$lang['address'] = "address";
-$lang['bookThisTour'] = "bookThisTour";
-$lang['numberOfPersons'] = "numberOfPersons";
-$lang['bookNow'] = "bookNow";
-$lang['whatsappViberNumber'] = "whatsappViberNumber";
-$lang['orderDate'] = "orderDate";
-$lang['yourName'] = "yourName";
+$lang['leaveReview'] = "leaveReview";

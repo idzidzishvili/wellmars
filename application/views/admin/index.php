@@ -6,6 +6,34 @@
 		<h2>ტურები</h2>
 		<hr>
 	</div>
+
+
+	<div class="container-fluid p-0">		
+		<?php echo form_open(base_url('admin/tourtext_process')); ?>
+         <div class="form-row">         
+            <div class="form-group col-12 mb-0">
+               <label for="header_ge">ტურების ტექსტი ქართულად</label>
+            </div>
+            <div class="form-group col-12">
+               <input type="text" class="form-control form-control-sm" name="text_ge" value="<?php echo isset($tourtexts->text_ge)?$tourtexts->text_ge:''; ?>" autocomplete="off" placeholder="ტექსტი ქართულად">
+               <small style="color:red"><?php echo form_error('text_ge'); ?></small>
+            </div>           
+            <div class="form-group col-12">
+               <input type="text" class="form-control form-control-sm" name="text_en" value="<?php echo isset($tourtexts->text_en)?$tourtexts->text_en:'';?>" autocomplete="off" placeholder="ტექსტი ინგლისურად">
+               <small style="color:red"><?php echo form_error('text_en'); ?></small>
+            </div>            
+            <div class="form-group col-12">
+               <input type="text" class="form-control form-control-sm" name="text_ru" value="<?php echo isset($tourtexts->text_ru)?$tourtexts->text_ru:''; ?>" autocomplete="off" placeholder="ტექსტი რუსულად">
+               <small style="color:red"><?php echo form_error('text_ru'); ?></small>
+            </div>
+				<div class="form-group col-lg-7 mb-5">
+               <button type="submit" class="btn btn-primary px-4"><i class="fa fa-save mr-2"></i>შენახვა</button>
+            </div>
+			</div>
+      <?php echo form_close(); ?>
+   </div>
+
+
 	<div class="mb-3">
 		<a href="<?php echo base_url('admin/addtour');?>" class="btn btn-success btn-sm" id="addimage"><i class="fa fa-plus-square mr-2"></i>ტურის დამატება</a>
 	</div>

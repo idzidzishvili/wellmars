@@ -24,17 +24,14 @@
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/slicknav.min.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/firago.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/daterangepicker.css">
+		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/responsive.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
 		<script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 		<script src="<?= base_url(); ?>assets/js/moment.js"></script>
 		<script src="<?= base_url(); ?>assets/js/daterangepicker.js"></script>
 	</head>
-
 	<body>
-
-
 		<!-- Header Area Start -->
 		<header class="peulis-header-area">
 			<!-- Header Top Area Start -->
@@ -43,14 +40,18 @@
 					<div class="row">
 						<div class="col-lg-6 col-sm-6">
 							<div class="header-top-left">
-								<p>
-									<i class="fa fa-envelope"></i>
-									<?php echo isset($contacts->email)?$contacts->email:'';?>
-								</p>
-								<p>
-									<i class="fa fa-phone"></i>
-									<?php echo isset($contacts->email)?$contacts->phone:'';?>
-								</p>
+								<?php if (isset($contacts->email)):?>
+									<p>
+										<i class="fa fa-envelope"></i>
+										<?php echo $contacts->email;?>
+									</p>
+								<?php endif;?>
+								<?php if (isset($contacts->phone)):?>
+									<p>
+										<i class="fa fa-phone"></i>
+										<?php echo $contacts->phone;?>
+									</p>
+								<?php endif;?>
 							</div>
 						</div>
 						<div class="col-lg-6 col-sm-6">
@@ -72,7 +73,9 @@
 									</ul>
 								</div>
 								<div class="header-top-auth">
-									<ul>
+									<ul>										
+										<li><a href="<?php echo site_url('auth/login');?>"><i class="fas fa-user"></i></a></li>
+										<li><a href="<?php echo site_url('auth/register');?>"><i class="fas fa-user-plus"></i></a></li>										
 										<li><?php echo anchor($this->lang->switch_uri('ge'), '<img src="'.base_url('assets/img/ge.svg').'">');?></li>
 										<li><?php echo anchor($this->lang->switch_uri('en'), '<img src="'.base_url('assets/img/en.svg').'">');?></li>
 										<li><?php echo anchor($this->lang->switch_uri('ru'), '<img src="'.base_url('assets/img/ru.svg').'">');?></li>
@@ -80,7 +83,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+               </div>
 				</div>
 			</div>
 			<!-- Header Top Area End -->
@@ -122,37 +125,11 @@
 														</ul>
 													</li>
 													<li>
-														<a href="#">Destinations</a>
-														<ul>
-															<li><a href="destination-three.html">Destination 3 columns</a></li>
-															<li><a href="destination-four.html">Destination 4 columns</a></li>
-															<li><a href="destination-single.html">Single Destination</a></li>
-														</ul>
+														<a href="<?php echo site_url('home/gallery');?>"><?php echo $this->lang->line('gallery');?></a>
 													</li>
 													<li>
-														<a href="#">tours</a>
-														<ul>
-															<li><a href="tour-sidebar.html">Tour Sidebar</a></li>
-															<li><a href="tour-details.html">Tour Details</a></li>
-														</ul>
+														<a href="<?php echo site_url('contact');?>"><?php echo lang('contact');?></a>
 													</li>
-													<li>
-														<a href="#">Blog</a>
-														<ul>
-															<li><a href="blog.html">Blog With Sidebar</a></li>
-															<li><a href="single-blog.html">Blog Details</a></li>
-														</ul>
-													</li>
-													<li>
-														<a href="#">Shop</a>
-														<ul>
-															<li><a href="product.html">Product</a></li>
-															<li><a href="single-product.html">Product Details</a></li>
-															<li><a href="cart.html">Shoping Cart</a></li>
-															<li><a href="checkout.html">Checkout</a></li>
-														</ul>
-													</li>
-													<li><a href="<?php echo site_url('contact');?>"><?php echo lang('contact');?></a></li>
 												</ul>
 											</nav>
 										</div>

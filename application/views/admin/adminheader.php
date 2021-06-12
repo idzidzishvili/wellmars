@@ -44,6 +44,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link <?php echo $activeitem == 10 ? 'active' : ''; ?>" href="<?php echo base_url('admin/slidertext'); ?>">
+							<i class="las la-text-width"></i>
+								ტექსტი სლაიდერზე 
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link <?php echo ($activeitem == 1) ? 'active' : ''; ?>" href="<?php echo base_url('admin'); ?>">
 								<i class="la la-user"></i>
 								ტურები

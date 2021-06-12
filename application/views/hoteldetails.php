@@ -2,7 +2,7 @@
 
 
 <!-- Tour Details Area Start -->
-<section class="peulis-tour-details-area section_70">
+<section class="peulis-tour-details-area section_70 bg-white">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
@@ -27,7 +27,7 @@
 					
 					<!-- Image Gallery section -->
 					<div class="tour-gallery">
-						<h3>Gallery</h3>
+						<h3><?php echo lang('gallery');?></h3>
 						<div class="tour-gallery-slider owl-carousel">
 							<?php foreach($images as $image): ?>
 								<a href="<?= base_url('uploads/hotels/'.$image->filename); ?>" class="single-gallery-tour image-link">
@@ -39,52 +39,54 @@
 					<!-- End of Image Gallery section -->
 
 					<!-- Comments section -->
-					<div class="peulis-comment-list">
-						<div class="comment-group-title">
-							<h3>Tour Reviews</h3>
-						</div>						
-						<div class="single-comment-item">
-							<?php foreach($reviews as $review):?>
-								<div class="single-comment-box">
-									<div class="main-comment">
-										<div class="author-image">
-											<?php $avatar = $review->avatar?$review->avatar:"blankAvatar.jpg";?>
-											<img src="<?php echo base_url('uploads/users/'.$avatar);?>" alt="author">
-										</div>
-										<div class="comment-text">
-											<div class="comment-info">
-												<h4>
-													<?php 
-														if($review->fullname) echo $review->fullname;
-														elseif($review->email) echo strtolower($review->email);
-													?>
-												</h4>
-												<span class="rating"><?php echo $review->rating;?></span>
-												<p><?php echo date('d M Y', strtotime($review->date)); ?></p>
+					<?php if($reviews):?>
+						<div class="peulis-comment-list">
+							<div class="comment-group-title">
+								<h3><?php echo lang('reviews');?></h3>
+							</div>						
+							<div class="single-comment-item">
+								<?php foreach($reviews as $review):?>
+									<div class="single-comment-box">
+										<div class="main-comment">
+											<div class="author-image">
+												<?php $avatar = $review->avatar?$review->avatar:"blankAvatar.jpg";?>
+												<img src="<?php echo base_url('uploads/users/'.$avatar);?>" alt="author">
 											</div>
-											<div class="comment-text-inner">
-												<p><?php echo $review->review;?></p>
+											<div class="comment-text">
+												<div class="comment-info">
+													<h4>
+														<?php 
+															if($review->fullname) echo $review->fullname;
+															elseif($review->email) echo strtolower($review->email);
+														?>
+													</h4>
+													<span class="rating"><?php echo $review->rating;?></span>
+													<p><?php echo date('d M Y', strtotime($review->date)); ?></p>
+												</div>
+												<div class="comment-text-inner">
+													<p><?php echo $review->review;?></p>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							<?php endforeach;?>
+								<?php endforeach;?>
+							</div>
+							<div class="review-pagination"><?php echo $links;?></div>
 						</div>
-						<div class="review-pagination"><?php echo $links;?></div>
-					</div>
+					<?php endif;?>
 					<!-- End of Comments section -->
 
 					<!-- Review section -->
 					<?php if ($this->session->flashdata('review_received')):?>
 						<div class="alert alert-primary" role="alert">
-							<h4 class="alert-heading">გმადლობთ!</h4>
-  							<p>თქვენი შეფასება მიღებულია</p>
+							<h4 class="alert-heading"><?php echo lang('thankYou');?>!</h4>
+  							<p><?php echo lang('yourReviewReceived');?></p>
 						</div>
 					<?php elseif(!$this->session->userdata('logged_in')):?>
 						<?php echo lang('loginToReview');?>
 					<?php elseif($this->session->userdata('logged_in') && !$userHasReview):?>
 						<div class="peulis-leave-comment">
-							<h3>Leave a Review</h3>
+							<h3><?php echo lang('leaveReview');?></h3>
 							<?php if($this->session->flashdata('review_error')):?>
 								<small style="color:red"><?php echo $this->session->flashdata('review_error'); ?></small>
 							<?php endif;?>
@@ -92,7 +94,7 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="comment-field">
-											<p>Rating :</p>
+											<p><?php echo lang('rating');?> :</p>
 											<div class="star-rating">
 												<input id="star-5" type="radio" name="rating" value="5">
 												<label for="star-5" title="5 stars">
@@ -121,14 +123,14 @@
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="comment-field">
-											<textarea class="comment" placeholder="Comment..." name="review"></textarea>
+											<textarea class="comment" placeholder="<?php echo lang('comment');?>..." name="review"></textarea>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="comment-field">
-											<button type="submit" class="peulis-theme-btn">post comment</button>
+											<button type="submit" class="peulis-theme-btn"><?php echo lang('postComment');?></button>
 										</div>
 									</div>
 								</div>
@@ -145,15 +147,26 @@
 					<div class="single-sidebar">
 						<div class="quick-contact mt-2">
 							<h3><?php echo lang('bookThisTour');?></h3>
+							<?php if ($this->session->flashdata('validation_errors')) :?>
+								<div class="text-danger" style="font-size:.8rem">
+									<?php echo $this->session->flashdata('validation_errors');?>
+								</div>
+							<?php endif;?>
+							<?php if ($this->session->flashdata('reserveResult')):?>
+								<div class="alert alert-<?php echo $this->session->flashdata('reserveResult')['status']?'success':'danger';?> alert-dismissible fade show" role="alert">
+								<?php echo $this->session->flashdata('reserveResult')['message'];?>
+								</div>
+							<?php endif; ?>
+
 							<?php echo form_open(site_url('profile/hotel_order_process/'.$hoteId));?>
 								<div class="book-tour-field">
-									<input type="text" placeholder="<?php echo lang('yourName');?>" name="name">
+									<input type="text" placeholder="<?php echo lang('yourName');?>" name="name" value="<?php echo set_value('name'); ?>">
 								</div>
 								<div class="book-tour-field">
-									<input type="email" name="email" placeholder="Email">
+									<input type="email" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>">
 								</div>
 								<div class="book-tour-field">
-									<input type="text" name="phone" placeholder="<?php echo lang('whatsappViberNumber');?>">
+									<input type="text" name="phone" placeholder="<?php echo lang('whatsappViberNumber');?>" value="<?php echo set_value('whatsappViberNumber'); ?>">
 								</div>
 								<div class="book-tour-field">
 									<input id="hotelorder_date" name="hotelorder_date" placeholder="<?php echo lang('orderDate');?>" type="text">
@@ -185,7 +198,7 @@
 							<?php endif;?>
 							<?php if (isset($contacts->{'address_'.$this->lang->lang()})):?>
 								<li><span><i class="fa fa-map-marker"></i> <?php echo lang('address');?>:</span><?php echo $contacts->{'address_'.$this->lang->lang()};?></li>
-							<?php endif;?>								
+							<?php endif;?>
 						</ul>
 					</div>					
 				</div>
@@ -195,7 +208,7 @@
 </section>
 <!-- Tour Details Area End -->
 <script>
-$('#hotelorder_date').daterangepicker();
+	$('#hotelorder_date').daterangepicker();
 
 	$('.rating').each(function(index, el) {
 		var rating = $(el).text();

@@ -19,7 +19,11 @@ class Home extends CI_Controller {
 	
 
 	public function index(){
-		$this->data['slides'] = $this->mainslider->getSlides();		
+		$this->data['slides'] = $this->mainslider->getSlides();
+		$this->load->model(['slidertext', 'hoteltext', 'tourtext']);
+		$this->data['hoteltexts'] = $this->hoteltext->getHoteltexts();
+		$this->data['tourtexts'] = $this->hoteltext->getHoteltexts();
+		$this->data['slidedertexts'] = $this->slidertext->getSlidertexts();
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('slider', $this->data);
 		$this->load->view('hotels', $this->data);
@@ -28,9 +32,11 @@ class Home extends CI_Controller {
 	}
 
 	public function hotels(){
+		$this->load->model('hoteltext');
+		$this->data['hoteltexts'] = $this->hoteltext->getHoteltexts();
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('hotels', $this->data);
-		$this->load->view('templates/footer');		
+		$this->load->view('templates/footer');
 	}
 
 	public function hotel($id=0){		
@@ -62,6 +68,8 @@ class Home extends CI_Controller {
 	}
 
 	public function tours(){
+		$this->load->model('tourtext');
+		$this->data['tourtexts'] = $this->tourtext->getTourtexts();
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('tours', $this->data);
 		$this->load->view('templates/footer');
@@ -94,27 +102,6 @@ class Home extends CI_Controller {
 		$this->load->view('contact', $this->data);
 		$this->load->view('templates/footer');
 	}
-
-
-	//$this->form_validation->set_rules('reg[dob]', 'Date of birth', 'regex_match[(0[1-9]|1[0-2])/(0[1-9]|1[0-9]|2[0-9]|3(0|1))/\d{4}]');
-
-	
-
-
-	public function test(){
-		$a = array();
-		$a[0] = null;
-		$a[1] = null;
-		$a[3] = "dsjhfsdkfj";
-		
-		
-		
-		if(isset($a[2])) echo "such key exists";
-		else echo "such key does not exists";
-	}
-
-
-	
 	
 	
 }

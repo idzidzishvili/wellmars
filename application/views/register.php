@@ -34,8 +34,12 @@
                <div class="book-tour-field mt-4">
                   <button type="submit"><?php echo lang('register');?></button>
                </div>
-
             <?php echo form_close();?>
+
+            <div class="extra-login mt-2">
+					<a href="<?php echo site_url('auth/sendrecovery');?>" class="mr-1"><?php echo lang('forgotPassword');?></a>
+					<a href="<?php echo site_url('auth/login');?>" class="ml-1"><?php echo lang('login');?></a>
+				</div>
 		
          </div>
       </div>

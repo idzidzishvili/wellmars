@@ -8,11 +8,10 @@ class Profile extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$nextURL = $this->router->fetch_class().'/'.$this->router->fetch_method();
-		if (!$this->session->userdata('logged_in')){
-			$this->session->set_userdata('nextURL', $nextURL);
+			if (!$this->session->userdata('logged_in')){
+			if(isset($_SERVER['HTTP_REFERER'])) $this->session->set_userdata('nextURL', $_SERVER['HTTP_REFERER']);
 			redirect('auth/login');
-		} 
+		}
 		$this->load->helper(['language', 'url', 'security']);
 		$this->lang->load('home');
 		$this->load->library('form_validation');
@@ -32,6 +31,7 @@ class Profile extends CI_Controller {
 	
 	public function orders(){
 		$this->load->model('hotelorder');
+		$this->data['userData'] = $this->user->getUserdataById($this->session->userdata('user_id'));
 		$this->data['userOrders'] = $this->hotelorder->getHotelOrdersById($this->session->userdata('user_id'));
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('profile/orders', $this->data);
@@ -40,12 +40,11 @@ class Profile extends CI_Controller {
 
 	public function hotel_order_process($id=0){
 		if (strtoupper($_SERVER['REQUEST_METHOD'])=='POST' && $id && filter_var($id, FILTER_VALIDATE_INT)){
-			$this->form_validation->set_rules('name', 'Name', 'required|max_length[100]');
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[100]');
-			$this->form_validation->set_rules('phone', 'Phone number', 'required|max_length[100]');
-			$this->form_validation->set_rules('hotelorder_date', 'Reservation Date', 'required|callback_validate_daterange');
-			$this->form_validation->set_rules('numofpersons', 'Number of persons', 'required|integer');
-			///// validate other fields too
+			$this->form_validation->set_rules('name', 			  lang('yourName'), 'required|max_length[100]');
+			$this->form_validation->set_rules('email', 			  'Email', 'required|valid_email|max_length[100]');
+			$this->form_validation->set_rules('phone', 			  lang('whatsappViberNumber'), 'required|max_length[100]');
+			$this->form_validation->set_rules('hotelorder_date', lang('orderDate'), 'required|callback_validate_daterange');
+			$this->form_validation->set_rules('numofpersons', 	  lang('numberOfPersons'), 'required|integer');			
 			if ($this->form_validation->run()) {
 				$startFullDate = substr($this->input->post('hotelorder_date'),0,10);
 				$endFullDate = substr($this->input->post('hotelorder_date'),-10);
@@ -89,13 +88,19 @@ class Profile extends CI_Controller {
 				}
 				if($reservedRoom){
 					// Room reserved
-					echo "Room was reserved";
+					$this->session->set_flashdata('reserveResult', array('status' => true, 'message' => lang('roomReservedSucc')));
+					redirect('home/hotel/'.$id);
 				}else{
 					// Room was not reserved
-					echo "Room was NOT reserved";
+					$this->session->set_flashdata('reserveResult', array('status' => false, 'message' => lang('roomReserveFailed')));
+					redirect('home/hotel/'.$id);
 				}
+			}else{
+				// Validation errors
+				$this->session->set_flashdata('validation_errors', validation_errors());
+				redirect('home/hotel/'.$id);
 			}
-		}
+		}else{redirect('profile/index');}
 	}
 
 
@@ -193,13 +198,6 @@ class Profile extends CI_Controller {
 			}
 		}
 		$this->index();
-	}
-
-
-	public function test2(){
-		$x=0;
-		if($x)echo "hi";
-		else echo "no";
 	}
 
 

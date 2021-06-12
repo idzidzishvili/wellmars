@@ -13,18 +13,23 @@
             <div class="row">
                <div class="col-md-12 col-sm-12 content-home">
                   <div class="banner-welcome">
-                     <h4 class="text">travel with us</h4>
+                     <h4 class="text">
+                        <?php echo isset($slidedertexts[0]->{'text_'.$this->lang->lang()})?$slidedertexts[0]->{'text_'.$this->lang->lang()}:'';?>
+                     </h4>
                      <div class="caption-inner">
                         <div class="ah-headline">
-                           <span class="typed-static">Enjoy</span>
+                           <span class="typed-static">
+                              <?php echo isset($slidedertexts[1]->{'text_'.$this->lang->lang()})?$slidedertexts[1]->{'text_'.$this->lang->lang()}:'';?> 
+                           </span>
                            <span class="ah-words-wrapper">
-                              <b class="is-visible"> Adventure</b>
-                              <b> Holiday</b>
-                              <b> Mountain</b>
+                              <?php $changeables = explode(",", $slidedertexts[2]->{'text_'.$this->lang->lang()});?>
+                              <?php foreach($changeables as $i=>$c):?>
+                                 <b class="<?php echo $i==0?'is-visible':'';?>"> <?php echo $c;?> </b>
+                              <?php endforeach;?>
                            </span>
                         </div>
                      </div>
-                     </div>
+                  </div>
                </div>
             </div>
          </div>

@@ -9,99 +9,11 @@ class admin extends CI_Controller
    public function __construct()
 	{
       parent::__construct();
-      //if (!$this->session->userdata('logged_in') || $this->session->userdata('user_role') != 1) redirect('auth/login');
+      if (!$this->session->userdata('logged_in') || $this->session->userdata('user_role') != 1) redirect('auth/login');
 		$this->load->library('form_validation');
 		$this->load->helper("security");
       $this->lang->load('home', 'georgian');
 	}
-
-	public function test($id=0){
-
-		$startDate = new DateTime('2016-02-25');
-		$endDate = new DateTime('2016-03-05');
-		while($startDate<$endDate){
-			echo $startDate->format('Y-m-d');
-			echo '<br>';
-			$startDate->modify('+1 day');
-		}
-
-
-		// $datetime = new DateTime('2013-01-29');
-		// $datetime->modify('+1 day');
-		// echo $datetime->format('Y-m-d');
-		
-	}
-
-	public function test2(){
-		$date = new DateTime();
-
-		// $date->setISODate(2021, 1); //first week of 2021
-		// echo $date->format('Y-m-d') . "<br>";
-		// $date->setISODate(2021, 2, 7);
-		// echo $date->format('Y-m-d') . "<br>"; //7th day of second week of 2021
-		//echo $date->format('o'); //year of $date object
-		//echo $date->format('W'); //week number of $date object
-		//echo $date->format('l'); //weekday of $date object
-		//$week = $date->format('W');
-		//echo $week;
-
-
-		$dt = new DateTime;
-		if (isset($_GET['year']) && isset($_GET['week'])) {
-			$dt->setISODate($_GET['year'], $_GET['week']);
-		} else {
-			$dt->setISODate($dt->format('o'), $dt->format('W'));
-		}
-		
-		$data['year'] = $dt->format('o');
-		$data['week'] = $dt->format('W');
-		$data['dt'] = $dt;
-		
-		$start = $dt->format('Y-m-d');
-		$end = $dt->modify('+6 day')->format('Y-m-d');
-		$this->load->model('hotelorder');
-		$weekDetails = $this->hotelorder->getWeek($start, $end);
-
-		$rooms=array();
-		foreach($weekDetails as $ind=>$wd){
-			$rooms['date'][$ind] = $wd->date;
-			for ($i=0; $i<16; $i++){
-				$rooms['weekdays'][$i][$ind] = $wd->{'room_'.($i+1)};
-			}
-		}
-		$data['rooms'] = $rooms;	
-		
-		$this->load->view('test', $data);
-	}
-
-	public function test3($id=0, $checkRecursive=false){
-		// $id = 40;
-		// $tourImages = $this->tourimage->getImagesByTourId($id);
-		// $this->tourimage->deleteTourImages($id);
-		// var_dump($tourImages);exit;
-		// foreach($tourImages as $img){
-		// 	unlink(FCPATH.'uploads/tours/'.$img->filename);
-		// }
-		
-		$tour = $this->tour->getTour($id);
-		
-		//if it is category delete all subtours
-		if(!$tour->istour && $checkRecursive){
-			$subTours = $this->tour->getChildTours($id);
-			var_dump($subTours);
-			foreach($subTours as $subtour){
-				$this->test3($subtour->id, false);
-			}
-		}
-		
-		
-	}
-
-
-	
-
-
-
 
 	public function index(){
 		$this->tours();
@@ -109,8 +21,9 @@ class admin extends CI_Controller
 	
 	//OK
 	public function tours(){
-		$this->load->model('tour');
+		$this->load->model(['tour', 'tourtext']);
 		$data['tourdata'] = $this->tour->getToursAdmin();
+		$data['tourtexts'] = $this->tourtext->getTourtexts();
 		$this->load->view('admin/index', $data);
 	}
 	
@@ -515,8 +428,9 @@ class admin extends CI_Controller
 
 	//OK
 	public function hotels(){
-		$this->load->model('hotel');
+		$this->load->model(['hotel', 'hoteltext']);
 		$data['hotels'] = $this->hotel->getHotels();
+		$data['hoteltexts'] = $this->hoteltext->getHoteltexts();
 		$this->load->view('admin/hotels', $data);
 	}
 
@@ -843,6 +757,74 @@ class admin extends CI_Controller
 		}
 		$data['contacts'] = $this->contact->getContacts();
 		$this->load->view('admin/contact', $data);
+	}
+
+
+	public function slidertext(){
+		$this->load->model('slidertext');
+		if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST'){
+			$this->form_validation->set_rules('header_ge', 'სათაური ქართულად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('header_en', 'სათაური ინგლისურად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('header_ru', 'სათაური რუსულად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('static_ge', 'სტატიკური ტექსტი ქართულად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('static_en', 'სტატიკური ტექსტი ინგლისურად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('static_ru', 'სტატიკური ტექსტი რუსულად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('changeable_ge', 'ცვალებადი ტექსტი ქართულად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('changeable_en', 'ცვალებადი ტექსტი ინგლისურად', 'trim|xss_clean|max_length[250]');
+			$this->form_validation->set_rules('changeable_ru', 'ცვალებადი ტექსტი რუსულად', 'trim|xss_clean|max_length[250]');
+			if ($this->form_validation->run()) {
+				$this->slidertext->updateslidertexts(
+					$this->input->post('header_ge'),
+					$this->input->post('header_en'),
+					$this->input->post('header_ru'),
+					$this->input->post('static_ge'),
+					$this->input->post('static_en'),
+					$this->input->post('static_ru'),
+					$this->input->post('changeable_ge'),
+					$this->input->post('changeable_en'),
+					$this->input->post('changeable_ru')
+				);
+				return redirect('admin/slidertext');
+			}
+		}
+		$data['slidertexts'] = $this->slidertext->getslidertexts();
+		$this->load->view('admin/slidertexts', $data);
+	}
+
+
+	public function hoteltext_process(){
+		if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST'){
+			$this->form_validation->set_rules('text_ge', 'ტექსტი ქართულად', 'trim|xss_clean|max_length[255]');
+			$this->form_validation->set_rules('text_en', 'ტექსტი ინგლისურად', 'trim|xss_clean|max_length[255]');
+			$this->form_validation->set_rules('text_ru', 'ტექსტი რუსულად', 'trim|xss_clean|max_length[255]');
+			if ($this->form_validation->run()) {
+				$this->load->model('hoteltext');
+				$this->hoteltext->updateHoteltexts(
+					$this->input->post('text_ge'),
+					$this->input->post('text_en'),
+					$this->input->post('text_ru')
+				);
+			}
+		}
+		$this->hotels();
+	}
+
+
+	public function tourtext_process(){
+		if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST'){
+			$this->form_validation->set_rules('text_ge', 'ტექსტი ქართულად', 'trim|xss_clean|max_length[255]');
+			$this->form_validation->set_rules('text_en', 'ტექსტი ინგლისურად', 'trim|xss_clean|max_length[255]');
+			$this->form_validation->set_rules('text_ru', 'ტექსტი რუსულად', 'trim|xss_clean|max_length[255]');
+			if ($this->form_validation->run()) {
+				$this->load->model('tourtext');
+				$this->tourtext->updateTourtexts(
+					$this->input->post('text_ge'),
+					$this->input->post('text_en'),
+					$this->input->post('text_ru')
+				);
+			}
+		}
+		$this->tours();
 	}
 
 	

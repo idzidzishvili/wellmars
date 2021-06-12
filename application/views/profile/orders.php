@@ -11,8 +11,8 @@
          <div class="col-lg-3 profile-sidebar">
             <div class="container">
                <div class="row bg-white">                  
-                  <div class="img-container col-md-6 col-lg-12">
-                     <img src="<?php echo base_url('/uploads/users/'.(isset($userdata->avatar)?$userdata->avatar:'blankAvatar.jpg'));?>">
+                  <div class="img-container col-md-6 col-lg-12 d-flex justify-content-center">
+                     <img src="<?php echo base_url('/uploads/users/'.(isset($userData->avatar)?$userData->avatar:'blankAvatar.jpg'));?>">
                   </div>
                   <ul class="col-md-6 col-lg-12 px-lg-0">
                      <li><a href="<?php echo site_url('profile/index');?>"><?php echo lang('profile');?></a></li>
@@ -28,10 +28,10 @@
                   <thead>
                      <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Start date</th>
-                        <th scope="col">End date</th>
-                        <th scope="col">Room number</th>
-                        <th scope="col">Number of persons</th>
+                        <th scope="col"><?php echo lang('startDate');?></th>
+                        <th scope="col"><?php echo lang('endDate');?></th>
+                        <th scope="col"><?php echo lang('roomNumber');?></th>
+                        <th scope="col"><?php echo lang('numberOfPersons');?></th>
                      </tr>
                   </thead>
                   <tbody>

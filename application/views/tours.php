@@ -5,7 +5,9 @@
 			<div class="col-md-12">
 				<div class="site-heading">
 					<h2><?php echo isset($tourdetails)?$tourdetails->{'tourname_'.$this->lang->lang()}:lang('tours');?></h2>
-					<p>Lorem ipsum dolor sit amet, conseetuer adipiscing elit. Aenan comdo igula eget. Aenean massa cum sociis Theme natoque.</p>
+					<?php if(isset($tourtexts->{'text_'.$this->lang->lang()})):?>
+						<p><?php echo $tourtexts->{'text_'.$this->lang->lang()};?></p>
+					<?php endif;?>
 				</div>
 			</div>
 		</div>
@@ -21,7 +23,7 @@
 								<h3><a href="<?php echo site_url('home/tour/'.$tour->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $tour->tourname_en)));?>"><?php echo $tour->{'tourname_'.$this->lang->lang()}; ?></a></h3>
 								<div class="tour-desc-heading">									
 									<div class="tour-details d-flex flex-row-reverse">
-										<a href="<?php echo site_url('home/tour/'.$tour->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $tour->tourname_en)));?>"> დაწვრილებით </a>
+										<a href="<?php echo site_url('home/tour/'.$tour->id.'/'.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $tour->tourname_en)));?>"> <?php echo lang('details');?> </a>
 									</div>
 								</div>
 							</div>

@@ -62,7 +62,7 @@
 						</div>
 
 						<div class="form-group col-lg-7">
-							<button type="submit" class="btn btn-primary">ტურის დამატება</button>
+							<button type="submit" class="btn btn-primary"><i class="fa fa-save mr-2"></i>ტურის დამატება</button>
 						</div>
 					</div>
 				<?php echo form_close(); ?>			
@@ -132,9 +132,6 @@
 						</div>
 						
 
-
-
-
 						<div class="form-group col-md-3 mb-0">
 							<label>აღწერა ქართულად</label>
 						</div>
@@ -158,10 +155,6 @@
 						</div>
 
 
-
-
-
-
 						<div class="form-group col-lg-12">
 							<button type="button" class="btn btn-success btn-sm" id="addimage">add image</button>
 						</div>
@@ -181,7 +174,7 @@
 						</table>
 					</div>
 					<div class="form-group col-lg-7">
-						<button type="submit" class="btn btn-primary">შენახვა</button>
+						<button type="submit" class="btn btn-primary"><i class="fa fa-save mr-2"></i>შენახვა</button>
 					</div>
 				<?php echo form_close(); ?>
 			</div>

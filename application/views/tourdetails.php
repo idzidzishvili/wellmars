@@ -19,11 +19,11 @@
 					</p>
 					<ul class="tour-offer clearfix">
 						<li>
-							<span>ტურის ხანგძლივობა </span>
+							<span><?php echo lang('tourDuration');?></span>
 							<?php echo $tourdetails->{'duration_'.$this->lang->lang()}; ?>
 						</li>
 						<li>
-							<span>ტურის მიმართულება </span>
+							<span><?php echo lang('tourDestination');?></span>
 							<?php echo $tourdetails->{'destination_'.$this->lang->lang()}; ?>
 						</li>							
 					</ul>
@@ -42,20 +42,17 @@
 			<div class="col-lg-4">
 				<div class="sidebar-widget">
 					<div class="single-sidebar">
-						<h3>სწრაფი კონტაქტი</h3>
+						<h3><?php echo lang('contactInformation');?></h3>
 						<ul class="more-info">
-								<li>
-									<span><i class="fa fa-phone"></i> Phone Number:</span>
-									1-567-124-44227
-								</li>
-								<li>
-									<span><i class="fa fa-clock-o"></i> Office Time:</span>
-									9am - 5pm
-								</li>
-								<li>
-									<span><i class="fa fa-map-marker"></i> Office Location:</span>
-									5520 Quebec Place
-								</li>
+							<?php if (isset($contacts->phone)):?>
+								<li><span><i class="fa fa-phone"></i> <?php echo lang('phoneNumber');?>:</span><?php echo $contacts->phone;?></li>
+							<?php endif;?>
+							<?php if (isset($contacts->email)):?>
+								<li><span><i class="far fa-envelope"></i> Email:</span><?php echo $contacts->email;?></li>
+							<?php endif;?>
+							<?php if (isset($contacts->{'address_'.$this->lang->lang()})):?>
+								<li><span><i class="fa fa-map-marker"></i> <?php echo lang('address');?>:</span><?php echo $contacts->{'address_'.$this->lang->lang()};?></li>
+							<?php endif;?>
 						</ul>
 					</div>
 				</div>

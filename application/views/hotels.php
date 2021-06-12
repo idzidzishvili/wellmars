@@ -3,10 +3,12 @@
    <div class="container">
       <div class="row">
          <div class="col-md-12">
-               <div class="site-heading">
-                  <h2><?php echo lang('hotelRooms');?></h2>
-                  <p>Lorem ipsum dolor sit amet, conseetuer adipiscing elit. Aenan comdo igula eget. Aenean massa cum sociis Theme natoque.</p>
-               </div>
+            <div class="site-heading">
+               <h2><?php echo lang('hotelRooms');?></h2>
+               <?php if(isset($hoteltexts->{'text_'.$this->lang->lang()})):?>
+                  <p><?php echo $hoteltexts->{'text_'.$this->lang->lang()};?></p>
+               <?php endif;?>
+            </div>
          </div>
       </div>
       <div class="row mb-5">
