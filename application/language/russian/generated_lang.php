@@ -19,3 +19,4 @@ $lang['phone'] = "phone";
 $lang['sendMsg'] = "sendMsg";
 $lang['forgotPassword'] = "forgotPassword";
 $lang['endtDate'] = "endtDate";
+$lang['recoverPassword'] = "recoverPassword";

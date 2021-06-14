@@ -107,7 +107,7 @@
          </div>
          <?php if ($contacts->map_url):?>
             <div class="col-lg-12 mt-5">
-               <h3><?php echo lang('findUsOnMap');?>:</h3>
+               <h3 class="mb-2"><?php echo lang('findUsOnMap');?>:</h3>
                <iframe src="<?php echo $contacts->map_url;?>" class="align-self-stretch radius-sm" style="border:0; width:100%; min-height:350px;" allowfullscreen=""></iframe>
             </div>
          <?php endif;?>

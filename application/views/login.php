@@ -58,6 +58,7 @@
 						<a href="<?php echo site_url('auth/sendrecovery');?>" class="mr-1"><?php echo lang('forgotPassword');?></a>
 						<a href="<?php echo site_url('auth/register');?>" class="ml-1"><?php echo lang('register');?></a>
 					</div>
+					
 				</div>
 			</div>
 		</div>

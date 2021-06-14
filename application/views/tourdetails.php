@@ -28,7 +28,7 @@
 						</li>							
 					</ul>
 					<div class="tour-gallery">
-						<h3>Gallery</h3>
+						<h3><?php echo lang('gallery');?></h3>
 						<div class="tour-gallery-slider owl-carousel">
 								<?php foreach($images as $image): ?>										
 									<a href="<?= base_url('uploads/tours/'.$image->filename); ?>" class="single-gallery-tour image-link">

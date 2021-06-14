@@ -10,7 +10,7 @@
       <p><strong>Hello, <?php echo $username; ?></strong></p>
       <p style="margin-bottom:10px">You have requested to recover password. Click link below to recover password</p>
       <br><br>
-      <a href="<?php echo base_url('auth/recover/'.$userid.'/'.$recoveryString);?>" style="padding:10px 30px; background-color: #005960; color: white; text-decoration: none; border-radius: 4px"> Recover password </a>
+      <a href="<?php echo base_url('auth/recover/'.$userid.'/'.$recoveryString);?>" style="padding:10px 30px; background-color: #ff6d34; color: white; text-decoration: none; border-radius: 4px"> Recover password </a>
    </div>
 </body>
 </html>

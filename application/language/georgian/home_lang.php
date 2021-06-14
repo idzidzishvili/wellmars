@@ -9,7 +9,7 @@ $lang['subject'] = 'თემა';
 $lang['yourMessage'] = 'შეტყობინება';
 $lang['sendMessage'] = 'შეტყობინების გაგზავნა';
 $lang['contactDetails'] = 'საკონტაქტო ინფორმაცია';
-$lang['findUsOnMap'] = 'იპოვეთ რუკაზე';
+$lang['findUsOnMap'] = 'გვიპოვეთ რუკაზე';
 $lang['home'] = 'საწყისი'; 
 $lang['contactUs'] = 'კონტაქტი';
 
@@ -29,6 +29,8 @@ $lang['messageNotSent'] = 'ვერ მოხერხდა Email გაგზ
 $lang['messageSent'] = 'პაროლის აღდგენის Email გამოგზავნილია';
 $lang['resetPassword'] = 'პაროლის შეცვლა';
 $lang['pwdSet'] = 'პაროლი შეცვლილია';
+$lang ['regSucc'] = 'თქვენ წარმატებით დარეგისტრირდით';
+$lang ['dbErr'] = 'მონაცემთა ბაზის შეცდომა, გთხოვთ სცადოთ მოგვიანებით'; 
 
 
 $lang['save'] = 'შენახვა';

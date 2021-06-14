@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 		$this->data['slides'] = $this->mainslider->getSlides();
 		$this->load->model(['slidertext', 'hoteltext', 'tourtext']);
 		$this->data['hoteltexts'] = $this->hoteltext->getHoteltexts();
-		$this->data['tourtexts'] = $this->hoteltext->getHoteltexts();
+		$this->data['tourtexts'] = $this->tourtext->getTourtexts();
 		$this->data['slidedertexts'] = $this->slidertext->getSlidertexts();
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('slider', $this->data);
@@ -100,6 +100,15 @@ class Home extends CI_Controller {
 	public function contact(){
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('contact', $this->data);
+		$this->load->view('templates/footer');
+	}
+
+
+	public function gallery(){
+		$this->load->model('gallery');
+		$this->data['galleries'] = $this->gallery->getGalleries();
+		$this->load->view('templates/header', $this->data);
+		$this->load->view('gallery', $this->data);
 		$this->load->view('templates/footer');
 	}
 	

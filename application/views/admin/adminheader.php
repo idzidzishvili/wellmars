@@ -86,6 +86,18 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link <?php echo $activeitem == 11 ? 'active' : ''; ?>" href="<?php echo base_url('admin/gallery'); ?>">
+								<i class="la la-user-plus"></i>
+								გალერეა
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link <?php echo $activeitem == 12 ? 'active' : ''; ?>" href="<?php echo base_url('admin/addgallery'); ?>">
+								<i class="la la-user-plus"></i>
+								გალერიის დამატება
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link <?php echo $activeitem == 8 ? 'active' : ''; ?>" href="<?php echo base_url('admin/contact'); ?>">
 								<i class="la la-user-plus"></i>
 								კონტაქტი

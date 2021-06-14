@@ -33,7 +33,6 @@ class auth extends CI_Controller
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[32]');
 		$this->form_validation->set_rules('cpassword', 'Password Confirmation', 'required|min_length[6]|max_length[32]|matches[password]');
-		$this->form_validation->set_rules('terms', 'Terms and conditions', 'callback_terms');
 
 		if ($this->form_validation->run()) {
 			if($this->user->addUser($this->input->post('fullname'), $this->input->post('email'), password_hash($this->input->post('password'), PASSWORD_BCRYPT))){
@@ -44,6 +43,7 @@ class auth extends CI_Controller
 				$this->register();
 			}
 		} else {
+			echo validation_errors();
 			$this->register();
 		}
 	}
@@ -92,6 +92,9 @@ class auth extends CI_Controller
 	public function sendrecovery()
 	{
 		if ($this->session->userdata('logged_in')) redirect('/profile');
+		$this->load->model(['contact', 'tour']);
+		$this->data['contacts'] = $this->contact->getContacts();
+		$this->data['tours'] = $this->tour->getTours();
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('sendrecovery', $this->data);
 		$this->load->view('templates/footer', $this->data);
@@ -136,7 +139,12 @@ class auth extends CI_Controller
 		if ($this->user->hasRecoveryString($user_id, $recoverystring)){
 			$this->data['user_id'] = $user_id;
 			$this->data['recstr'] = $recoverystring;
+			$this->load->model(['contact', 'tour']);
+			$this->data['contacts'] = $this->contact->getContacts();
+			$this->data['tours'] = $this->tour->getTours();
+			$this->load->view('templates/header', $this->data);
 			$this->load->view('reset', $this->data);
+			$this->load->view('templates/footer', $this->data);
 		}else{
 			$this->sendrecovery();
 		}
@@ -182,20 +190,13 @@ class auth extends CI_Controller
 	}
 
 
-	function terms() {
-		if (isset($_POST['terms'])) return true;
-		$this->form_validation->set_message('terms', lang('accTerms'));
-		return false;
-  }
-
-
 
 
 	function sendRecoveryMail2($recipient, $userid, $username, $recoveryString){
 		$this->load->library('email');
 		$config = array ('mailtype' => 'html', 'charset'  => 'utf-8', 'priority' => '1');
 		$this->email->initialize($config);
-		$this->email->from('no-reply@afishnik.com', 'Afishnik.com');
+		$this->email->from('noreply@ilia.site7.me', 'wellmars');
 		$this->email->to($recipient);	
 		$this->email->subject('Recover password');
 		$data['recoveryString'] = $recoveryString;

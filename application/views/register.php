@@ -5,6 +5,16 @@
 		<div class="col-lg-12">
 			<div class="login-box mt-4 mb-5 pb-4 ">
             <h3><?php echo lang('register');?></h3>
+
+            <?php if ($this->session->flashdata('registerResult')):?>
+               <div class="alert alert-<?php echo $this->session->flashdata('registerResult')['status']?'success':'danger';?> alert-dismissible fade show" role="alert">
+                  <strong><?php echo $this->session->flashdata('registerResult')['message'];?></strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+            <?php endif; ?>
+
             <?php echo form_open(site_url('auth/register_process'));?>
 
                <div class="form-group">

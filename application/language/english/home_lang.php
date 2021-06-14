@@ -29,6 +29,8 @@ $lang['messageNotSent'] = 'Could not send recovery Email';
 $lang['messageSent'] = 'Password recovery Email has been sent';
 $lang['resetPassword'] = 'Reset Password';
 $lang['pwdSet'] = 'Password has been set';
+$lang['regSucc'] = 'You have been successfully registered';
+$lang['dbErr'] = 'Database error, please try again later';
 
 
 $lang['save'] = 'Save';

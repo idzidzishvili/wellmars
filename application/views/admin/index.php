@@ -12,7 +12,7 @@
 		<?php echo form_open(base_url('admin/tourtext_process')); ?>
          <div class="form-row">         
             <div class="form-group col-12 mb-0">
-               <label for="header_ge">ტურების ტექსტი ქართულად</label>
+               <label for="header_ge">ტურების ტექსტი</label>
             </div>
             <div class="form-group col-12">
                <input type="text" class="form-control form-control-sm" name="text_ge" value="<?php echo isset($tourtexts->text_ge)?$tourtexts->text_ge:''; ?>" autocomplete="off" placeholder="ტექსტი ქართულად">
@@ -49,21 +49,22 @@
 		</thead>
 		<tbody>
 
-		<?php foreach($tourdata['tours'] as $i=>$tour):?>
-			<tr class="tour">
-				<th scope="row"><?php echo $i+1;?></th>
-				<td><?php echo $tour['tourname_ge'];?></td>
-				<td><span class="badge badge-secondary">საწყისი გვერდი</span></td>
-				<td>
-					<?php if(!$tour['istour']):?>
-						<a href="<?php echo base_url('home/tour/'.$tour['id']);?>" target="_blank">
-							<span class="badge badge-primary">კატეგორია</span>
-						</a>
-					<?php else:?>
-						<a href="<?php echo base_url('home/tour/'.$tour['id']);?>" target="_blank">
-							<span class="badge badge-success">ტური</span>
-						</a>
-					<?php endif;?>
+			<?php foreach($tourdata['tours'] as $i=>$tour):?>
+				<tr class="tour">
+					<th scope="row"><?php echo $i+1;?></th>
+					<td><?php echo $tour['tourname_ge'];?></td>
+					<td><span class="badge badge-secondary">საწყისი გვერდი</span></td>
+					<td>
+						<?php if(!$tour['istour']):?>
+							<a href="<?php echo base_url('home/tour/'.$tour['id']);?>" target="_blank">
+								<span class="badge badge-primary">კატეგორია</span>
+							</a>
+						<?php else:?>
+							<a href="<?php echo base_url('home/tour/'.$tour['id']);?>" target="_blank">
+								<span class="badge badge-success">ტური</span>
+							</a>
+						<?php endif;?>
+					</td>
 					<td scope="col">
 						<?php if($tour['istour']):?>
 							<a href="<?php echo base_url('admin/editsubtour/'.$tour['id']);?>" alt="რედაქტირება"><i class="fa fa-edit text-primary mr-2"></i></a>
@@ -73,57 +74,31 @@
 						<a href="<?php echo base_url('admin/deletetour/'.$tour['id']);?>" alt="წაშლა"><i class="fa fa-trash text-danger"></i></a>
 					</td>
 				</tr>
-			<?php foreach ($tourdata['subtours'] as $j=>$subtour): ?>
-				<?php if ($subtour['tourid'] == $tour['id']): ?>
-					<tr>
-						<th scope="col"><?php echo $j+1;?></th>
-						<td scope="col"><?php echo $subtour['tourname_ge'];?></td>
-						<td><span class="badge badge-info">შიდა გვერდი</span></td>
-						<td>
-							<?php if(!$subtour['istour']):?>
-								<a href="<?php echo base_url('home/tour/'.$subtour['id']);?>" target="_blank">
-									<span class="badge badge-primary">კატეგორია</span>
-								</a>
-							<?php else:?>
-								<a href="<?php echo base_url('home/tour/'.$subtour['id']);?>" target="_blank">
-									<span class="badge badge-success">ტური</span>
-								</a>
-							<?php endif;?>
-						</td>
-						<td scope="col">
-							<a href="<?php echo base_url('admin/editsubtour/'.$subtour['id']);?>"><i class="fa fa-edit text-primary mr-2"></i></a>
-							<a href="<?php echo base_url('admin/deletetour/'.$subtour['id']);?>"><i class="fa fa-trash text-danger"></i></a>
-						</td>
-					</tr>
-				<?php endif;?>
-			<?php endforeach; ?>
-		<?php endforeach;?>
-
-
-
-
-
-			<!-- <?php foreach($tours as $i=>$tour): ?>
-				<tr class="tour">
-					<th scope="row"><?php echo $i+1;?></th>
-					<td><?php echo $tour['tourname_ge'];?></td>
-					<td scope="col">
-						<a href="<?php echo base_url('admin/edittour/'.$tour['id']);?>" alt="რედაქტირება"><i class="fa fa-edit text-primary mr-2"></i></a>
-						<a href="<?php echo base_url('admin/deletetour/'.$tour['id']);?>" alt="წაშლა"><i class="fa fa-trash text-danger"></i></a>
-					</td>
-				</tr>
-				 	<?php foreach ($tour['subtours'] as $j=>$subtour): ?>
+				<?php foreach ($tourdata['subtours'] as $j=>$subtour): ?>
+					<?php if ($subtour['tourid'] == $tour['id']): ?>
 						<tr>
 							<th scope="col"><?php echo $j+1;?></th>
 							<td scope="col"><?php echo $subtour['tourname_ge'];?></td>
+							<td><span class="badge badge-info">შიდა გვერდი</span></td>
+							<td>
+								<?php if(!$subtour['istour']):?>
+									<a href="<?php echo base_url('home/tour/'.$subtour['id']);?>" target="_blank">
+										<span class="badge badge-primary">კატეგორია</span>
+									</a>
+								<?php else:?>
+									<a href="<?php echo base_url('home/tour/'.$subtour['id']);?>" target="_blank">
+										<span class="badge badge-success">ტური</span>
+									</a>
+								<?php endif;?>
+							</td>
 							<td scope="col">
 								<a href="<?php echo base_url('admin/editsubtour/'.$subtour['id']);?>"><i class="fa fa-edit text-primary mr-2"></i></a>
-								<a href="<?php echo base_url('admin/deletesubtour/'.$subtour['id']);?>"><i class="fa fa-trash text-danger"></i></a>
+								<a href="<?php echo base_url('admin/deletetour/'.$subtour['id']);?>"><i class="fa fa-trash text-danger"></i></a>
 							</td>
 						</tr>
-					<?php endforeach; ?>
-			<?php endforeach; ?> -->
-
+					<?php endif;?>
+				<?php endforeach; ?>
+			<?php endforeach;?>
 
 		</tbody>
 	</table>

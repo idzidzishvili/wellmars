@@ -12,7 +12,7 @@
 		<?php echo form_open(base_url('admin/hoteltext_process')); ?>
          <div class="form-row">         
             <div class="form-group col-12 mb-0">
-               <label for="header_ge">სასტუმროს ტექსტი ქართულად</label>
+               <label for="header_ge">სასტუმროს ტექსტი</label>
             </div>
             <div class="form-group col-12">
                <input type="text" class="form-control form-control-sm" name="text_ge" value="<?php echo isset($hoteltexts->text_ge)?$hoteltexts->text_ge:''; ?>" autocomplete="off" placeholder="ტექსტი ქართულად">
