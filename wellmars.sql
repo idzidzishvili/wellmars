@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 12, 2021 at 10:26 AM
+-- Generation Time: Jun 16, 2021 at 03:40 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -49,7 +49,61 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `phone`, `email`, `address_ge`, `address_en`, `address_ru`, `map_url`, `facebook`, `twitter`, `instagram`, `pinterest`) VALUES
-(1, '577-56-45-55', 'info@wellmars.com', 'საქართველო, ყაზბეგი', 'Georgia, Kazbegi', 'Грузия, Казбеги', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3011.9179446064927!2d44.6158971607837!3d42.62379986166091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ska!2s!4v1622562369861!5m2!1ska!2s', 'https://www.facebook.com/wellmars', 'https://www.twitter.com/wellmars', 'https://www.instagram.com/wellmars', 'https://www.pinterest.com/wellmars');
+(1, '(+633) 577-56-45-55', 'info@wellmars.com', 'საქართველო, ყაზბეგი', 'Georgia, Kazbegi', 'Грузия, Казбеги', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3011.9179446064927!2d44.6158971607837!3d42.62379986166091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ska!2s!4v1622562369861!5m2!1ska!2s', 'https://www.facebook.com/wellmars', 'https://www.twitter.com/wellmars', 'https://www.instagram.com/wellmars', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleries`
+--
+
+DROP TABLE IF EXISTS `galleries`;
+CREATE TABLE IF NOT EXISTS `galleries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `galleryname_ge` varchar(200) NOT NULL,
+  `galleryname_en` varchar(200) NOT NULL,
+  `galleryname_ru` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `galleryname_ge`, `galleryname_en`, `galleryname_ru`) VALUES
+(1, 'მთის სურათები', 'Mountain Images', 'Mountain Images Ru'),
+(2, 'ზღვის სურათები', 'Sea images', 'Sea images Ru'),
+(5, 'მაგარი გალერეა', 'Cool gallery', 'Cool gallery RU');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleryimages`
+--
+
+DROP TABLE IF EXISTS `galleryimages`;
+CREATE TABLE IF NOT EXISTS `galleryimages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gallery_id` int(11) NOT NULL,
+  `filename` varchar(250) NOT NULL,
+  `ismain` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `galleryimages`
+--
+
+INSERT INTO `galleryimages` (`id`, `gallery_id`, `filename`, `ismain`) VALUES
+(1, 2, '05658ca39c1f1e322001.jpg', 0),
+(2, 2, '05658ca39c1f1e322002.jpg', 1),
+(3, 2, '05658ca39c1f1e322003.jpg', 0),
+(14, 1, '799fdd42be29d2be1002.jpg', 0),
+(5, 2, '4dd4549dc0765b152002.jpg', 0),
+(7, 2, 'f68b9681d5b420a72001.jpg', 0),
+(13, 1, '799fdd42be29d2be1001.jpg', 0),
+(15, 1, '799fdd42be29d2be1003.jpg', 0),
+(12, 2, 'cd701b301cc6434c2003.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -148,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `hotelreviews` (
   `review` text NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `hotelreviews`
@@ -165,7 +219,9 @@ INSERT INTO `hotelreviews` (`id`, `hotel_id`, `user_id`, `rating`, `review`, `da
 (8, 9, 5, 4, 'მომეწონა გარემო', '2021-06-07'),
 (9, 9, 6, 5, 'სუფთა ოთახები აქვს', '2021-05-22'),
 (10, 9, 7, 3, 'kargi sastumroa', '2021-06-05'),
-(12, 10, 2, 2, 'ds ghasdljkn ghfldkjfhg lsdkjf sldkjfh slkdjfh-2qoeq pkisoi sdloahfjoisafds', '2021-05-08');
+(12, 10, 2, 2, 'ds ghasdljkn ghfldkjfhg lsdkjf sldkjfh slkdjfh-2qoeq pkisoi sdloahfjoisafds', '2021-05-08'),
+(13, 10, 3, 2, 'asjkdh alskjdhalskjdh alskjhadl90a as\';a\';sd aslkdjals.', '2021-06-13'),
+(14, 9, 1, 4, 'yt berrt dfg dfg fd', '2021-06-13');
 
 -- --------------------------------------------------------
 
@@ -467,7 +523,7 @@ CREATE TABLE IF NOT EXISTS `tourtexts` (
 --
 
 INSERT INTO `tourtexts` (`id`, `text_ge`, `text_en`, `text_ru`) VALUES
-(1, 'საუკეთესო ტურები მხოლოდ ჩვენთან', 'The best tours only with us', 'Лучшие туры только у нас');
+(1, 'საუკეთესო ტურები მხოლოდ ჩვეეენთან2', 'The best tours only with us', 'Лучшие туры только у нас');
 
 -- --------------------------------------------------------
 
@@ -488,7 +544,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `avatar` varchar(200) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -496,7 +552,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `user_role`, `status`, `phone`, `recoverystring`, `avatar`, `created_at`) VALUES
 (1, NULL, 'admin@wellmars.com', '$2y$10$c8n0Nq.zVoJ8b2/7Ss4che0S2EtaHsGr4z7QXB9YUIkerafuFewJO', 1, 1, NULL, NULL, NULL, '2021-06-03 05:39:45'),
-(2, NULL, 'user01@gmail.com', '$2y$10$ZVUqAurcgSROqodZ5jYgVeway75FGsp54AiwxfI1F/X0nJaNU77nC', 2, 1, '598-23-23-25', 'n6TBFKcbfIWsaMF8HsL5BJQVHqM9VtKbXhUcb7Bn38F9o9Q7Ig6kzRIMJfYAJESwqUF5TQre2wUzfngWR8oVenxHRnYQu1ywHJ6p61KCqGOdmIwYHWmM3EVui2UwxlEq', 'avatar2.jpg', '2021-06-05 07:31:56');
+(2, NULL, 'user01@gmail.com', '$2y$10$ZVUqAurcgSROqodZ5jYgVeway75FGsp54AiwxfI1F/X0nJaNU77nC', 2, 1, '598-23-23-25', 'n6TBFKcbfIWsaMF8HsL5BJQVHqM9VtKbXhUcb7Bn38F9o9Q7Ig6kzRIMJfYAJESwqUF5TQre2wUzfngWR8oVenxHRnYQu1ywHJ6p61KCqGOdmIwYHWmM3EVui2UwxlEq', 'avatar2.jpg', '2021-06-05 07:31:56'),
+(3, 'user02 user02', 'user02@gmail.com', '$2y$10$qw6frk8Hd1UQI.2.2GgltuWW6fEk2JAdZnNCg5iA.jDgLqHs7gs2u', 2, 1, NULL, NULL, NULL, '2021-06-13 14:37:57'),
+(4, 'ilia dzidzishvili', 'ilia.dzidzishvili@gmail.com', '$2y$10$4.IQepL16oWUZNqRdh/mwusP1TB6./8uIq85eTloDr5dLuFRsAbfu', 2, 1, NULL, 'FUbceWSa8z90ZjPZb7EcEScsNodlRIfjV621o105CIbjoSyVIYevNsmksEfzkX9fQcEr7msZxvPc8Ljyqn4mWBMRAnRfcRBwLSNLSbLrr8krsccWBafeTPBx1H3sHdsA', NULL, '2021-06-13 14:56:39');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

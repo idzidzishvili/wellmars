@@ -32,7 +32,7 @@
                         </tr>
                      <?php endforeach; ?>
                      <tr>
-                        <td><input type="radio" value="1" name="mainImage"></td>
+                        <td><input type="radio" value="1" name="mainImage" checked></td>
                         <td colspan="3"><input type="file" name="galleryImages[]"></td>
                         <td></td>
                      </tr>
