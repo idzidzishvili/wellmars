@@ -838,7 +838,7 @@ class admin extends CI_Controller
 				//echo $this->input->post('mainImage') . '<br>';
 				$filesCount = count($_FILES['galleryImages']['name']);
 				$mainImage = $this->input->post('mainImage');
-				for ($i = 0; $i < $filesCount; $i++) {
+				for ($i=0; $i<$filesCount; $i++) {
 					if (!empty($_FILES['galleryImages']['name'][$i])) {
 						
 						$_FILES['galleryImage']['name']     = $filename . str_pad($i+1, 3, '0', STR_PAD_LEFT) . '.' . pathinfo($_FILES['galleryImages']['name'][$i], PATHINFO_EXTENSION); 

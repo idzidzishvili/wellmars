@@ -29,7 +29,7 @@
                   <a href="<?php echo base_url('admin/editgallery/'.$gallery->id);?>" alt="რედაქტირება"><i class="fa fa-edit text-primary mr-2"></i></a>
                   <a href="<?php echo base_url('admin/deletegallery/'.$gallery->id);?>" alt="წაშლა"><i class="fa fa-trash text-danger"></i></a>
                </td>
-            </tr>			
+            </tr>
 		   <?php endforeach;?>
 		</tbody>
 	</table>

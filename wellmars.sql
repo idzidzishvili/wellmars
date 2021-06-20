@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 16, 2021 at 03:40 AM
+-- Generation Time: Jun 20, 2021 at 08:41 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `galleryname_en` varchar(200) NOT NULL,
   `galleryname_ru` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `galleries`
@@ -73,7 +73,8 @@ CREATE TABLE IF NOT EXISTS `galleries` (
 INSERT INTO `galleries` (`id`, `galleryname_ge`, `galleryname_en`, `galleryname_ru`) VALUES
 (1, 'მთის სურათები', 'Mountain Images', 'Mountain Images Ru'),
 (2, 'ზღვის სურათები', 'Sea images', 'Sea images Ru'),
-(5, 'მაგარი გალერეა', 'Cool gallery', 'Cool gallery RU');
+(5, 'მაგარი გალერეა', 'Cool gallery', 'Cool gallery RU'),
+(6, 'სულ სხვა გალერეა', 'Completely different gallery', 'Completely different gallery RU');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `galleryimages` (
   `filename` varchar(250) NOT NULL,
   `ismain` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `galleryimages`
@@ -96,14 +97,19 @@ CREATE TABLE IF NOT EXISTS `galleryimages` (
 
 INSERT INTO `galleryimages` (`id`, `gallery_id`, `filename`, `ismain`) VALUES
 (1, 2, '05658ca39c1f1e322001.jpg', 0),
-(2, 2, '05658ca39c1f1e322002.jpg', 1),
-(3, 2, '05658ca39c1f1e322003.jpg', 0),
+(2, 2, '05658ca39c1f1e322002.jpg', 0),
+(3, 2, '05658ca39c1f1e322003.jpg', 1),
 (14, 1, '799fdd42be29d2be1002.jpg', 0),
 (5, 2, '4dd4549dc0765b152002.jpg', 0),
+(16, 2, 'b0bdbecb68959a462001.jpg', 0),
 (7, 2, 'f68b9681d5b420a72001.jpg', 0),
 (13, 1, '799fdd42be29d2be1001.jpg', 0),
-(15, 1, '799fdd42be29d2be1003.jpg', 0),
-(12, 2, 'cd701b301cc6434c2003.jpg', 0);
+(15, 1, '799fdd42be29d2be1003.jpg', 1),
+(12, 2, 'cd701b301cc6434c2003.jpg', 0),
+(17, 2, 'ee13b312abc218272001.jpg', 0),
+(18, 6, '1af0e14574de40d96001.png', 0),
+(19, 6, '1af0e14574de40d96002.png', 1),
+(20, 6, '1af0e14574de40d96003.png', 0);
 
 -- --------------------------------------------------------
 
@@ -554,7 +560,7 @@ INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `user_role`, `status
 (1, NULL, 'admin@wellmars.com', '$2y$10$c8n0Nq.zVoJ8b2/7Ss4che0S2EtaHsGr4z7QXB9YUIkerafuFewJO', 1, 1, NULL, NULL, NULL, '2021-06-03 05:39:45'),
 (2, NULL, 'user01@gmail.com', '$2y$10$ZVUqAurcgSROqodZ5jYgVeway75FGsp54AiwxfI1F/X0nJaNU77nC', 2, 1, '598-23-23-25', 'n6TBFKcbfIWsaMF8HsL5BJQVHqM9VtKbXhUcb7Bn38F9o9Q7Ig6kzRIMJfYAJESwqUF5TQre2wUzfngWR8oVenxHRnYQu1ywHJ6p61KCqGOdmIwYHWmM3EVui2UwxlEq', 'avatar2.jpg', '2021-06-05 07:31:56'),
 (3, 'user02 user02', 'user02@gmail.com', '$2y$10$qw6frk8Hd1UQI.2.2GgltuWW6fEk2JAdZnNCg5iA.jDgLqHs7gs2u', 2, 1, NULL, NULL, NULL, '2021-06-13 14:37:57'),
-(4, 'ilia dzidzishvili', 'ilia.dzidzishvili@gmail.com', '$2y$10$4.IQepL16oWUZNqRdh/mwusP1TB6./8uIq85eTloDr5dLuFRsAbfu', 2, 1, NULL, 'FUbceWSa8z90ZjPZb7EcEScsNodlRIfjV621o105CIbjoSyVIYevNsmksEfzkX9fQcEr7msZxvPc8Ljyqn4mWBMRAnRfcRBwLSNLSbLrr8krsccWBafeTPBx1H3sHdsA', NULL, '2021-06-13 14:56:39');
+(4, 'ilia dzidzishvili', 'ilia.dzidzishvili@gmail.com', '$2y$10$4.IQepL16oWUZNqRdh/mwusP1TB6./8uIq85eTloDr5dLuFRsAbfu', 2, 1, NULL, 'cGlg93f6v2LNkK5yT9t1hKX1GqqtKpduwSUoMC7djyaB2CAseuQ6Xx7H05RSRKEgV8Jvueq6zNpbxxXTy1V0LHkjZbDlzpj3ZEmLSvripW1TvhKZSONq85bqonxUXHo8', NULL, '2021-06-13 14:56:39');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

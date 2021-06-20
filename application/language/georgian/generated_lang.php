@@ -4,3 +4,5 @@
           $lang = array();
 
 $lang['email_sent'] = "email_sent";
+$lang['password'] = "password";
+$lang['confPassword'] = "confPassword";

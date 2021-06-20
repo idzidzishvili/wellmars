@@ -104,12 +104,36 @@ class Home extends CI_Controller {
 	}
 
 
-	public function gallery(){
-		$this->load->model('gallery');
-		$this->data['galleries'] = $this->gallery->getGalleries();
-		$this->load->view('templates/header', $this->data);
-		$this->load->view('gallery', $this->data);
-		$this->load->view('templates/footer');
+	public function gallery($id=0){
+		if($id){
+			$this->load->model(['gallery', 'galleryimage']);
+			$this->data['gallery'] = $this->gallery->getGallery($id);
+			$this->data['galleryImages'] = $this->galleryimage->getImagesByGalleryId($id);
+			if(!count($this->data['galleryImages'])){
+				return redirect('home/gallery');
+			}
+			$this->load->view('templates/header', $this->data);
+			$this->load->view('galleryimages', $this->data);
+			$this->load->view('templates/footer');
+		}else{
+			$this->load->model('gallery');
+			$this->data['galleries'] = $this->gallery->getGalleries();
+			$this->load->view('templates/header', $this->data);
+			$this->load->view('gallery', $this->data);
+			$this->load->view('templates/footer');
+		}
+	}
+
+
+	public function sendmail(){
+		$this->load->library('email');
+		$this->email->from('your@example.com', 'Your Name');
+		$this->email->to('ilia.dzidzishvili@gmail.com');
+		// $this->email->cc('another@another-example.com');
+		// $this->email->bcc('them@their-example.com');
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');
+		$this->email->send();
 	}
 	
 	
