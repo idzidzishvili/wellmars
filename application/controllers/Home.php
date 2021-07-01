@@ -31,13 +31,16 @@ class Home extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+
 	public function hotels(){
 		$this->load->model('hoteltext');
 		$this->data['hoteltexts'] = $this->hoteltext->getHoteltexts();
+		$this->data['title'] = lang('hotels');
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('hotels', $this->data);
 		$this->load->view('templates/footer');
 	}
+
 
 	public function hotel($id=0){		
 		if (filter_var($id, FILTER_VALIDATE_INT) && $id>0){
@@ -45,6 +48,7 @@ class Home extends CI_Controller {
 			$this->data['rooms'] = $this->roomtype->getRoomsByType($id);			
 			$hotel = $this->hotel->getHotel($id);
 			$this->data['hotel'] = $hotel;
+			$this->data['title'] = $hotel->{'type_'.$this->lang->lang()};
 			$this->data['images'] = $this->hotelimage->getImagesByHotelId($id);
 			$reviewsCount = $this->hotelreview->getReviewCountByHotelId($id);
 			$this->data['reviewsCount'] = $reviewsCount;
@@ -64,21 +68,27 @@ class Home extends CI_Controller {
 			$this->data['hoteId'] = $id;
 			$this->data['userHasReview'] = $this->session->userdata('logged_in')?$this->hotelreview->userHasReview($this->session->userdata('user_id'), $id):false;
 			$this->load->view('hoteldetails', $this->data);
-		}else{$this->hotels();}
+		}else{
+			$this->hotels();
+		}
 	}
+
 
 	public function tours(){
 		$this->load->model('tourtext');
 		$this->data['tourtexts'] = $this->tourtext->getTourtexts();
+		$this->data['title'] = lang('tours');
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('tours', $this->data);
 		$this->load->view('templates/footer');
 	}
 
+
 	public function tour($id=0){
 		if (filter_var($id, FILTER_VALIDATE_INT) && $id>0){
 			$tour = $this->tour->getTour($id);
 			$this->data['tourdetails'] = $tour;
+			$this->data['title'] = $tour->{'tourname_'.$this->lang->lang()};
 			if($tour){
 				if($tour->istour){
 					$this->load->model('tourimage');
@@ -92,12 +102,17 @@ class Home extends CI_Controller {
 					$this->load->view('tours', $this->data);
 					$this->load->view('templates/footer');
 				}
-			}else{return redirect('/home/tours');}
-		}else{return redirect('/home/tours');}
+			}else{
+				return redirect('/home/tours');
+			}
+		}else{
+			return redirect('/home/tours');
+		}
 	}
 
 
 	public function contact(){
+		$this->data['title'] = lang('contact');
 		$this->load->view('templates/header', $this->data);
 		$this->load->view('contact', $this->data);
 		$this->load->view('templates/footer');
@@ -105,6 +120,7 @@ class Home extends CI_Controller {
 
 
 	public function gallery($id=0){
+		$this->data['title'] = lang('gallery');
 		if($id){
 			$this->load->model(['gallery', 'galleryimage']);
 			$this->data['gallery'] = $this->gallery->getGallery($id);
@@ -127,10 +143,8 @@ class Home extends CI_Controller {
 
 	public function sendmail(){
 		$this->load->library('email');
-		$this->email->from('your@example.com', 'Your Name');
-		$this->email->to('ilia.dzidzishvili@gmail.com');
-		// $this->email->cc('another@another-example.com');
-		// $this->email->bcc('them@their-example.com');
+		$this->email->from('guest@wellmars.com', 'Mail from contact form');
+		$this->email->to('info@wellmars.com');
 		$this->email->subject('Email Test');
 		$this->email->message('Testing the email class.');
 		$this->email->send();

@@ -12,7 +12,7 @@
 
 				<a href="<?php echo $_SERVER['PHP_SELF'] . '?week=' . ($week - 1) . '&year=' . $year; ?>"> < წინა კვირა</a> 
 				| 
-				<input type="text" id="weekPicker1" />
+				<input type="text" id="weekPicker1" value="<?php echo isset($_GET['year'], $_GET['week'])?$_GET['year'].' წელი, კვირა:'.$_GET['week']:'';?>"/>
 				|
 				<a href="<?php echo $_SERVER['PHP_SELF'] . '?week=' . ($week + 1) . '&year=' . $year; ?>">შემდეგი კვირა > </a>
 				<br><br>
@@ -120,9 +120,9 @@ var globalTriggeringElement;
 			var dow = simple.getDay();
 			var ISOweekStart = simple;
 			if (dow <= 4)
-					ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+				ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
 			else
-					ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+				ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
 			return ISOweekStart;
 		} catch (err) {
 			console.error("Cannot convert Week into date");
@@ -143,10 +143,10 @@ var globalTriggeringElement;
 		var endDate;
 		var selectCurrentWeek = function() {
 			window.setTimeout(function() {
-					var activeElement = $("#ui-datepicker-div .ui-state-active");
-					var tdElement = activeElement.parent();
-					var trElement = tdElement.parent();
-					trElement.find("a").addClass("ui-state-active")
+				var activeElement = $("#ui-datepicker-div .ui-state-active");
+				var tdElement = activeElement.parent();
+				var trElement = tdElement.parent();
+				trElement.find("a").addClass("ui-state-active")
 			}, 1);
 		};
 		$(settingElement).datepicker({
@@ -155,22 +155,21 @@ var globalTriggeringElement;
 			showWeek: true,
 			firstDay: 1,
 			onSelect: function(dateText, inst) {
-					var datepickerValue = $(this).datepicker('getDate');
-					var dateObj = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate());
-					var weekNum = $.datepicker.iso8601Week(dateObj);
-					// if (weekNum < 10) {
-					// 	weekNum = "0" + weekNum;
-					// }
-					var ywString = datepickerValue.getFullYear() + '-' + weekNum;
-					$(this).val(ywString);
-					$(this).prev().html(ywString);
-					startDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay());
-					endDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay() + 6);
-					selectCurrentWeek();
-					$(this).data('datepicker').inline = true;
-					globalAdditionalFunction(globalTriggeringElement);
-					console.log(ywString);
-					window.location.href = "<?php echo base_url().'pageid=';?>" + ywString;
+				var datepickerValue = $(this).datepicker('getDate');
+				var dateObj = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate());
+				var weekNum = $.datepicker.iso8601Week(dateObj);
+				// if (weekNum < 10) {
+				// 	weekNum = "0" + weekNum;
+				// }
+				var ywString = datepickerValue.getFullYear() + '-' + weekNum;
+				$(this).val(ywString);
+				$(this).prev().html(ywString);
+				startDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay());
+				endDate = new Date(datepickerValue.getFullYear(), datepickerValue.getMonth(), datepickerValue.getDate() - datepickerValue.getDay() + 6);
+				selectCurrentWeek();
+				$(this).data('datepicker').inline = true;
+				globalAdditionalFunction(globalTriggeringElement);
+				window.location.href = "<?php echo base_url('admin/hotelreservations?');?>" + 'week=' + weekNum + '&year=' + datepickerValue.getFullYear();
 			},
 			onClose: function() {
 				$(this).data('datepicker').inline = false;					

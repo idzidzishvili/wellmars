@@ -9,9 +9,9 @@
 		<meta name="keyword" content="travel, tourism, agency, tourist">
 		<meta name="author" content="Themescare">
 		<!-- Title -->
-		<title>Wellmars</title>
+		<title>Wellmars <?php echo isset($title)?' | '.$title:'';?></title>
 		<!-- Favicon -->
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/flaticon/flaticon.css">
 		<link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery.animatedheadline.css">
@@ -98,7 +98,7 @@
 									<div class="col-lg-3">
 										<div class="site-logo">
 											<a href="<?php echo site_url('/');?>">
-												<img src="<?= base_url(); ?>assets/img/logo.png" alt="Peulis" />
+												<img src="<?= base_url(); ?>assets/img/logo.png" alt="wellmars logo" />
 											</a>
 										</div>
 										<!-- Responsive Menu Start -->

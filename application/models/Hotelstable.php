@@ -21,6 +21,16 @@ class Hotelstable extends CI_Model
       return $this->db->update_batch('hotelstable', $data, 'date');
 	}
 
+	public function getMaxDateFromHotelsTable()
+	{
+		return $this->db->select_max('date')->from('hotelstable')->get()->row('date');
+	}
+
+	public function addEmptyDates($dates)
+	{
+		$this->db->insert_batch('hotelstable', $dates);
+	}
+
 
 
 

@@ -643,6 +643,8 @@ class admin extends CI_Controller
 
 
 	public function hotelreservations(){
+		$this->checkDates();
+		exit;
 		$dt = new DateTime;
 		if (isset($_GET['year']) && isset($_GET['week'])) {
 			$dt->setISODate($_GET['year'], $_GET['week']);
@@ -964,19 +966,20 @@ class admin extends CI_Controller
 		return redirect('admin/gallery/'.$gallery_id);
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	function checkDates(){
+		$this->load->model('hotelstable');
+		$last = $this->hotelstable->getMaxDateFromHotelsTable();
+		$dtToday = new DateTime();
+		$dt = new DateTime($last);
+		if(date_diff($dt, $dtToday)->format('%d')<730){
+			$dates = array();
+			for($i=1;$i<900;$i++){
+				$d = $dt->modify('+1 day')->format('Y-m-d');				
+				$newDate = array('date'=>$d);
+				array_push($dates, $newDate);
+			}
+			$this->hotelstable->addEmptyDates($dates);
+		}
+	}
 
 }

@@ -212,3 +212,13 @@ table.hoteldetails tbody tr:hover{
   box-shadow: none;
   border:solid #3838d3 1px
 }
+/*
+ * jQuery UI 
+ */
+.ui-widget-content tr .ui-state-hover
+{
+	border: 1px solid #c5c5c5;
+	background: #354875;
+	font-weight: normal;
+	color: #fefefe;
+}
