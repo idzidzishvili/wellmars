@@ -12,7 +12,7 @@
 
 				<a href="<?php echo $_SERVER['PHP_SELF'] . '?week=' . ($week - 1) . '&year=' . $year; ?>"> < წინა კვირა</a> 
 				| 
-				<input type="text" id="weekPicker1" value="<?php echo isset($_GET['year'], $_GET['week'])?$_GET['year'].' წელი, კვირა:'.$_GET['week']:'';?>"/>
+				<input type="text" id="weekPicker1" value="<?php echo isset($_GET['year'], $_GET['week'])?$_GET['year'].' წელი, კვირა: '.$_GET['week']:'';?>"/>
 				|
 				<a href="<?php echo $_SERVER['PHP_SELF'] . '?week=' . ($week + 1) . '&year=' . $year; ?>">შემდეგი კვირა > </a>
 				<br><br>
