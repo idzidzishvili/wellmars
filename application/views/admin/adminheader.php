@@ -11,10 +11,13 @@
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/summernote-bs4.min.css" type="text/css" />
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/firago.css" type="text/css" />
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.css" type="text/css" />
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/dashboard.css" type="text/css" />
 	<script src="<?= base_url(); ?>assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="<?= base_url(); ?>assets/js/popper.min.js" type="text/javascript"></script>
 	<script src="<?= base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<?= base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
+	<!-- <script src="<?= base_url(); ?>assets/js/weekPicker.js" type="text/javascript"></script>	 -->
 	<script src="<?= base_url(); ?>assets/js/summernote-bs4.min.js" type="text/javascript"></script>
 	
 </head>
