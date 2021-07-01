@@ -644,7 +644,6 @@ class admin extends CI_Controller
 
 	public function hotelreservations(){
 		$this->checkDates();
-		exit;
 		$dt = new DateTime;
 		if (isset($_GET['year']) && isset($_GET['week'])) {
 			$dt->setISODate($_GET['year'], $_GET['week']);
