@@ -141,6 +141,15 @@ class Home extends CI_Controller {
 	}
 
 
+	public function autopark(){
+		$this->load->model('autopark');
+		$this->data['carImages'] = $this->autopark->getImages();
+		$this->load->view('templates/header', $this->data);
+		$this->load->view('autopark', $this->data);
+		$this->load->view('templates/footer');
+	}
+
+
 	public function sendmail(){
 		$this->load->library('email');
 		$this->email->from('guest@wellmars.com', 'Mail from contact form');

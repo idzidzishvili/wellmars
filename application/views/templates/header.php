@@ -128,6 +128,9 @@
 														<a href="<?php echo site_url('home/gallery');?>"><?php echo $this->lang->line('gallery');?></a>
 													</li>
 													<li>
+														<a href="<?php echo site_url('home/autopark');?>"><?php echo $this->lang->line('autopark');?></a>
+													</li>
+													<li>
 														<a href="<?php echo site_url('contact');?>"><?php echo lang('contact');?></a>
 													</li>
 												</ul>

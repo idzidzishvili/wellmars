@@ -29,8 +29,8 @@ $lang['messageNotSent'] = 'ვერ მოხერხდა Email გაგზ
 $lang['messageSent'] = 'პაროლის აღდგენის Email გამოგზავნილია';
 $lang['resetPassword'] = 'პაროლის შეცვლა';
 $lang['pwdSet'] = 'პაროლი შეცვლილია';
-$lang ['regSucc'] = 'თქვენ წარმატებით დარეგისტრირდით';
-$lang ['dbErr'] = 'მონაცემთა ბაზის შეცდომა, გთხოვთ სცადოთ მოგვიანებით'; 
+$lang['regSucc'] = 'თქვენ წარმატებით დარეგისტრირდით';
+$lang['dbErr'] = 'მონაცემთა ბაზის შეცდომა, გთხოვთ სცადოთ მოგვიანებით'; 
 
 
 $lang['save'] = 'შენახვა';
@@ -60,9 +60,9 @@ $lang['whatsappViberNumber'] = "Whatsapp/Viber ნომერი";
 $lang['orderDate'] = "შეკვეთის თარიღი";
 $lang['numberOfPersons'] = "რაოდენობა";
 $lang['bookNow'] = "დაჯავშნე";
-$lang ['startDate'] = "დაწყების თარიღი";
-$lang ['endDate'] = "დასრულების თარიღი";
-$lang ['roomNumber'] = "ოთახის ნომერი";
+$lang['startDate'] = "დაწყების თარიღი";
+$lang['endDate'] = "დასრულების თარიღი";
+$lang['roomNumber'] = "ოთახის ნომერი";
 
 $lang['tourDuration'] = "ტურის ხანგძლივობა";
 $lang['tourDestination'] = "ტურის მიმართულება";
@@ -81,6 +81,7 @@ $lang['comment'] = 'კომენტარი';
 $lang['postComment'] = 'კომენტარის გაგზავნა';
 $lang['reviews'] = 'შეფასებები';
 $lang['gallery'] = 'გალერეა';
+$lang['autopark'] = 'ავტოპარკი';
 $lang['details'] = 'დეტალები';
 
 $lang['pages'] = 'გვერდები';

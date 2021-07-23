@@ -22,6 +22,7 @@
 							<li><a href="<?php echo site_url('home/hotels');?>"><i class="fas fa-bed mr-2"></i><?php echo lang('hotels');?></a></li>
 							<li><a href="<?php echo site_url('home/tours');?>"><i class="fas fa-biking mr-2"></i><?php echo lang('tours');?></a></li>
 							<li><a href="<?php echo site_url('home/gallery');?>"><i class="fas fa-images mr-2"></i><?php echo lang('gallery');?></a></li>
+							<li><a href="<?php echo site_url('home/autopark');?>"><i class="fas fa-car mr-2"></i><?php echo lang('autopark');?></a></li>
 							<li><a href="<?php echo site_url('home/contact');?>"><i class="far fa-address-book mr-2"></i><?php echo lang('contact');?></a></li>
 						</ul>
 					</div>

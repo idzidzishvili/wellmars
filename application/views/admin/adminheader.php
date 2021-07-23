@@ -101,6 +101,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link <?php echo $activeitem == 13 ? 'active' : ''; ?>" href="<?php echo base_url('admin/autopark'); ?>">
+								<i class="la la-user-plus"></i>
+								ავტოპარკი
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link <?php echo $activeitem == 8 ? 'active' : ''; ?>" href="<?php echo base_url('admin/contact'); ?>">
 								<i class="la la-user-plus"></i>
 								კონტაქტი

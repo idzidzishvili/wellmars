@@ -965,6 +965,64 @@ class admin extends CI_Controller
 		return redirect('admin/gallery/'.$gallery_id);
 	}
 
+
+	//OK
+	public function autopark(){
+		$this->load->model('autopark');
+		if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
+			$filename ='';
+			$key = true;
+			while ($key) {
+				$filename = substr(str_shuffle(MD5(microtime())), 0, 16);
+				if ($this->autopark->checkFileName($filename) == 0) $key = false;
+			}			
+			$filesCount = count($_FILES['autoparkImages']['name']);
+			for ($i = 0; $i < $filesCount; $i++) {						
+				if (!empty($_FILES['autoparkImages']['name'][$i])) {					
+					$_FILES['image']['name']     = $filename . str_pad($i+1, 3, '0', STR_PAD_LEFT) . '.' . pathinfo($_FILES['autoparkImages']['name'][$i], PATHINFO_EXTENSION); 
+					$_FILES['image']['type']     = $_FILES['autoparkImages']['type'][$i];
+					$_FILES['image']['tmp_name'] = $_FILES['autoparkImages']['tmp_name'][$i];
+					$_FILES['image']['error']    = $_FILES['autoparkImages']['error'][$i];
+					$_FILES['image']['size']     = $_FILES['autoparkImages']['size'][$i];
+					
+					// File upload configuration 
+					$config['upload_path'] = 'uploads/autopark/';
+					$config['allowed_types'] = 'jpg|jpeg|png|gif';
+					
+					// Add to db
+					$this->autopark->addImage($_FILES['image']['name']);
+
+					// Load and initialize upload library 
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+
+					// Upload file to server 
+					if ($this->upload->do_upload('image')) {
+						// Uploaded file data 
+						$fileData = $this->upload->data();
+						$uploadData[$i]['file_name'] = $fileData['file_name'];
+						$uploadData[$i]['uploaded_on'] = date("Y-m-d H:i:s");
+					}
+				}
+			}
+		}		
+		$data['autoImages'] = $this->autopark->getImages();
+		$this->load->view('admin/autopark', $data);	
+	}
+
+	//OK
+	public function deleteAutoparkImage($id=0){
+		if (filter_var($id, FILTER_VALIDATE_INT)) {
+			$this->load->model('autopark');
+			$filename = $this->autopark->getFilenameById($id);
+			if($this->autopark->deleteAutoparkImage($id)){
+				unlink(FCPATH.'uploads/autopark/'.$filename);
+			}
+		}
+		return redirect('admin/autopark');
+	}
+
+
 	function checkDates(){
 		$this->load->model('hotelstable');
 		$last = $this->hotelstable->getMaxDateFromHotelsTable();

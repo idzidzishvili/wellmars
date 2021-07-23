@@ -54,33 +54,34 @@ $lang['pagination_prev_link'] = "Previous";
 $lang['pagination_last_link'] = "Last";
 
 
-$lang ['bookThisTour'] = "Book this Room";
-$lang ['yourName'] = "Your Name";
-$lang ['whatsappViberNumber'] = "WhatsApp/Viber Number";
-$lang ['orderDate'] = "Order Date";
-$lang ['numberOfPersons'] = "Number of Persons";
-$lang ['bookNow'] = "Book Now";
-$lang ['startDate'] = "Start date";
-$lang ['endDate'] = "End date";
-$lang ['roomNumber'] = "Room Number";
+$lang['bookThisTour'] = "Book this Room";
+$lang['yourName'] = "Your Name";
+$lang['whatsappViberNumber'] = "WhatsApp/Viber Number";
+$lang['orderDate'] = "Order Date";
+$lang['numberOfPersons'] = "Number of Persons";
+$lang['bookNow'] = "Book Now";
+$lang['startDate'] = "Start date";
+$lang['endDate'] = "End date";
+$lang['roomNumber'] = "Room Number";
 
 $lang['tourDuration'] = "Tour Duration";
 $lang['tourDestination'] = "Tour Destination";
 
-$lang ['contactInformation'] = "Contact Details";
-$lang ['phoneNumber'] = "Phone Number";
-$lang ['address'] = "Address"; 
+$lang['contactInformation'] = "Contact Details";
+$lang['phoneNumber'] = "Phone Number";
+$lang['address'] = "Address"; 
 
 
 $lang['roomReservedSucc'] = 'Room was reserved, you can see status at <a href="'.site_url('profile/orders').'">profile</a>';
 $lang['roomReserveFailed'] = 'Selected types of room are reserved for the chosen date';
-$lang ['thankYou'] = 'Thank you';
-$lang ['yourReviewReceived'] = 'Your rating has been accepted';
-$lang ['rating'] = 'Rating';
-$lang ['comment'] = 'Comment';
-$lang ['postComment'] = 'Post Comment';
-$lang ['reviews'] = 'Reviews';
-$lang ['gallery'] = 'Gallery';
+$lang['thankYou'] = 'Thank you';
+$lang['yourReviewReceived'] = 'Your rating has been accepted';
+$lang['rating'] = 'Rating';
+$lang['comment'] = 'Comment';
+$lang['postComment'] = 'Post Comment';
+$lang['reviews'] = 'Reviews';
+$lang['gallery'] = 'Gallery';
+$lang['autopark'] = 'Autopark';
 $lang['details'] = 'Details';
 
 $lang['pages'] = 'Pages';
